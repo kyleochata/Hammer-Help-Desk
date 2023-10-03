@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require ('brypt');
+const bcrypt = require('brypt');
 const sequelize = require('../config/connection');
 
 class User extends Model {
@@ -37,7 +37,7 @@ User.init(
             type: DataTypes.ENUM('tech', 'client'),
             allowNull: false,
             // UNSOLVED: Set default to client.
-            
+
         },
         hooks: {
             async beforeCreate(newUserData) {
@@ -53,3 +53,5 @@ User.init(
 
     }
 )
+
+model.exports = { User }
