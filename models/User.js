@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('brypt');
-const sequelize = require('../config/connection');
+const sequelize = require('../utils/connection');
 
 class User extends Model {
     checkPassword(loginPw) {
@@ -34,24 +34,33 @@ User.init(
             allowNull: false,
         },
         role: {
-            type: DataTypes.ENUM('tech', 'client'),
+            type: DataTypes.ENUM,
+            values: ['tech', 'client'],
+            defaultValue: 'client',
             allowNull: false,
-            // UNSOLVED: Set default to client.
+
 
         },
         hooks: {
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                newUserData.email = newUserData.email.toLowerCase();
                 return newUserData;
             },
+            async beforeBulkCreate(bulkUserData) {
+                for (const user of bulkUserData) {
+                    user.password = await bcrypt.hash(user.password, 10);
+                    user.email = user.email.toLowerCase();
+                }
+                return bulkUserData
+            }
         },
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        underscored: true,
-        modelname: 'user',
-
+        underscored: false,
+        modelName: 'user',
     }
 )
 
-model.exports = { User }
+module.exports = User
