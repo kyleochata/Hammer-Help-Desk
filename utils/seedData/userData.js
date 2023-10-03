@@ -7,5 +7,12 @@ const userData = [
     firstName: 'Kyle',
     lastName: "Et",
     role: 'tech'
+  },
+  {
+    email: 'bliss@email.com',
+    password: '123password',
+    firstName: 'Kyle',
+    lastName: 'Bliss',
+    role: 'tech'
   }
 ]
