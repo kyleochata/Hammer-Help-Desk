@@ -38,8 +38,9 @@ const ticketController = {
 
             await ticket.save();
 
-            // TODO: Implement the logChange instance method invocation here
-            // For example: ticket.logChange(req.session.user, originalData);
+            if (req.session && req.session.user) {
+                await ticket.logChange(req.session.user.id, originalData);
+            }
 
             return res.redirect(req.headers.referer || `/ticket/${id}`);
 
