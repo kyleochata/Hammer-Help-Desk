@@ -1,0 +1,79 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/assets/css/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <main>
+      <button class="open-modal">Click To Open Regular Modal</button>
+    </main>
+
+    <div class="wrapper" id="message-wrapper">
+      <dialog class="modal" id="message-drawer">
+        <button id="close-modal-btn">X</button>
+        <p>this is a modal</p>
+      </dialog>
+    </div> -->
+    <button id="show-dialogue">Show Chat Logs</button>
+    <div id="chat-dialogue" class="hidden">
+      <div class="dialogue-content">
+        <h3>Logs for ticket#:</h3>
+        <p>Log content.</p>
+        <button id="close-dialogue">Close</button>
+      </div>
+    </div>
+
+    <button id="new-ticket-btn">+</button>
+    <div id="new-ticket-modal" class="hidden">
+      <button id="close-ticket-modal">X</button>
+      <div class="ticket-form">
+        <header>
+          <h3>New Ticket</h3>
+        </header>
+        <div>
+          <label for="subject">
+            <h4>Subject</h4>
+          </label>
+        </div>
+        <div>
+          <input type="text" id="subject" />
+        </div>
+        <div>
+          <label for="description">
+            <h4>Description</h4>
+          </label>
+        </div>
+        <div>
+          <textarea
+            placeholder="Please tell us more about your issue"
+            id="description"
+          ></textarea>
+        </div>
+        <div>
+          <label for="urgency">
+            <h4>Urgency</h4>
+          </label>
+        </div>
+        <select name="urgency" id="urgency">
+          <option value="Low" selected>Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+        <button id="submit-ticket">Create Ticket</button>
+      </div>
+    </div>
+    <footer>
+      <div>
+        <button class="footer-btn" id="back-btn">
+          <a href="/">Back</a>
+        </button>
+      </div>
+      <div>
+        <button id="logout-btn" class="footer-btn">Logout</button>
+      </div>
+    </footer>
+  </body>
+  <script src="./public/assets/js/modal.js"></script>
+</html>
