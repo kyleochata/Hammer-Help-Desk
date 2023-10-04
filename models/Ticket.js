@@ -65,7 +65,7 @@ Ticket.init(
     isArchived: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: 'false',
+      defaultValue: false,
     }
   },
   {
