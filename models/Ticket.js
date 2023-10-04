@@ -71,6 +71,7 @@ Ticket.init(
   {
     hooks: {
       afterCreate: async (ticket, options) => {
+        // Define values for the Log record
         const logValues = {
           type: 'Created',
           message: 'Ticket number ${ticket.id} created.',
@@ -78,6 +79,7 @@ Ticket.init(
           ticketId: ticket.id,
         };
         try {
+          // Create a new Log record using the logValues
           const log = await Log.create(logValues, { transaction: options.transaction })
           console.log('Log record created:', log)
         } catch (err) {
@@ -86,8 +88,10 @@ Ticket.init(
       },
       afterUpdate: async (ticket, options) => {
         const previousStatus = ticket._previousDataValues.status;
+        // Check if the status has been changed to 'Resolved'
         if (previousStatus !== 'Resolved' && ticket.status === 'Resolved') {
           try {
+            // Update the isArchived property to true
             await ticket.update({ isArchived: true }, { transaction: options.transaction });
             console.log(`Ticket ${ticket.id} has been resolved and archived.`)
           } catch (err) {
