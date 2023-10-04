@@ -33,7 +33,7 @@ Log.init(
     isHidden: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: 'false',
+      defaultValue: false,
     }
   },
   {
