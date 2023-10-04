@@ -4,6 +4,27 @@ const Log = require('./Log');
 
 class Ticket extends Model {}
 
+Ticket.prototype.logChange = async function(userId) {
+  const changes = findDiff(this.dataValues, this._previousDataValues);
+
+  if (!changes.length) return;  // Return early if no changes
+
+  const logValues = {
+    type: 'Modified',
+    message: `${changes.length} changes were made on ${new Date().toISOString()} by user. ${changes.join(' ')}`,
+    userId: userId,
+    ticketId: this.id
+  };
+
+  try {
+    const log = await Log.create(logValues);
+    console.log('Log record created:', log);
+  } catch (err) {
+    console.error('Error creating Log record:', err);
+  }
+}
+
+
 Ticket.init(
   {
     clientId: {

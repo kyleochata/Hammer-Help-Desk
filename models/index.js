@@ -1,6 +1,6 @@
-const { User } = require('./User');
-const { Ticket } = require('./Ticket');
-const { Log } = require('./Log');
+const User = require('./User');
+const Ticket = require('./Ticket');
+const Log = require('./Log');
 
 User.hasMany(Ticket, {
   foreignKey: 'clientId'
