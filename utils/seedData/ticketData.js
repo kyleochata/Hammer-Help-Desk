@@ -6,7 +6,7 @@ const ticketData = [
         techId: 1,
         subject: 'IT Help',
         description: "My computer froze.",
-        status: 'OPEN',
+        status: 'Open',
         isArchived: 'false',
     },
     {
@@ -14,7 +14,7 @@ const ticketData = [
         techId: 3,
         subject: "Software Help",
         description: "I cannot launch this program.",
-        status: 'OPEN',
+        status: 'Open',
         isArchived: 'false',
 
     },
@@ -23,7 +23,7 @@ const ticketData = [
         techId: 4,
         subject: "Hardware Help",
         description: "I don't know if my computer parts are compatible.",
-        status: 'CLOSED',
+        status: 'Resolved',
         isArchived: 'true',
     }
 ]

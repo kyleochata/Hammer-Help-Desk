@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../utils/connection');
+const sequelize = require('../utils/connectioin');
 
 class Log extends Model { };
 
@@ -33,7 +33,7 @@ Log.init(
     isHidden: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: 'false',
+      defaultValue: false,
     }
   },
   {

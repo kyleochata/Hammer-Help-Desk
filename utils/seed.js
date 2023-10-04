@@ -1,4 +1,5 @@
 const sequelize = require('./connection');
+console.log(sequelize)
 const seedUsers = require('./seedData/userData');
 const seedLog = require('./seedData/logData');
 const seedTickets = require('./seedData/ticketData');
