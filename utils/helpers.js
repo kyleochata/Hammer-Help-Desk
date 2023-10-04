@@ -6,6 +6,30 @@ const withAuth = (req, res, next) => {
 
 };
 
+const determineClass = (value) => {
+  // return a STRING for appropriate class determined by a SWITCH CASE.
+  // USE for Hidden or Shown class to the HIDE/SHOW eye icons in messages.
+  // USE for left-align or right-align on message bubbles.
+  switch (value) {
+    case 'hidden':
+      return 'hidden';
+    case 'shown':
+      return 'shown';
+    case 'left-align':
+      return 'left-align';
+    case 'right-align':
+      return 'right-align';
+      // // If the value doesn't match any case, return a default class or handle it as needed
+    default:
+      return 'default-class';
+  }
+};
+
+const messageIconClass = determineClass('hidden');
+const messageBubbleClass = determineClass('left-align');
+console.log('Message Icon Class:', messageIconClass);
+console.log('Message Bubble Class:', messageBubbleClass);
+
 const format_date = (date) => {
   //month is index 0-11. must add 1 to get correct month
   let timeStamp = new Date(date);
@@ -61,4 +85,4 @@ function findDiff(newValue, oldValue) {
   }
   
 
-module.exports = { withAuth, format_date, format_timeStamp,findDiff };
+module.exports = { withAuth, format_date, format_timeStamp,findDiff, determineClass };
