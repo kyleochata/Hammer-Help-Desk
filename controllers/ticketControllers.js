@@ -1,4 +1,4 @@
-const { Ticket, Log } = require('../models');
+const { Ticket, Log, User } = require('../models');
 
 const ticketController = {
 
@@ -74,7 +74,8 @@ const ticketController = {
             console.error(error);
             res.status(500).send("Server Error");
         }
-    }
+    },
+
 };
 
 module.exports = ticketController;
