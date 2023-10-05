@@ -10,8 +10,9 @@ const userController = {
     loginUser: async (req, res) => {
         try {
             const userData = await User.findOne({ where: { email: req.body.email } });
+            console.log(userData)
             if (!userData) {
-                res.status(400)
+                res.status(404)
                     .json({ message: 'Incorrect email or password, please try again.' });
                 return;
             } console.log(userData);
