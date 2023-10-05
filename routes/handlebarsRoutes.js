@@ -18,4 +18,11 @@ router.route('/:status?')
 router.route('/ticket/:id')
   .get(handlebarController.renderTicket);
 
+router.get('/login', async (req, res) => {
+  if (req.session.loggedIn) {
+    return res.redirect('/');
+  }
+  res.render('login');
+});
+
 module.exports = router;
