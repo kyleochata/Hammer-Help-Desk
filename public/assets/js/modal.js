@@ -27,3 +27,4 @@ closeNewTicketBtn.addEventListener('click', () => {
   newTicketModal.classList.add('hidden');
 });
 
+//already in home and tickets
