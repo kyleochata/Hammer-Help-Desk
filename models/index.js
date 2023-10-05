@@ -10,14 +10,6 @@ User.hasMany(Ticket, {
   foreignKey: 'techId'
 })
 
-User.hasMany(Log, {
-  foreignKey: 'userId'
-})
-
-Ticket.hasMany(Log, {
-  foreignKey: 'ticketId'
-})
-
 Ticket.belongsTo(User, {
   foreignKey: 'clientId'
 })
@@ -26,12 +18,21 @@ Ticket.belongsTo(User, {
   foreignKey: 'techId'
 })
 
-Log.belongsTo(Ticket, {
-  foreignKey: 'ticketId'
+User.hasMany(Log, {
+  foreignKey: 'userId'
 })
 
 Log.belongsTo(User, {
   foreignKey: 'userId'
 })
+
+Ticket.hasMany(Log, {
+  foreignKey: 'ticketId'
+})
+
+Log.belongsTo(Ticket, {
+  foreignKey: 'ticketId'
+})
+
 
 module.exports = { User, Ticket, Log }
