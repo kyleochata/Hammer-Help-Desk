@@ -10,12 +10,12 @@ const loginFormHandler = async (event) => {
 
   if (email && password) {
     const response = await fetch('./api/user/', {
-      method: 'PUT',
+      method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-type': 'application/json' },
     });
     if (response.ok) {
-      document.location.replace('/')
+      console.log('Response was handled');
     } else {
       alert('Failed to log in.')
     }

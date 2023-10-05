@@ -17,4 +17,4 @@ router.route('/api/ticket/:id')
   .put(ticketController.editTicket)
   .delete(ticketController.archiveTicket)
 
-  module.exports = router;
+module.exports = router;
