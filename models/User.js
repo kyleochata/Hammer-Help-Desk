@@ -38,8 +38,6 @@ User.init(
             values: ['tech', 'client'],
             defaultValue: 'client',
             allowNull: false,
-
-
         },
     },
     {
@@ -57,6 +55,8 @@ User.init(
                 return bulkUserData
             }
         },
+
+
         sequelize,
         timestamps: false,
         freezeTableName: true,
