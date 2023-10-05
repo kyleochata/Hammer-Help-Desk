@@ -21,7 +21,7 @@ const userController = {
                 res.status(400)
                     .json({ message: 'Incorrect email or password, please try again.' });
                 return;
-            } 
+            }
             // res.render to Home handlebars
             req.session.save(() => {
                 req.session.user_id = userData.id;
