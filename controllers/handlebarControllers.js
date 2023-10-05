@@ -65,7 +65,7 @@ const handlebarController = {
         where.clientId = req.session.user_id
       } else {
         where.techId = req.session.user_id;
-        where[Op.or] = {techId: req.session.user_id, status: 'Open' } // Op.or
+        // where['Op.or'] = {techId: req.session.user_id, status: 'Open' } // Op.or
       }
       // IF for req.session.role === tech
       if (status) {
