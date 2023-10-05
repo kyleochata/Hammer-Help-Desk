@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#chat-dialogue {
+  right: -300px;
+}
+
+#new-ticket-modal {
+  right: -300px;
+}
+
+#chat-dialogue,
+#new-ticket-modal {
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.dialogue-content {
+  padding: 20px;
+}
+
+.hidden {
+  width: 0;
+}

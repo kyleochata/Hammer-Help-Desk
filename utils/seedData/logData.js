@@ -6,21 +6,21 @@ const logData = [
         ticketId: 1,
         message: "Started ticket.",
         type: 'Message',
-        isHidden: 'false',
+        isHidden: false,
     },
     {
         userId: 3,
         ticketId: 2,
         message: "Started ticket.",
         type: 'Message',
-        isHidden: 'false',
+        isHidden: false,
     },
     {
         userId: 4,
         ticketId: 3,
         message: "Closed ticket.",
         type: 'Message',
-        isHidden: 'false',
+        isHidden: false,
     }
 ]
 
