@@ -16,7 +16,6 @@ const ticketData = [
         description: "I cannot launch this program.",
         status: 'Open',
         isArchived: false,
-
     },
     {
         clientId: 7,

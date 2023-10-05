@@ -38,51 +38,64 @@ router.get('/login', async (req, res) => {
 
 // The route will match '/:status?' to handle GET calls.
 // This should run the renderDashboard handlebars controller.
-router.get('/:status?', async (req, res) => {
-  let status = req.params.status || '';
-  status = status.toString();
-  console.log(status);
+router.get('/:status', async (req, res) => {
   try {
-    const ticketData = await Ticket.findAll({
-      where: {
-        status: `${status}`,
-        isArchived: {[Op.not]: true}
-      },
-      include:
-        [{ model: User, as: 'client' },
-        { model: User, as: 'tech' }]
-    });
-    console.log(ticketData);
-    if (!ticketData) {
-      return res.status(404).json({
-        message: 'No ticket found by that id'
+    const status = req.params.status || '';
+    console.log(status);
+
+    if (status === 'Open' || status === 'Pending') {
+      const ticketData = await Ticket.findAll({
+        where: {
+          status: req.params.status,
+          isArchived: false,
+        },
+        include: [
+          {
+            model: User, //I don't think we need this. WIll already have the current user's id from when they log in (req.session.user_id). Then need to compare req.session.user_id to the ticket's id's. If it matches clientId or techId.
+            attributes: ['id', 'role']
+          }
+        ]
       })
+      console.log(ticketData);
+      if (ticketData.length === 0) {
+        res.status(404).json({ message: `open tickets not found` })
+      }
+      res.status(200).json(ticketData);
     }
-    const tickets = ticketData.map(eachTicket => eachTicket.get({ plain: true }))
-
-
-    if (tickets.client.id === req.session.user_id) {
-      res.render('home', {
-        ...tickets,
-        loggedIn: req.session.loggedIn,
-        title: "Dashboard",
-        layout: "main",
-        userType: "client"
+    else if (status === 'Resolved') {
+      const ticketData = await Ticket.findAll({
+        where: {
+          status: req.params.status,
+        },
+        include: [
+          {
+            model: User,
+            attributes: ['id', 'role']
+          }
+        ]
       })
+      console.log(ticketData);
+      if (ticketData.length === 0) {
+        res.status(404).json({ message: `open tickets not found` })
+      }
+      res.status(200).json(ticketData);
+    }
+    else {
+      const ticketData = await Ticket.findAll({
+        include: [{
+          model: User,
+          attributes: ['id', 'role']
+        }]
+      });
+      console.log(ticketData);
+      if (ticketData.length === 0) {
+        res.status(404).json({ message: `open tickets not found` })
+      }
+      res.status(200).json(ticketData);
     }
 
-    if (tickets.tech.id === req.session.user_id) {
-
-      res.render('home', {
-        ...tickets,
-        loggedIn: req.session.loggedIn,
-        title: "Dashboard",
-        layout: "main",
-        userType: "tech"
-      })
-    }
   } catch (err) {
-    res.status(404).json(err);
+    res.status(500).json(err);
   }
 });
 
@@ -93,7 +106,7 @@ router.get('/:status?', async (req, res) => {
 
 
 // router.route('/ticket/:id')
-  // .get(ticketController.editTicket);
+// .get(ticketController.editTicket);
 //   try{
 //     const getTicket = await Ticket.findByPk(id, {
 //       include: [
