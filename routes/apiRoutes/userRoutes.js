@@ -9,7 +9,7 @@ const userController = require('../../controllers/userControllers');
 // (userController.loginUser)
 router.route('/login')
   .post(userController.loginUser)
-  
+
 router.route('/logout')
   .delete(userController.logoutUser)
 
