@@ -7,25 +7,28 @@ const userController = {
     loginUser: async (req, res) => {
         try {
             const { email, password } = req.body;
+            console.log(email, password)
 
             const user = await User.findOne({ where: { email } });
-
+            console.log(user);
             if (!user || !bcrypt.compareSync(password, user.password)) {
                 return res.status(401).send('Invalid credentials');
             }
 
-            req.session.user = {
-                id: user.id,
-                email: user.email,
-                role: user.role,
-                firstName: user.firstName,
-                lastName: user.lastName
-            };
+            req.session.save(() => {
+                req.session.user = {
+                    id: user.id,
+                    email: user.email,
+                    role: user.role,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    loggedIn: true
+                };
+                res.status(200).json(user);
 
-            return res.redirect('/home'); // Redirect to home page
-
-        } catch (error) {
-            console.error(error);
+            })
+        } catch (err) {
+            console.error(err);
             res.status(500).send('Server Error');
         }
     },

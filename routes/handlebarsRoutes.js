@@ -6,34 +6,43 @@ const ticketController = require('../controllers/ticketControllers');
 const { Ticket, User, Log } = require('../models');
 
 // The route will match '/login' to handle GET calls.
-// This should run the renderLogin handlebars controller
 router.get('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
-
-    if (!userData) {
-      res.status(400)
-        .json({ message: 'Incorrect email or password, please try again.' });
-      return;
-    }
-
-    const checkPassword = await User.checkPassword(req.body.password);
-
-    if (!checkPassword) {
-      res.status(400)
-        .json({ message: 'Incorrect email or password, please try again.' });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.loggedIn = true;
-      res.json({ user: userData, message: 'You are now logged in.' });
-    });
+    res.render('login', {
+      layout: 'login'
+    })
   } catch (err) {
-    res.status(404).json(err);
+    res.status(500).json(err)
   }
 })
+// This should run the renderLogin handlebars controller
+// router.post('/login', async (req, res) => {
+//   try {
+//     const userData = await User.findOne({ where: { email: req.body.email } });
+
+//     if (!userData) {
+//       res.status(400)
+//         .json({ message: 'Incorrect email or password, please try again.' });
+//       return;
+//     }
+
+//     const checkPassword = await User.checkPassword(req.body.password);
+
+//     if (!checkPassword) {
+//       res.status(400)
+//         .json({ message: 'Incorrect email or password, please try again.' });
+//       return;
+//     }
+
+//     req.session.save(() => {
+//       req.session.user_id = userData.id;
+//       req.session.loggedIn = true;
+//       res.json({ user: userData, message: 'You are now logged in.' });
+//     });
+//   } catch (err) {
+//     res.status(404).json(err);
+//   }
+// })
 
 
 // The route will match '/:status?' to handle GET calls.

@@ -6,7 +6,7 @@ const userController = require('../../controllers/userControllers');
 
 // DELETE will call the logoutUser controller.
 
-router.route('/api/user')
+router.route('/')
   .post(userController.loginUser)
   .delete(userController.logoutUser)
 

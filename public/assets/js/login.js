@@ -4,13 +4,13 @@ const loginFormHandler = async (event) => {
 
   // Need to query select .value.trim() the email
   // Need to determine what id the email will be
-  const email = document.querySelector().value.trim;
+  let email = document.querySelector('#login-email').value.trim();
   // Need to determine id of PW in handlebars
-  const password = document.querySelector().value.trim();
-
+  const password = document.querySelector('#login-password').value.trim();
+  console.log(email, password)
   if (email && password) {
-    const response = await fetch('./api/user/', {
-      method: 'PUT',
+    const response = await fetch('/api/user/', {
+      method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-type': 'application/json' },
     });
@@ -24,4 +24,4 @@ const loginFormHandler = async (event) => {
 
 // Listen for submit events on the loginForm element. When the submit event occurs, capture the form field data and POST to /api/user
 // Event listeners 
-document.querySelector().addEventListener('submit')
+document.querySelector('#login-btn').addEventListener('submit', loginFormHandler)
