@@ -46,9 +46,7 @@ router.get('/:status?', async (req, res) => {
     const ticketData = await Ticket.findAll({
       where: {
         status: `${status}`,
-        [Op.not]: {
-          isArchived: true,
-        },
+        isArchived: {[Op.not]: true}
       },
       include:
         [{ model: User, as: 'client' },
