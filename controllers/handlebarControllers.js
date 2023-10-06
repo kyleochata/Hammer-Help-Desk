@@ -21,18 +21,22 @@ const handlebarController = {
           }
         ]
       });
-      if (getTicket.isArchived) {
+      const ticketData = getTicket.get({ plain: true })
+      if (ticketData.isArchived) {
         res.redirect('/home');
       }
-      if (req.session.role === 'client' && getTicket.clientId !== req.session.user.id) {
+      if (req.session.role === 'client' && ticketData.clientId !== req.session.user_id) {
         res.redirect('/home');
         return;
       }
       res.render('ticket', {
-        loggedIn: true,
-        title: getTicket.dataValues.subject,
-        layout: 'main',
-        role: req.session.role
+        loggedIn: req.session.loggedIn,
+        ticketData,
+        title: ticketData.subject,
+        layout: 'main', // TODO: this might need to be 'ticket' to direct to the ticket layout
+        role: req.session.role,
+        user: req.session.user_id,
+        // current signed in user
       })
     } catch (err) {
       res.status(500).send("Error retrieving Ticket");
