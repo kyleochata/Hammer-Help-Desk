@@ -1,9 +1,10 @@
 const { Log, User, Ticket } = require('../models');
+const { Op } = require('sequelize');
 
 const handlebarController = {
   renderTicket: async (req, res) => {
     try {
-      const getTicket = await Ticket.findByPk(id, {
+      const getTicket = await Ticket.findByPk(req.params.id, {
         include: [
           {
             model: User,
@@ -14,7 +15,8 @@ const handlebarController = {
             model: User,
             as: 'tech',
             attributes: ['firstName', 'lastName', 'id', 'role'],
-            // Come back to this, does it return all the logs for that TICKET??? Should I include some attributes?
+          },
+          {
             model: Log,
           }
         ]
@@ -22,15 +24,15 @@ const handlebarController = {
       if (getTicket.isArchived) {
         res.redirect('/home');
       }
-      if (req.session.user.role === 'client' && getTicket.clientId !== req.session.user.id) {
+      if (req.session.role === 'client' && getTicket.clientId !== req.session.user.id) {
         res.redirect('/home');
         return;
       }
       res.render('ticket', {
         loggedIn: true,
-        title: req.session.ticket.subject,
-        layout: 'main',
-        role: req.session.user.role
+        title: getTicket.dataValues.subject,
+        layout: 'main', // TODO: this might need to be 'ticket' to direct to the ticket layout
+        role: req.session.role
       })
     } catch (err) {
       res.status(500).send("Error retrieving Ticket");
@@ -53,9 +55,8 @@ const handlebarController = {
       if (req.session.role === 'client') {
         where.clientId = req.session.user_id
       } else {
-        where.techId = req.session.user_id;
-        // Need to ask Rachel if the Op.or doesn't work. Do we need to require it somehow?
-        // where['Op.or'] = {techId: req.session.user_id, status: 'Open' } // Op.or
+        //where.techId = req.session.user_id;
+        where[Op.or] = {techId: req.session.user_id, status: 'Open' } // Op.or
       }
       // IF for req.session.role === tech
       if (status) {
