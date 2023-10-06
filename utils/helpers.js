@@ -9,31 +9,30 @@ const withAuth = (req, res, next) => {
 
 
 
-const determineAlignment = (log, currentUser) => {
-  const currentUser = currentUser.id;
+// const determineAlignment = (log, currentUser) => {
   
-  if (log.type === 'Created' || log.type === 'Modified') {
-    return 'center-align';
-  } else if (currentUser.id === log.userId) {
-    return 'right-align'; 
-  } else {
-    return 'left-align'
-  }
-};
+//   if (log.type === 'Created' || log.type === 'Modified') {
+//     return 'center-align';
+//   } else if (currentUser === log.userId) {
+//     return 'right-align'; 
+//   } else {
+//     return 'left-align'
+//   }
+// };
 
-const determineShowHide = (value) => {
-  if (value === true) {
-    return 'hidden'
-  } else {
-    return 'shown'
-  }
-};
+// const determineShowHide = (value) => {
+//   if (value === true) {
+//     return 'hidden'
+//   } else {
+//     return 'shown'
+//   }
+// };
 
 
-const messageIconClass = determineShowHide('hidden');
-const messageBubbleClass = determineAlignment('left-align');
-console.log('Message Icon Class:', messageIconClass);
-console.log('Message Bubble Class:', messageBubbleClass);
+// const messageIconClass = determineShowHide('hidden');
+// const messageBubbleClass = determineAlignment('left-align');
+// console.log('Message Icon Class:', messageIconClass);
+// console.log('Message Bubble Class:', messageBubbleClass);
 
 const format_date = (date) => {
   //month is index 0-11. must add 1 to get correct month
@@ -90,4 +89,4 @@ function findDiff(newValue, oldValue) {
 }
 
 
-module.exports = { withAuth, format_date, format_timeStamp,findDiff };
+module.exports = { withAuth, format_date, format_timeStamp, findDiff };
