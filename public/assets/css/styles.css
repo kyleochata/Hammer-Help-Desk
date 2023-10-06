@@ -147,6 +147,19 @@ body {
 }
 
 .bsTicketBody {
-  background-color:#404045
+  background-color:#39393e
 }
 
+.cursor {
+  animation: blink 1s steps(2, end) infinite;
+  opacity: 1;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
