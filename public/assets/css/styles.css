@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #1d1e22;
+  --secondary-color: #ffffff;
+  --accent-color: #6f7fc1;
+}
+
+/* modal styling */
 body {
   margin: 0;
   padding: 0;

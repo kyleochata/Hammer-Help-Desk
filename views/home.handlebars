@@ -1,0 +1,31 @@
+<section class='top-main'>
+  <h2>Welcome{{firstName}}</h2>
+  <h3>Please click one of the buttons to filter your tickets by status</h3>
+  <div class='main-btn-container'>
+    <button>Open</button>
+    <button>Claimed</button>
+    <button>Pending</button>
+    <button>Resolved</button>
+    <button>All</button>
+  </div>
+</section>
+
+<section class='bottom-main'>
+  <table>
+    <tr>
+      <th></th>
+      <th>Status</th>
+      <th>Urgency</th>
+      <th>Client</th>
+      <th>Technician</th>
+
+    </tr>
+    <tr>
+      <th>
+      {{#each tickets}}
+      {{> table}}
+      {{/each}}
+      </th>
+    </tr>
+  </table>
+</section>

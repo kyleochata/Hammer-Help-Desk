@@ -3,19 +3,23 @@ const Ticket = require('./Ticket');
 const Log = require('./Log');
 
 User.hasMany(Ticket, {
-  foreignKey: 'clientId'
+  foreignKey: 'clientId',
+  as: 'client'
 })
 
 User.hasMany(Ticket, {
-  foreignKey: 'techId'
+  foreignKey: 'techId',
+  as: 'tech'
 })
 
 Ticket.belongsTo(User, {
-  foreignKey: 'clientId'
+  foreignKey: 'clientId',
+  as: 'client'
 })
 
 Ticket.belongsTo(User, {
-  foreignKey: 'techId'
+  foreignKey: 'techId',
+  as: 'tech'
 })
 
 User.hasMany(Log, {
