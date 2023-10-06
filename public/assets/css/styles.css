@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: rgb(153, 139, 139);
+  
 }
 #chat-dialogue {
   right: -300px;
@@ -28,4 +30,103 @@ body {
 
 .hidden {
   width: 0;
+}
+
+.bsRight {
+  padding-left: 30px;
+}
+
+.bsLeft {
+  padding-right: 30px;
+}
+
+.bsTop {
+  background-color:rgb(134, 134, 179)
+}
+
+#bsUrgency {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bsBtnRight {
+  float: right;
+}
+
+.bsDivLeft {
+  float: left;
+}
+.bsDivRight {
+  float: right;
+}
+
+.bsBox {
+  width: 300px;
+  height: 300px;
+  border: 5px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.bsBoxTest{
+  width: 300px;
+  height: 300px;
+  border: 5px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.form-container {
+  width: 700px;
+  margin: 100;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: rgb(130, 100, 100)
+}
+
+.form-container input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.background-gradient {
+  background: linear-gradient(to bottom, #a96a6a, #926453);
+}
+
+.bsTopText {
+  color: white;
+}
+
+.bsHeadShadow {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.bsBoxTitles {
+  font-size: 20px;
+  color:white;
+}
+
+.bsSave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bsDescription {
+  height: 100px;
+}
+
+.bsTree {
+  border: 1px black;
+  padding: 10px;
+}
+
+.subject {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.description {
+  margin-left: 20px;
+  font-size: 30px;
 }
