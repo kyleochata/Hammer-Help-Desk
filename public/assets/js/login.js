@@ -15,7 +15,8 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-type': 'application/json' },
     });
     if (response.ok) {
-      console.log('Response was handled');
+      document.location.replace('/');
+
     } else {
       alert('Failed to log in.')
     }

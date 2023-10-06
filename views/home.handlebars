@@ -13,19 +13,21 @@
 <section class='bottom-main'>
   <table>
     <tr>
-      <th></th>
+      <th>
+      {{#if isTech}}
+      Claim
+      {{/if}}
+      </th>
       <th>Status</th>
       <th>Urgency</th>
       <th>Client</th>
       <th>Technician</th>
-
+      <th>Created On</th>
     </tr>
-    <tr>
-      <th>
+
       {{#each tickets}}
       {{> table}}
       {{/each}}
-      </th>
-    </tr>
+
   </table>
 </section>

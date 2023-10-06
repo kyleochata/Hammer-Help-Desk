@@ -85,24 +85,28 @@ const handlebarController = {
         where: where,
         include: [
           {
-            model: User, as: 'client'
+            model: User,
+            as: 'client',
+            attributes: ['firstName', 'lastName', 'id', 'role'],
           },
           {
-            model: User, as: 'tech'
+            model: User,
+            as: 'tech',
+            attributes: ['firstName', 'lastName', 'id', 'role'],
           }
         ]
       })
       const tickets = ticketData.map((tickets) => tickets.get({ plain: true }));
-      console.log(tickets);
-      const isTech = (req.session.role !== 'client') ? true : false
+      const isTech = (req.session.role !== 'client') ? true : false;
+      console.log(isTech);
       res.render('home',
         {
-          tickets,
+          tickets: [...tickets.map(ticket => ({ ...ticket, isTech }))],
+          isTech,
           loggedIn: true, // req.session.loggedIn
           title: 'Dashboard',
           layout: 'main',
           userType: req.session.role,
-          isTech,
         }
       )
       console.log(status);
