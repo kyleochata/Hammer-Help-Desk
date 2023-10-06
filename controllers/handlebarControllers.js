@@ -95,6 +95,7 @@ const handlebarController = {
       })
       const tickets = ticketData.map((tickets) => tickets.get({ plain: true }));
       console.log(tickets);
+      const isTech = (req.session.role !== 'client') ? true : false
       res.render('home',
         {
           tickets,
@@ -102,6 +103,7 @@ const handlebarController = {
           title: 'Dashboard',
           layout: 'main',
           userType: req.session.role,
+          isTech,
         }
       )
       console.log(status);
@@ -110,7 +112,6 @@ const handlebarController = {
       res.status(400).json(err);
     }
   }
-
 }
 
 module.exports = handlebarController;

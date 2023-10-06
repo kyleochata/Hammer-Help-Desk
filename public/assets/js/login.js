@@ -23,7 +23,6 @@ const loginFormHandler = async (event) => {
 };
 // Listen for submit events on the loginForm element. When the submit event occurs, capture the form field data and POST to /api/user
 // Event listeners 
-// document.querySelector('#login-btn').addEventListener('submit', loginFormHandler)
 const loginBtn = document.querySelector('#login-btn')
 
 loginBtn.addEventListener('click', loginFormHandler)
