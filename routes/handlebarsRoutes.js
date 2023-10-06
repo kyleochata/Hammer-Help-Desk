@@ -2,7 +2,7 @@ const express = require('express');
 const router = require('express').Router();
 const path = require('path');
 const handlebarController = require('../controllers/handlebarControllers');
-
+const { withAuth } = require('../utils/helpers');
 
 // The route will match '/:status?' to handle GET calls.
 // This should run the renderDashboard handlebars controller.

@@ -20,8 +20,12 @@
       <th>Technician</th>
 
     </tr>
-    {{!-- {{#each}}
-    {{> table}}
-    {{/each}} --}}
+    <tr>
+      <th>
+      {{#each tickets}}
+      {{> table}}
+      {{/each}}
+      </th>
+    </tr>
   </table>
 </section>
