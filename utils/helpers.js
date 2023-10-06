@@ -1,5 +1,3 @@
-const { Log } = require('../models/Log');
-
 const withAuth = (req, res, next) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
@@ -7,33 +5,28 @@ const withAuth = (req, res, next) => {
   else { next(); }
 };
 
+const determineAlignment = (log, currentUser) => {
+  if (log.type === 'Created' || log.type === 'Modified') {
+    return 'center-align';
+  } else if (currentUser === log.userId) {
+    return 'right-align'; 
+  } else {
+    return 'left-align'
+  }
+};
 
-// UNCOMMENT THIS 
-// Should I pull ketrata from 1 hour ago then pull main?
-// const determineAlignment = (log, currentUser) => {
-  
-//   if (log.type === 'Created' || log.type === 'Modified') {
-//     return 'center-align';
-//   } else if (currentUser.id === log.userId) {
-//     return 'right-align'; 
-//   } else {
-//     return 'left-align'
-//   }
-// };
+const determineShowHide = (value) => {
+  if (value === true) {
+    return 'hidden'
+  } else {
+    return 'shown'
+  }
+};
 
-// const determineShowHide = (value) => {
-//   if (value === true) {
-//     return 'hidden'
-//   } else {
-//     return 'shown'
-//   }
-// };
-
-
-// const messageIconClass = determineShowHide('hidden');
-// const messageBubbleClass = determineAlignment('left-align');
-// console.log('Message Icon Class:', messageIconClass);
-// console.log('Message Bubble Class:', messageBubbleClass);
+const messageIconClass = determineShowHide('hidden');
+const messageBubbleClass = determineAlignment('left-align');
+console.log('Message Icon Class:', messageIconClass);
+console.log('Message Bubble Class:', messageBubbleClass);
 
 const format_date = (date) => {
   //month is index 0-11. must add 1 to get correct month
