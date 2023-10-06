@@ -41,7 +41,7 @@ const ticketController = {
             if (req.session && req.session.user) {
                 await ticket.logChange(req.session.user.id, originalData);
             }
-
+            //watch for too many redirects
             return res.redirect(req.headers.referer || `/ticket/${id}`);
 
         } catch (error) {

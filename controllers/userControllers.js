@@ -28,6 +28,7 @@ const userController = {
                 req.session.user_id = userData.id;
                 req.session.loggedIn = true;
                 req.session.role = userData.role;
+                console.log(req.session)
                 res.status(200).json(userData);
             });
         } catch (error) {
