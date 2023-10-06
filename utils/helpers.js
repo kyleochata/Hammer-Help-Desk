@@ -90,4 +90,4 @@ function findDiff(newValue, oldValue) {
 }
 
 
-module.exports = { withAuth, format_date, format_timeStamp,findDiff, determineClass };
+module.exports = { withAuth, format_date, format_timeStamp,findDiff };
