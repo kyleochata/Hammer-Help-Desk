@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const userController = require('../../controllers/userControllers');
-
+const { withAuth } = require('../../utils/helpers')
 
 // POST will call the loginUser controller.
 
@@ -11,6 +11,6 @@ router.route('/login')
   .post(userController.loginUser)
 
 router.route('/logout')
-  .post(userController.logoutUser)
+  .post(withAuth, userController.logoutUser)
 
 module.exports = router;

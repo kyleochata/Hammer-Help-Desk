@@ -1,7 +1,7 @@
 const router = require('express').Router();
 // const { createTicket, editTicket, archiveTicket } = require('../../controllers/ticketControllers');
 const ticketController = require('../../controllers/ticketControllers')
-
+const { withAuth } = require('../../utils/helpers')
 // POST will call the createTicket controller.
 
 // PUT will call the editTicket controller.
