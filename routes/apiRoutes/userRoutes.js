@@ -11,6 +11,6 @@ router.route('/login')
   .post(userController.loginUser)
 
 router.route('/logout')
-  .delete(withAuth, userController.logoutUser)
+  .post(withAuth, userController.logoutUser)
 
 module.exports = router;

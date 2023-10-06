@@ -29,7 +29,6 @@ const userController = {
                 req.session.loggedIn = true;
                 req.session.role = userData.role;
                 res.status(200).json(userData);
-                // res.redirect('/')
             });
         } catch (error) {
             console.error(error);
