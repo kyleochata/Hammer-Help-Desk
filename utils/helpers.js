@@ -5,27 +5,26 @@ const withAuth = (req, res, next) => {
   else { next(); }
 };
 
-const determineClass = (value) => {
-  // return a STRING for appropriate class determined by a SWITCH CASE.
-  // USE for Hidden or Shown class to the HIDE/SHOW eye icons in messages.
-  // USE for left-align or right-align on message bubbles.
-  switch (value) {
-    case 'hidden':
-      return 'hidden';
-    case 'shown':
-      return 'shown';
-    case 'left-align':
-      return 'left-align';
-    case 'right-align':
-      return 'right-align';
-    // // If the value doesn't match any case, return a default class or handle it as needed
-    default:
-      return 'default-class';
+const determineAlignment = (log, currentUser) => {
+  if (log.type === 'Created' || log.type === 'Modified') {
+    return 'center-align';
+  } else if (currentUser === log.userId) {
+    return 'right-align'; 
+  } else {
+    return 'left-align'
   }
 };
 
-const messageIconClass = determineClass('hidden');
-const messageBubbleClass = determineClass('left-align');
+const determineShowHide = (value) => {
+  if (value === true) {
+    return 'hidden'
+  } else {
+    return 'shown'
+  }
+};
+
+const messageIconClass = determineShowHide('hidden');
+const messageBubbleClass = determineAlignment('left-align');
 console.log('Message Icon Class:', messageIconClass);
 console.log('Message Bubble Class:', messageBubbleClass);
 
@@ -84,4 +83,4 @@ function findDiff(newValue, oldValue) {
 }
 
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff, determineClass };
+module.exports = { withAuth, format_date, format_timeStamp, findDiff };
