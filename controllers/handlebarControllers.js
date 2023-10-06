@@ -84,10 +84,14 @@ const handlebarController = {
         where: where,
         include: [
           {
-            model: User, as: 'client'
+            model: User,
+            as: 'client',
+            attributes: ['firstName', 'lastName', 'id', 'role'],
           },
           {
-            model: User, as: 'tech'
+            model: User,
+            as: 'tech',
+            attributes: ['firstName', 'lastName', 'id', 'role'],
           }
         ]
       })
