@@ -8,7 +8,7 @@
     </button>
     {{/if}}
   </th>
-  <a href="/ticket/{{id}}">
+  <a href="/ticket/{{this.id}}">
     <th>
       {{this.status}}
     </th>
@@ -22,7 +22,7 @@
       {{this.tech.firstName}}
     </th>
     <th>
-      {{this.createdAt}}
+      {{format_timeStamp this.createdAt}}
     </th>
   </a>
 </tr>
