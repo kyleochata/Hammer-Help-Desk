@@ -29,10 +29,13 @@ const handlebarController = {
         return;
       }
       res.render('ticket', {
-        loggedIn: true,
-        title: getTicket.dataValues.subject,
+        loggedIn: req.session.loggedIn,
+        ticketData,
+        title: ticketData.subject,
         layout: 'main', // TODO: this might need to be 'ticket' to direct to the ticket layout
-        role: req.session.role
+        role: req.session.role,
+        user: req.session.user_id,
+        // current signed in user
       })
     } catch (err) {
       res.status(500).send("Error retrieving Ticket");
