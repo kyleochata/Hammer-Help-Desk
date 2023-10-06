@@ -54,7 +54,7 @@ body {
 }
 
 .login-form-container::before,
-.loging-form-container::after {
+.login-form-container::after {
   position: absolute;
   content: '';
   height: 100%;
