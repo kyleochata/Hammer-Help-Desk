@@ -22,10 +22,11 @@ const ticketController = {
             if (!ticket) {
                 return res.status(404).send("Ticket not found.");
             }
-            console.log(ticket);
 
             // Capture original ticket data before changes
-            const originalData = ticket.dataValues;
+            const originalData = ticket._previousDataValues;
+            console.log(originalData);
+            // console.log(originalData);
 
             // Update ticket
             for (let key in req.body) {
@@ -40,17 +41,23 @@ const ticketController = {
 
             console.log(ticket);
 
-            await ticket.save();
 
-            // if (req.session && req.session.user) {
+            // if (req.session && req.session.user_id) {
+            //     await ticket.save();
             //     await ticket.logChange(ticket.dataValues, originalData);
-            //     console.log(123);
+            //     console.log('this happened');
             // }
 
-            await ticket.logChange(ticket.dataValues, originalData);
-            console.log(ticket);
+            //await ticket.save();
+            console.log('this is userid: \n');
+            console.log(req.session.user_id);
+            await ticket.logChange(req.session.user_id,originalData);
+            console.log('this happened');
 
-            return res.redirect(req.headers.referer || `/ticket/${id}`);
+            // await ticket.logChange(ticket.dataValues, originalData);
+            // console.log(ticket);
+
+            //return res.redirect(`/api/ticket/${id}`);
 
         } catch (error) {
             console.error(error);
