@@ -74,6 +74,7 @@ const handlebarController = {
         where.clientId = req.session.user_id
       } else {
         where.techId = req.session.user_id;
+        // Need to ask Rachel if the Op.or doesn't work. Do we need to require it somehow?
         // where['Op.or'] = {techId: req.session.user_id, status: 'Open' } // Op.or
       }
       // IF for req.session.role === tech
@@ -97,6 +98,7 @@ const handlebarController = {
       })
       const tickets = ticketData.map((tickets) => tickets.get({ plain: true }));
       console.log(tickets);
+      const isTech = (req.session.role !== 'client') ? true : false
       res.render('home',
         {
           tickets,
@@ -104,6 +106,7 @@ const handlebarController = {
           title: 'Dashboard',
           layout: 'main',
           userType: req.session.role,
+          isTech,
         }
       )
       console.log(status);
@@ -112,7 +115,6 @@ const handlebarController = {
       res.status(400).json(err);
     }
   }
-
 }
 
 module.exports = handlebarController;
