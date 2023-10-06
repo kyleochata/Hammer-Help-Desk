@@ -1,14 +1,18 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
+const helper = require('../utils/helpers');
 const Log = require('./Log');
 
 class Ticket extends Model { }
 
-Ticket.prototype.logChange = async function (userId) {
-  const changes = findDiff(this.dataValues, this._previousDataValues);
-
+Ticket.prototype.logChange = async function (userId,originalticket) {
+  //console.log(helper.findDiff({id:123},{id:456}));
+  const changes = helper.findDiff(this.dataValues, originalticket);
+  console.log('this happened 2');
+  console.log(originalticket);
+  console.log(this.dataValues);
   if (!changes.length) return;  // Return early if no changes
-
+  console.log('this happened 3');
   const logValues = {
     type: 'Modified',
     //talk to adrian about targeting we have ways
@@ -38,7 +42,7 @@ Ticket.init(
     },
     techId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
         model: 'user',
         key: 'id',
@@ -74,7 +78,7 @@ Ticket.init(
         // Define values for the Log record
         const logValues = {
           type: 'Created',
-          message: 'Ticket number ${ticket.id} created.',
+          message: `Ticket number ${ticket.id} created.`,
           userId: ticket.clientId,
           ticketId: ticket.id,
         };

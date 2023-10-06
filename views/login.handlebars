@@ -1,15 +1,29 @@
 <section class='login-form-container'>
-  <h1>JAKK Help Desk</h1>
-  <h2>Please login</h2>
-  <form>
-    <label for='login-email'>Email</label>
-    <br />
-    <input type='text' id='login-email' />
-    <br />
-    <label for='login-password'>Password</label>
-    <br />
-    <input type='password' id='login-password' />
-    <br />
-    <button type='submit' id='login-btn'>Login!</button>
+  <span class='login-span'> </span>
+  <span class='login-span'></span>
+  <span class='login-span'></span>
+  <span class='login-span'></span>
+  <form class='login-form'>
+    <h1>JAKK Help Desk</h1>
+
+    <div class='login-content-box'>
+      <input type='text' id='login-email' name='email' class='login-input' />
+      <label for='email' class='login-label'>Email</label>
+      <i class='login-border'></i>
+    </div>
+
+    <div class='login-content-box'>
+      <input
+        type='password'
+        name='password'
+        id='login-password'
+        class='login-input'
+      />
+      <label for='password' class='login-label'>Password</label>
+      <i class='login-border'></i>
+    </div>
+    <div class='btn-container'>
+      <button type='submit' id='login-btn'>Login!</button>
+    </div>
   </form>
 </section>

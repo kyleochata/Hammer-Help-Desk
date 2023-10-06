@@ -11,10 +11,10 @@ router.route('/login')
   .get(handlebarController.renderLogin);
 
 router.route('/ticket/:id')
-  .get(handlebarController.renderTicket);
+  .get(withAuth, handlebarController.renderTicket);
 
 router.route('/:status?')
-  .get(handlebarController.renderDashboard);
+  .get(withAuth, handlebarController.renderDashboard);
 
 
 // The route will match '/ticket/:id' to handle GET calls.
