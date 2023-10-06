@@ -8,12 +8,13 @@ const withAuth = (req, res, next) => {
 };
 
 
-
+// UNCOMMENT THIS 
+// Should I pull ketrata from 1 hour ago then pull main?
 // const determineAlignment = (log, currentUser) => {
   
 //   if (log.type === 'Created' || log.type === 'Modified') {
 //     return 'center-align';
-//   } else if (currentUser === log.userId) {
+//   } else if (currentUser.id === log.userId) {
 //     return 'right-align'; 
 //   } else {
 //     return 'left-align'
