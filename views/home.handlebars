@@ -10,6 +10,10 @@
   </div>
 </section>
 
+<div class="mid-main-btn">
+  <button class="create-new-modal-trigger" id="new-ticket-btn">+</button>
+</div>
+
 <section class='bottom-main'>
   <table>
     <tr>
@@ -31,3 +35,44 @@
 
   </table>
 </section>
+
+<div class="modal-screen">
+  <section id="new-ticket-modal" class="hidden">
+        <button id="close-ticket-modal">X</button>
+        <div class="ticket-form">
+          <header>
+            <h3>New Ticket</h3>
+          </header>
+          <div>
+            <label for="subject">
+              <h4>Subject</h4>
+            </label>
+          </div>
+          <div>
+            <input type="text" id="subject" />
+          </div>
+          <div>
+            <label for="description">
+              <h4>Description</h4>
+            </label>
+          </div>
+          <div>
+            <textarea
+              placeholder="Please tell us more about your issue"
+              id="description"
+            ></textarea>
+          </div>
+          <div>
+            <label for="urgency">
+              <h4>Urgency</h4>
+            </label>
+          </div>
+          <select name="urgency" id="urgency">
+            <option value="Low" selected>Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <button id="submit-ticket">Create Ticket</button>
+        </div>
+      </section>
+  </div>

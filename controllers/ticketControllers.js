@@ -5,7 +5,14 @@ const ticketController = {
     // Create Ticket
     createTicket: async (req, res) => {
         try {
-            const ticket = await Ticket.create(req.body);
+            const { subject, description, urgency } = req.body;
+            const clientId = req.session.user_id;
+            const ticket = await Ticket.create({
+                clientId,
+                subject,
+                description,
+                urgency,
+            });
             return res.redirect(`/ticket/${ticket.id}`);
         } catch (error) {
             console.error(error);
