@@ -31,10 +31,13 @@ const ticketController = {
             }
 
             // Capture original ticket data before changes
-            const originalData = ticket.dataValues;
+            const originalData = ticket._previousDataValues;
+            console.log(originalData);
+            // console.log(originalData);
 
             // Update ticket
             for (let key in req.body) {
+                console.log(key);
                 ticket[key] = req.body[key];
             }
 
@@ -43,13 +46,25 @@ const ticketController = {
                 ticket.status = 'Claimed';
             }
 
-            await ticket.save();
+            console.log(ticket);
 
-            if (req.session && req.session.user) {
-                await ticket.logChange(req.session.user.id, originalData);
-            }
-            //watch for too many redirects
-            return res.redirect(req.headers.referer || `/ticket/${id}`);
+
+            // if (req.session && req.session.user_id) {
+            //     await ticket.save();
+            //     await ticket.logChange(ticket.dataValues, originalData);
+            //     console.log('this happened');
+            // }
+
+            //await ticket.save();
+            console.log('this is userid: \n');
+            console.log(req.session.user_id);
+            await ticket.logChange(req.session.user_id, originalData);
+            console.log('this happened');
+
+            // await ticket.logChange(ticket.dataValues, originalData);
+            // console.log(ticket);
+
+            //return res.redirect(`/api/ticket/${id}`);
 
         } catch (error) {
             console.error(error);
