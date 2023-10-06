@@ -105,6 +105,7 @@ const handlebarController = {
       const tickets = ticketData.map((tickets) => tickets.get({ plain: true }));
       const isTech = (req.session.role !== 'client') ? true : false;
       console.log(isTech);
+      console.log(req.session.user_id)
       res.render('home',
         {
           tickets: [...tickets.map(ticket => ({ ...ticket, isTech }))],
