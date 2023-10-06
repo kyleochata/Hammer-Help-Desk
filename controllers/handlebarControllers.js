@@ -22,10 +22,10 @@ const handlebarController = {
         ]
       });
       if (getTicket.isArchived) {
-        res.redirect('/home');
+        res.redirect('/');
       }
       if (req.session.role === 'client' && getTicket.clientId !== req.session.user.id) {
-        res.redirect('/home');
+        res.redirect('/');
         return;
       }
       res.render('ticket', {
