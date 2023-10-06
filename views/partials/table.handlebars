@@ -1,28 +1,28 @@
 <tr>
-  <th>
-    {{!-- show a row with a button only if tech id is true --}}
-    {{!-- Need to click button and not have an anchor direct --}}
+  <td>
+    {{! show a row with a button only if tech id is true }}
+    {{! Need to click button and not have an anchor direct }}
     {{#if isTech}}
-    <button data-id = '{{this.id}}' id="claim-btn">
-      Claim 
-    </button>
+      <button data-id='{{this.id}}' id='claim-btn'>
+        Claim
+      </button>
     {{/if}}
-  </th>
-  <a href="/ticket/{{this.id}}">
-    <th>
+  </td>
+  <a href='/ticket/{{this.id}}'>
+    <td>
       {{this.status}}
-    </th>
-    <th>
+    </td>
+    <td>
       {{this.urgency}}
-    </th>
-    <th>
+    </td>
+    <td>
       {{this.client.firstName}}
-    </th>
-    <th>
+    </td>
+    <td>
       {{this.tech.firstName}}
-    </th>
-    <th>
-      {{format_timeStamp this.createdAt}}
-    </th>
+    </td>
+    <td>
+      {{format_date this.createdAt}}
+    </td>
   </a>
 </tr>

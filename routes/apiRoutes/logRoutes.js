@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const logController = require('../../controllers/logControllers');
-
+const { withAuth } = require('../../utils/helpers')
 // POST will call the createLog controller.
 // '/api/log/:ticketId/:logId?drawer=BOOLEAN?? 
 router.route('/:ticketId?')

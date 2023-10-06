@@ -1,7 +1,7 @@
 const { Log } = require('../models/Log');
 
 const withAuth = (req, res, next) => {
-  if (!req.session.user) {
+  if (!req.session.loggedIn) {
     res.redirect('/login');
   }
   else { next(); }
@@ -62,32 +62,32 @@ const format_timeStamp = (date) => {
 // console.log(format_date('December 17, 1995 15:24:00'));
 
 function findDiff(newValue, oldValue) {
-    let differences = [];
-    // Iterate through each key in the newValue object
-    for (let key in newValue) {
-  
-      // Check if this key exists in the oldValue
-      if (!(key in oldValue)) {
-        differences.push(`${key} was added with value ${newValue[key]}.`);
-      } else if (typeof newValue[key] === "object" && newValue[key] !== null && !Array.isArray(newValue[key])) {
-        // If the key is an object and not an array, recurse further
-        differences = differences.concat(findDiff(newValue[key], oldValue[key], key));
-      } else if (newValue[key] !== oldValue[key]) {
-        // If there's a difference in primitive values
-        differences.push(`${key} was changed from ${oldValue[key]} to ${newValue[key]}.`);
-      }
-    }
-  
-    // Check for keys in oldValue that don't exist in newValue (indicating they were removed)
-    for (let key in oldValue) {
-  
-      if (!(key in newValue)) {
-        differences.push(`${key} was removed (previously had value ${oldValue[key]}).`);
-      }
-    }
-  
-    return differences;
-  }
-  
+  let differences = [];
+  // Iterate through each key in the newValue object
+  for (let key in newValue) {
 
-module.exports = { withAuth, format_date, format_timeStamp,findDiff };
+    // Check if this key exists in the oldValue
+    if (!(key in oldValue)) {
+      differences.push(`${key} was added with value ${newValue[key]}.`);
+    } else if (typeof newValue[key] === "object" && newValue[key] !== null && !Array.isArray(newValue[key])) {
+      // If the key is an object and not an array, recurse further
+      differences = differences.concat(findDiff(newValue[key], oldValue[key], key));
+    } else if (newValue[key] !== oldValue[key]) {
+      // If there's a difference in primitive values
+      differences.push(`${key} was changed from ${oldValue[key]} to ${newValue[key]}.`);
+    }
+  }
+
+  // Check for keys in oldValue that don't exist in newValue (indicating they were removed)
+  for (let key in oldValue) {
+
+    if (!(key in newValue)) {
+      differences.push(`${key} was removed (previously had value ${oldValue[key]}).`);
+    }
+  }
+
+  return differences;
+}
+
+
+module.exports = { withAuth, format_date, format_timeStamp,findDiff, determineClass };
