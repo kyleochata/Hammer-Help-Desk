@@ -31,7 +31,7 @@ const handlebarController = {
       res.render('ticket', {
         loggedIn: true,
         title: getTicket.dataValues.subject,
-        layout: 'main', // TODO: this might need to be 'ticket' to direct to the ticket layout
+        layout: 'main',
         role: req.session.role
       })
     } catch (err) {
@@ -77,7 +77,7 @@ const handlebarController = {
         where.clientId = req.session.user_id
       } else {
         //where.techId = req.session.user_id;
-        where[Op.or] = {techId: req.session.user_id, status: 'Open' } // Op.or
+        where[Op.or] = { techId: req.session.user_id, status: 'Open' } // Op.or
       }
       // IF for req.session.role === tech
       if (status) {
