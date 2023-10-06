@@ -42,7 +42,7 @@ Ticket.init(
     },
     techId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
       references: {
         model: 'user',
         key: 'id',
