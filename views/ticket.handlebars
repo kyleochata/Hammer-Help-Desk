@@ -1,3 +1,49 @@
-<main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
 
-</main>
+<!-- Display if user is logged in -->
+{{#if loggedIn}}
+    <header>
+        <h1>{{title}}</h1>
+        <p>Role: {{role}}</p>
+    </header>
+
+    <main>
+        <!-- Ticket information -->
+        <section>
+            <h2>Ticket Details:</h2>
+            <p>Client Name: {{client.firstName}} {{client.lastName}}</p>
+            <p>Tech Name: {{tech.firstName}} {{tech.lastName}}</p>
+            <p>Subject: {{subject}}</p>
+            <p>Description: {{description}}</p>
+            <p>Status: {{status}}</p>
+            <p>Urgency: {{urgency}}</p>
+        </section>
+
+        <!-- Logs related to this ticket (if there are any) -->
+        {{#if logs}}
+        <section>
+            <h2>Logs:</h2>
+            <ul>
+                {{#each logs}}
+                <li>
+                    <strong>{{this.type}}:</strong> {{this.message}} at {{this.createdAt}}
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+    </main>
+{{else}}
+    <p>You must be logged in to view ticket details.</p>
+{{/if}}
+
+</body>
+</html>

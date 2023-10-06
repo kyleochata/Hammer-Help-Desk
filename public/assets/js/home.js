@@ -51,7 +51,7 @@ const createTicketHandle = async (event) => {
   if (response.ok) {
     console.log({ message: 'ticket has been created' })
   } else {
-    console.error(err)
+    // console.error(err)
     alert('request failed. Please try again')
   }
 }
