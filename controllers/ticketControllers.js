@@ -22,12 +22,14 @@ const ticketController = {
             if (!ticket) {
                 return res.status(404).send("Ticket not found.");
             }
+            console.log(ticket);
 
             // Capture original ticket data before changes
             const originalData = ticket.dataValues;
 
             // Update ticket
             for (let key in req.body) {
+                console.log(key);
                 ticket[key] = req.body[key];
             }
 
@@ -36,11 +38,17 @@ const ticketController = {
                 ticket.status = 'Claimed';
             }
 
+            console.log(ticket);
+
             await ticket.save();
 
-            if (req.session && req.session.user) {
-                await ticket.logChange(req.session.user.id, originalData);
-            }
+            // if (req.session && req.session.user) {
+            //     await ticket.logChange(ticket.dataValues, originalData);
+            //     console.log(123);
+            // }
+
+            await ticket.logChange(ticket.dataValues, originalData);
+            console.log(ticket);
 
             return res.redirect(req.headers.referer || `/ticket/${id}`);
 

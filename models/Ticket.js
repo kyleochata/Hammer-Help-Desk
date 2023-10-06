@@ -1,11 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
+const helper = require('../utils/helpers');
 const Log = require('./Log');
 
 class Ticket extends Model { }
 
 Ticket.prototype.logChange = async function (userId) {
-  const changes = findDiff(this.dataValues, this._previousDataValues);
+  //console.log(helper.findDiff({id:123},{id:456}));
+  const changes = helper.findDiff(this.dataValues, this._previousDataValues);
 
   if (!changes.length) return;  // Return early if no changes
 

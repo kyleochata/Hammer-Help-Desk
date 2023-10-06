@@ -9,11 +9,11 @@ const ticketController = require('../../controllers/ticketControllers')
 
 
 // The routes will match '/api/ticket' to handle POST requests.
-router.route('/api/ticket')
+router.route('/')
   .post(ticketController.createTicket);
 
 // The routes will also match '/api/ticket/:id' to handle PUT, and DELETE requests.
-router.route('/api/ticket/:id')
+router.route('/:id')
   .put(ticketController.editTicket)
   .delete(ticketController.archiveTicket)
 
