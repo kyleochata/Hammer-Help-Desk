@@ -2,6 +2,7 @@
   --primary-color: #1d1e22;
   --secondary-color: #ffffff;
   --accent-color: #6f7fc1;
+  --high-blue: rgb(128, 131, 147);
 }
 
 /* modal styling */
@@ -9,8 +10,6 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(153, 139, 139);
-  
 }
 #chat-dialogue {
   right: -300px;
@@ -38,6 +37,13 @@ body {
 .hidden {
   width: 0;
 }
+/* End modal styling */
+
+/* Login styles */
+.login-main {
+  background-color: var(--primary-color);
+}
+
 
 .bsRight {
   padding-left: 30px;
@@ -89,7 +95,7 @@ body {
   margin: 100;
   border: 1px solid #ccc;
   padding: 20px;
-  background-color: rgb(130, 100, 100)
+  background-color: var(--high-blue);
 }
 
 .form-container input {
@@ -98,14 +104,14 @@ body {
 }
 
 .background-gradient {
-  background: linear-gradient(to bottom, #a96a6a, #926453);
+  background: linear-gradient(to left, #9695ab, #71738e);
 }
 
 .bsTopText {
   color: white;
 }
 
-.bsHeadShadow {
+.bsDropShadow {
   filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
 }
 
@@ -127,7 +133,9 @@ body {
 .bsTree {
   border: 1px black;
   padding: 10px;
-}
+    margin: 100;
+    background-color: var(--high-blue);
+  }
 
 .subject {
   filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
@@ -137,3 +145,8 @@ body {
   margin-left: 20px;
   font-size: 30px;
 }
+
+.bsTicketBody {
+  background-color:#404045
+}
+
