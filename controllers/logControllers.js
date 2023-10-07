@@ -5,7 +5,14 @@ const logController = {
     // Create Log
     createLog: async (req, res) => {
         try {
-            const { message, type, isHidden } = req.body;
+            const { message, type } = req.body;
+            const isHidden = req.body.isHidden === 'true' ? true : false;
+            req.body.isHidden = isHidden;
+            console.log(req.body);
+
+            console.log("this is isHidden: \n\n");
+            console.log(isHidden);
+            console.log("end of isHidden: \n\n");
 
             // Check the validity of the type
             const allowedTypes = ["Created", "Modified", "Message"];
@@ -14,10 +21,12 @@ const logController = {
             }
 
             // Get userID from session
-            const userId = req.session.user.id;
+            const userId = req.session.user_id;
 
             // Get ticketId from request parameters
             const { ticketId } = req.params;
+
+            
 
             const log = await Log.create({
                 userId,

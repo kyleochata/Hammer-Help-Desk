@@ -8,9 +8,6 @@ class Ticket extends Model { }
 Ticket.prototype.logChange = async function (userId,originalticket) {
   //console.log(helper.findDiff({id:123},{id:456}));
   const changes = helper.findDiff(this.dataValues, originalticket);
-  console.log('this happened 2');
-  console.log(originalticket);
-  console.log(this.dataValues);
   if (!changes.length) return;  // Return early if no changes
   console.log('this happened 3');
   const logValues = {
@@ -20,6 +17,8 @@ Ticket.prototype.logChange = async function (userId,originalticket) {
     userId: userId,
     ticketId: this.id
   };
+
+  console.log("this is userID: " + userId);
 
   try {
     const log = await Log.create(logValues);

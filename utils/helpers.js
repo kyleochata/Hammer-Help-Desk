@@ -11,15 +11,15 @@ const determineAlignment = (log, currentUser) => {
   } else if (currentUser === log.userId) {
     return 'right-align';
   } else {
-    return 'left-align'
+    return 'left-align';
   }
 };
 
 const determineShowHide = (value) => {
   if (value === true) {
-    return 'hidden'
+    return 'hidden';
   } else {
-    return 'shown'
+    return 'shown';
   }
 };
 
@@ -37,19 +37,19 @@ const format_date = (date) => {
   let day = timeStamp.getDate();
   let year = timeStamp.getFullYear();
 
-  const time = format_timeStamp(timeStamp)
+  const time = format_timeStamp(timeStamp);
 
-  return `${currentMonth} ${day}, ${year} ${time}`
-
+  return `${currentMonth} ${day}, ${year} ${time}`;
 }
+
 const format_timeStamp = (date) => {
   let timeStamp = new Date(date);
   let hours = timeStamp.getHours();
   let minutes = timeStamp.getMinutes();
   let amOrPm = hours >= 12 ? 'PM' : "AM";
   hours = hours % 12;
-  hours = hours ? hours : 12
-  return `${hours}:${minutes} ${amOrPm}`
+  hours = hours ? hours : 12;
+  return `${hours}:${minutes} ${amOrPm}`;
 }
 
 // console.log(format_date('December 17, 1995 15:24:00'));
@@ -82,5 +82,22 @@ function findDiff(newValue, oldValue) {
   return differences;
 }
 
+const ifCond = function (v1, operator, v2, options) {
+  switch (operator) {
+    case '===':
+      return (v1 === v2) ? options.fn(this) : options.inverse(this);
+    case '!==':
+      return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+    // ... add other operators as needed
+    default:
+      return options.inverse(this);
+  }
+}
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff, determineShowHide, determineAlignment };
+const log = (value) => {
+  console.log(value);
+  return undefined;
+};
+
+
+module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log };
