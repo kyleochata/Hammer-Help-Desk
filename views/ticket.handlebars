@@ -1,3 +1,135 @@
+{{#if loggedIn}}
+<header>
+    <h1>{{title}}</h1>
+    <p>User ID: {{user}}</p>
+    <p>User Name: {{firstName}} {{lastName}}</p>
+    <p>Role: {{role}}</p>
+</header>
+
 <main>
-{{determineShowHide log.isHidden}}
+    <!-- Ticket information -->
+    <section>
+        <h2>Ticket Details:</h2>
+        <p>Client: {{ticketData.client.firstName}} {{ticketData.client.lastName}} (ID: {{ticketData.client.id}},
+            Role: {{ticketData.client.role}})</p>
+        <p>Tech: {{ticketData.tech.firstName}} {{ticketData.tech.lastName}} (ID: {{ticketData.tech.id}}, Role:
+            {{ticketData.tech.role}})</p>
+        <p>Subject: {{ticketData.subject}}</p>
+        <p>Description: {{ticketData.description}}</p>
+        <p>Status: {{ticketData.status}}</p>
+        <p>Urgency: {{ticketData.urgency}}</p>
+    </section>
+
+    <!-- Tech section for editing the ticket -->
+    {{#ifCond role '===' 'tech'}}
+    <section>
+        <h2>Edit Ticket {{ticketData.id}}:</h2>
+        <form id="editTicketForm" data-id="{{ticketData.id}}">
+            <!-- Status input -->
+            <div>
+                <label for="status">Status:</label>
+                <select name="status" id="status">
+                    <option value="Open" {{#ifCond ticketData.status '===' 'Open' }}selected{{/ifCond}}>Open</option>
+                    <option value="Pending" {{#ifCond ticketData.status '===' 'Pending' }}selected{{/ifCond}}>Pending
+                    </option>
+                    <option value="Resolved" {{#ifCond ticketData.status '===' 'Resolved' }}selected{{/ifCond}}>Resolved
+                    </option>
+                    <option value="Claimed" {{#ifCond ticketData.status '===' 'Claimed' }}selected{{/ifCond}}>Claimed
+                    </option>
+                </select>
+            </div>
+            <!-- Tech ID input -->
+            <div>
+                <label for="techId">Tech ID:</label>
+                <input type="text" name="techId" id="techId" value="{{ticketData.tech.id}}">
+            </div>
+            <!-- Urgency input -->
+            <div>
+                <label for="urgency">Urgency:</label>
+                <select name="urgency" id="urgency">
+                    <option value="Low" {{#ifCond ticketData.urgency '===' 'Low' }}selected{{/ifCond}}>Low</option>
+                    <option value="Medium" {{#ifCond ticketData.urgency '===' 'Medium' }}selected{{/ifCond}}>Medium
+                    </option>
+                    <option value="High" {{#ifCond ticketData.urgency '===' 'High' }}selected{{/ifCond}}>High</option>
+                </select>
+            </div>
+            <!-- Is Archived input -->
+            <div>
+                <label for="isArchived">Is Archived:</label>
+                <input type="checkbox" name="isArchived" id="isArchived" value="true" {{#if
+                    ticketData.isArchived}}checked{{/if}}>
+            </div>
+            <!-- Submit button -->
+            <div>
+                <button type="submit">Edit Ticket</button>
+            </div>
+        </form>
+    </section>
+    {{/ifCond}}
+
+    <!-- Logs related to this ticket -->
+    {{#if ticketData.logs}}
+    <section>
+        <h2>Logs:</h2>
+        <ul>
+            {{#each ticketData.logs}}
+            <li>
+                <strong>
+                    {{#ifCond this.userId '===' ../user}}
+                    Me
+                    {{else}}
+                    {{#ifCond this.userId '===' ../ticketData.client.id}}
+                    {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
+                    {{else ifCond this.userId '===' ../ticketData.tech.id}}
+                    {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
+                    {{else}}
+                    User {{this.userId}}
+                    {{/ifCond}}
+                    {{/ifCond}}:
+                </strong>
+                {{this.message}} at {{this.createdAt}}
+            </li>
+            {{/each}}
+        </ul>
+    </section>
+    {{/if}}
+
+    <!-- Create a new log section -->
+    <section>
+        <h2>Create a New Log for Ticket {{ticketData.id}}:</h2>
+        <form action="/api/log/{{ticketData.id}}" method="POST">
+            <div>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" required></textarea>
+            </div>
+
+            {{#ifCond role '===' 'tech'}}
+            <div>
+                <label for="type">Type:</label>
+                <select name="type" id="type">
+                    <option value="Modified">Modify</option>
+                    <option value="Message">Message</option>
+                </select>
+            </div>
+            <div>
+                <label for="isHidden">Hidden:</label>
+                <input type="checkbox" name="isHidden" id="isHidden" value="true">
+            </div>
+            {{else}}
+            <input type="hidden" name="type" value="Message">
+            <!-- If client, always ensure the message is visible -->
+            <input type="hidden" name="isHidden" value="false">
+            {{/ifCond}}
+
+            <div>
+                <button type="submit">Submit Log</button>
+            </div>
+        </form>
+    </section>
 </main>
+
+{{else}}
+<p>You must be logged in to view ticket details.</p>
+{{/if}}
+
+<script src="/assets/js/ticket.js"></script>
