@@ -49,6 +49,8 @@ const ticketController = {
 
             // If a techId was added, change status to Claimed
             if (req.body.techId) {
+                // line 48 is needed for Claim-btn techId
+                ticket.techId = req.session.user_id;
                 ticket.status = 'Claimed';
             }
 
@@ -62,7 +64,7 @@ const ticketController = {
 
 
 
-            //return res.redirect(`/api/ticket/${id}`);
+            res.redirect(`/ticket/${id}`);
 
         } catch (error) {
             console.error(error);
