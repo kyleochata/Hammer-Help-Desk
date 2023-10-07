@@ -100,4 +100,4 @@ const log = (value) => {
 };
 
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff };
+module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log };
