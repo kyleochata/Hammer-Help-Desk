@@ -79,6 +79,53 @@ const openTicketHandle = async (event) => {
   } else {
     alert('Get open ticked failed. Please try again')
   }
-}
+};
 
-openBtn.addEventListener('click', openTicketHandle)
+// Once claim btn is interacted with - need to refresh to same page
+// EDIT/PUT - Once refreshed current techName on the specific ticket 
+// Cannot use #claim-btn maybe DATA-ID of that button aka the TICKET ID
+// document.querySelector target data id then .get something
+const claimTicketBtns = document.querySelectorAll('#claim-btn');
+
+claimTicketBtns.forEach((button) => {
+    button.addEventListener('click', async () => {
+        const ticketId = button.getAttribute('data-id');
+        console.log(ticketId);
+        try {
+            // PUT request to claim the ticket
+            const response = await fetch(`/api/ticket/${ticketId}`, {
+                method: 'PUT',
+                // So true makes the new techId: true NOT THE TECHS ID. trying to figure out
+                body: JSON.stringify({techId: true, status: 'Claimed'}), // techId is claiming the ticket in ticketControllers req.body
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                // if ticket claimed successfully
+                // console.log({ message: 'ticket has been created' })
+                // const ticketId = response.url.split('/')[
+                //   response.url.split('/').length - 1
+                // ];
+                // console.log(ticketId)
+                // document.location.replace(`/ticket/${ticketId}`)
+                console.log('redirecting');
+            } else {
+                // if ticket claiming fails
+                console.error(`Error claiming ticket ${ticketId}:`, response.statusText);
+            }
+        } catch (err) {
+            console.error('An error occurred:', err);
+        }
+    });
+});
+
+// const getLoggedInTech = () => {
+//   // grab techs name, json.stringify into body
+//   const findTech = User.find((user) => user.role === 'tech');
+//   return findTech ? User.firstName : null;
+//   // return
+// };
+
+openBtn.addEventListener('click', openTicketHandle);

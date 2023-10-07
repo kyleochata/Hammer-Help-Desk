@@ -33,7 +33,7 @@ const ticketController = {
 
             // Capture original ticket data before changes
             const originalData = ticket._previousDataValues;
-            console.log(originalData);
+            // console.log(originalData);
             // console.log(originalData);
 
             // Update ticket
@@ -44,10 +44,12 @@ const ticketController = {
 
             // If a techId was added, change status to Claimed
             if (req.body.techId) {
+                // line 48 is needed for Claim-btn techId
+                ticket.techId = req.session.user_id;
                 ticket.status = 'Claimed';
             }
 
-            console.log(ticket);
+            // console.log(ticket);
 
 
             // if (req.session && req.session.user_id) {
@@ -57,15 +59,15 @@ const ticketController = {
             // }
 
             //await ticket.save();
-            console.log('this is userid: \n');
-            console.log(req.session.user_id);
+            // console.log('this is userid: \n');
+            // console.log(req.session.user_id);
             await ticket.logChange(req.session.user_id, originalData);
             console.log('this happened');
-
+            console.log(ticket)
             // await ticket.logChange(ticket.dataValues, originalData);
             // console.log(ticket);
 
-            //return res.redirect(`/api/ticket/${id}`);
+            res.redirect(`/ticket/${id}`);
 
         } catch (error) {
             console.error(error);
