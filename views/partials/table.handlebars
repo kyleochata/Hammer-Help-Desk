@@ -3,9 +3,11 @@
     {{! show a row with a button only if tech id is true }}
     {{! Need to click button and not have an anchor direct }}
     {{#if isTech}}
-      <button data-id='{{this.id}}' id='claim-btn'>
-        Claim
-      </button>
+      {{#if notClaimed}}
+        <button data-id='{{this.id}}' id='claim-btn'>
+          Claim
+        </button>
+      {{/if}}
     {{/if}}
   </td>
   <a href='/ticket/{{this.id}}'>

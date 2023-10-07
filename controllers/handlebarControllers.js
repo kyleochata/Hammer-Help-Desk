@@ -1,5 +1,6 @@
 const { Log, User, Ticket } = require('../models');
 const { Op } = require('sequelize');
+const Sequelize = require('sequelize');
 
 const handlebarController = {
   renderTicket: async (req, res) => {
@@ -78,17 +79,26 @@ const handlebarController = {
   renderDashboard: async (req, res) => {
     try {
       const status = req.params.status || '';
+      // console.log(status)
       const where = {};
+      if (status) {
+        where.status = status;
+      };
       if (req.session.role === 'client') {
         where.clientId = req.session.user_id
       } else {
         //where.techId = req.session.user_id;
-        where[Op.or] = {techId: req.session.user_id, status: 'Open' } // Op.or
+        if (status !== 'Open' && status !== '') {
+          where.techId = req.session.user_id;
+        } else {
+          where[Op.or] = [
+            { techId: req.session.user_id },
+            { techId: null }
+          ]
+        }
       }
       // IF for req.session.role === tech
-      if (status) {
-        where.status = status;
-      }; console.log(where);
+      console.log(where);
       const ticketData = await Ticket.findAll({
         where: where,
         include: [
@@ -101,13 +111,29 @@ const handlebarController = {
             model: User,
             as: 'tech',
             attributes: ['firstName', 'lastName', 'id', 'role'],
-          }
+          },
         ]
       })
-      const tickets = ticketData.map((tickets) => tickets.get({ plain: true }));
+      let tickets = ticketData.map((tickets) => tickets.get({ plain: true }));
+      console.log(tickets)
       const isTech = (req.session.role !== 'client') ? true : false;
-      console.log(isTech);
-      console.log(req.session.user_id)
+
+      //notClaimed needed for handlebars to know that if the techId on the ticket is null, then the claim button should appear
+
+
+      const testTicket = (tickets) => {
+        for (const ticket of tickets) {
+          if (ticket.techId !== null) {
+            ticket.notClaimed = false
+          } else {
+            ticket.notClaimed = true
+          }
+        }
+        return tickets
+      }
+
+      tickets = await testTicket(tickets);
+
       res.render('home',
         {
           tickets: [...tickets.map(ticket => ({ ...ticket, isTech }))],
@@ -116,9 +142,9 @@ const handlebarController = {
           title: 'Dashboard',
           layout: 'main',
           userType: req.session.role,
+          firstName: req.session.firstName
         }
       )
-      console.log(status);
     } catch (err) {
       console.error(err);
       res.status(400).json(err);
@@ -126,4 +152,6 @@ const handlebarController = {
   }
 }
 
-module.exports = handlebarController;
+
+
+module.exports = handlebarController

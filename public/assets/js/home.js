@@ -48,12 +48,37 @@ const createTicketHandle = async (event) => {
     body: JSON.stringify({ subject, description, urgency }),
     headers: { 'Content-Type': 'application/json' }
   })
+  console.log(response)
   if (response.ok) {
     console.log({ message: 'ticket has been created' })
+    const ticketId = response.url.split('/')[
+      response.url.split('/').length - 1
+    ];
+    console.log(ticketId)
+    document.location.replace(`/ticket/${ticketId}`)
+
   } else {
     // console.error(err)
-    alert('request failed. Please try again')
+    alert('Request failed. Please try again')
   }
 }
 
 createTicketBtn.addEventListener('click', createTicketHandle)
+//end create ticket btn
+
+//open btn filter start
+const openBtn = document.querySelector('#open-btn');
+const openTicketHandle = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Open', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Open')
+  } else {
+    alert('Get open ticked failed. Please try again')
+  }
+}
+
+openBtn.addEventListener('click', openTicketHandle)

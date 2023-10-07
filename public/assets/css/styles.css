@@ -51,6 +51,7 @@ body {
   width: 50%;
   height: 50%;
   position: relative;
+  /* overflow: hidden; */
 }
 
 .login-form-container::before,
@@ -186,12 +187,14 @@ span:nth-child(4) {
 .login-input:focus ~ .login-border {
   display: none;
 }
+
 .btn-container {
   padding-top: 10px;
   display: flex;
   justify-content: flex-start;
   width: 81%;
 }
+
 #login-btn {
   border: none;
   outline: none;
@@ -211,7 +214,6 @@ span:nth-child(4) {
   span:nth-child(4) {
     transform: rotate(270deg);
     height: 100%;
-    z-index: 3;
   }
 }
 
@@ -220,4 +222,60 @@ span:nth-child(4) {
     transform: rotate(90deg);
     width: 90%;
   }
+}
+
+/* end login styles */
+
+/* home/dashboard styles */
+.home-container {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  contain: strict;
+}
+.top-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mid-main-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.bottom-main {
+  width: 80%;
+  height: 50%;
+  overflow-y: auto;
+}
+table {
+  width: 100% !important;
+  height: 100%;
+}
+tbody {
+  width: 100%;
+}
+
+th,
+td {
+  color: var(--secondary-color);
+  border: solid 2px var(--accent-color);
+  text-align: center;
+  /* width: 50%; */
+  padding: 10px;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }

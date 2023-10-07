@@ -23,10 +23,10 @@ const determineShowHide = (value) => {
   }
 };
 
-const messageIconClass = determineShowHide('hidden');
-const messageBubbleClass = determineAlignment('left-align');
-console.log('Message Icon Class:', messageIconClass);
-console.log('Message Bubble Class:', messageBubbleClass);
+// const messageIconClass = determineShowHide('hidden');
+// const messageBubbleClass = determineAlignment('left-align');
+// console.log('Message Icon Class:', messageIconClass);
+// console.log('Message Bubble Class:', messageBubbleClass);
 
 const format_date = (date) => {
   //month is index 0-11. must add 1 to get correct month
@@ -100,4 +100,4 @@ const log = (value) => {
 };
 
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff, ifCond,log };
+module.exports = { withAuth, format_date, format_timeStamp, findDiff };
