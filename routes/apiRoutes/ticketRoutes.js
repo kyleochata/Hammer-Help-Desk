@@ -12,9 +12,13 @@ const { withAuth } = require('../../utils/helpers')
 router.route('/')
   .post(withAuth, ticketController.createTicket);
 
+// router.post('/:id', ticketController.editTicket);
+
+
 // The routes will also match '/api/ticket/:id' to handle PUT, and DELETE requests.
 router.route('/:id')
-  .put(withAuth, ticketController.editTicket)
+  .put( withAuth, ticketController.editTicket)
   .delete(withAuth, ticketController.archiveTicket)
+
 
 module.exports = router;
