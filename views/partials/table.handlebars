@@ -4,27 +4,44 @@
     {{! Need to click button and not have an anchor direct }}
     {{#if isTech}}
       {{#if notClaimed}}
-        <button data-id='{{this.id}}' id='claim-btn'>
-          Claim
-        </button>
+        <div class='table-cell table-btn'>
+          <button data-id='{{this.id}}' id='claim-btn' class='table-btn'>
+            Claim
+          </button>
+        </div>
       {{/if}}
     {{/if}}
   </td>
-  <a href='/ticket/{{this.id}}'>
-    <td>
+  <td>
+    <div class='table-cell'>
       {{this.status}}
-    </td>
-    <td>
+    </div>
+  </td>
+  <td>
+    <div class='table-cell'>
       {{this.urgency}}
-    </td>
-    <td>
+    </div>
+  </td>
+  <td>
+    <div class='table-cell'>
       {{this.client.firstName}}
-    </td>
-    <td>
+    </div>
+  </td>
+  <td>
+    <div class='table-cell'>
       {{this.tech.firstName}}
-    </td>
-    <td>
+    </div>
+  </td>
+  <td>
+    <div class='table-cell created-on'>
       {{format_date this.createdAt}}
-    </td>
-  </a>
+    </div>
+  </td>
+  <td>
+    <div class='table-cell'>
+      <a href='/ticket/{{this.id}}'>
+        <button class='table-btn'>View</button>
+      </a>
+    </div>
+  </td>
 </tr>
