@@ -18,16 +18,43 @@
 <section class='bottom-main'>
   <table>
     <tr class="table-head">
-      <th>
       {{#if isTech}}
-      Claim
-      {{/if}}
+      <th>
+        <div class='table-cell'>
+          Claim
+        </div>
       </th>
-      <th>Status</th>
-      <th>Urgency</th>
-      <th>Client</th>
-      <th>Technician</th>
-      <th>Created On</th>
+      {{/if}}
+      <th>
+        <div class='table-cell'>
+          Status
+        </div>
+      </th>
+      <th>
+        <div class='table-cell'>
+          Urgency
+        </div>
+        </th>
+      <th>
+        <div class='table-cell'>
+          Client
+        </div>
+      </th>
+      <th>
+        <div class='table-cell'>
+          Technician
+        </div>
+      </th>
+      <th>
+        <div class='table-cell'>
+          Created On
+        </div>
+      </th>
+      <th>
+        <div class='table-cell'>
+          View Ticket
+        </div>
+      </th>
     </tr>
 
       {{#each tickets}}
