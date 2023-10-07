@@ -13,7 +13,6 @@ const ticketController = {
                 description,
                 urgency,
             });
-            console.log(ticket)
             return res.redirect(`/ticket/${ticket.id}`);
 
         } catch (error) {
