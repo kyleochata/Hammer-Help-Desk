@@ -23,8 +23,13 @@ const ticketController = {
     // Edit Ticket
     editTicket: async (req, res) => {
         try {
+
+            console.log("Edit Ticket function hit!");
+
             const { id } = req.params;
             let ticket = await Ticket.findByPk(id);
+
+            
 
             if (!ticket) {
                 return res.status(404).send("Ticket not found.");
@@ -32,7 +37,7 @@ const ticketController = {
 
             // Capture original ticket data before changes
             const originalData = ticket._previousDataValues;
-            console.log(originalData);
+            
             // console.log(originalData);
 
             // Update ticket
@@ -46,23 +51,15 @@ const ticketController = {
                 ticket.status = 'Claimed';
             }
 
-            console.log(ticket);
+            console.log('this is current ticket' + ticket.dataValues);
+            console.log('this is original data:' + originalData);
+
+            if (req.session && req.session.user_id) {
+                await ticket.logChange(ticket.dataValues, originalData);
+                await ticket.save();
+            }
 
 
-            // if (req.session && req.session.user_id) {
-            //     await ticket.save();
-            //     await ticket.logChange(ticket.dataValues, originalData);
-            //     console.log('this happened');
-            // }
-
-            //await ticket.save();
-            console.log('this is userid: \n');
-            console.log(req.session.user_id);
-            await ticket.logChange(req.session.user_id, originalData);
-            console.log('this happened');
-
-            // await ticket.logChange(ticket.dataValues, originalData);
-            // console.log(ticket);
 
             //return res.redirect(`/api/ticket/${id}`);
 

@@ -21,10 +21,11 @@ const handlebarController = {
           }
         ]
       });
-      if (getTicket.isArchived) {
+      const ticketData = getTicket.get({ plain: true});
+      if (ticketData.isArchived) {
         res.redirect('/');
       }
-      if (req.session.role === 'client' && getTicket.clientId !== req.session.user.id) {
+      if (req.session.role === 'client' && ticketData.clientId !== req.session.user_id) {
         res.redirect('/');
         return;
       }
@@ -34,6 +35,8 @@ const handlebarController = {
         title: ticketData.subject,
         layout: 'main', // TODO: this might need to be 'ticket' to direct to the ticket layout
         role: req.session.role,
+        firstName: req.session.firstName,
+        lastName:req.session.lastName,
         user: req.session.user_id,
         // current signed in user
       })

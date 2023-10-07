@@ -28,6 +28,8 @@ const userController = {
                 req.session.user_id = userData.id;
                 req.session.loggedIn = true;
                 req.session.role = userData.role;
+                req.session.firstName = userData.firstName;
+                req.session.lastName = userData.lastName;
                 res.status(200).json(userData);
             });
         } catch (error) {
