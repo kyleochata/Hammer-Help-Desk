@@ -14,6 +14,7 @@ const ticketController = {
                 urgency,
             });
             return res.redirect(`/ticket/${ticket.id}`);
+
         } catch (error) {
             console.error(error);
             res.status(500).send("Server Error");
