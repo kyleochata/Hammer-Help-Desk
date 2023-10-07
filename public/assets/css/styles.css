@@ -45,7 +45,6 @@ body {
   background-color: var(--primary-color);
 }
 
-
 .bsRight {
   padding-left: 30px;
 }
@@ -366,9 +365,8 @@ span:nth-child(4) {
   padding: 9px 25px;
   background: var(--secondary-color);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   border-radius: 4px;
-  font-weight: bold;
 }
 
 @media (max-width: 1329px) {
