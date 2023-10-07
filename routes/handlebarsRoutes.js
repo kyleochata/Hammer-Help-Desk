@@ -11,7 +11,7 @@ router.route('/login')
   .get(handlebarController.renderLogin);
 
 router.route('/ticket/:id')
-  .get(withAuth, handlebarController.renderTicket);
+  .get(handlebarController.renderTicket);
 
 router.route('/:status?')
   .get(withAuth, handlebarController.renderDashboard);
