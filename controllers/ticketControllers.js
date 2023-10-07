@@ -56,7 +56,7 @@ const ticketController = {
             console.log('this is original data:' + originalData);
 
             if (req.session && req.session.user_id) {
-                await ticket.logChange(ticket.dataValues, originalData);
+                await ticket.logChange(req.session.user_id,originalData);
                 await ticket.save();
             }
 
