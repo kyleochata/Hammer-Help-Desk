@@ -48,8 +48,15 @@ const createTicketHandle = async (event) => {
     body: JSON.stringify({ subject, description, urgency }),
     headers: { 'Content-Type': 'application/json' }
   })
+  console.log(response)
   if (response.ok) {
     console.log({ message: 'ticket has been created' })
+    const ticketId = response.url.split('/')[
+      response.url.split('/').length - 1
+    ];
+    console.log(ticketId)
+    document.location.replace(`/ticket/${ticketId}`)
+
   } else {
     // console.error(err)
     alert('Request failed. Please try again')
