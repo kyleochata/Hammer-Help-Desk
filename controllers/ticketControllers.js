@@ -30,7 +30,7 @@ const ticketController = {
             const { id } = req.params;
             let ticket = await Ticket.findByPk(id);
 
-            
+
 
             if (!ticket) {
                 return res.status(404).send("Ticket not found.");
@@ -38,7 +38,7 @@ const ticketController = {
 
             // Capture original ticket data before changes
             const originalData = ticket._previousDataValues;
-            
+
             // console.log(originalData);
 
             // Update ticket
@@ -48,7 +48,7 @@ const ticketController = {
             }
 
             // If a techId was added, change status to Claimed
-            if (req.body.techId) {
+            if (req.session.role === 'tech') {
                 // line 48 is needed for Claim-btn techId
                 ticket.techId = req.session.user_id;
                 ticket.status = 'Claimed';
@@ -58,13 +58,14 @@ const ticketController = {
             console.log('this is original data:' + originalData);
 
             if (req.session && req.session.user_id) {
-                await ticket.logChange(req.session.user_id,originalData);
+                await ticket.logChange(req.session.user_id, originalData);
                 await ticket.save();
             }
 
+            res.status(200).json("ticket")
 
 
-            res.redirect(`/ticket/${id}`);
+            // res.redirect(`/ticket/${id}`);
 
         } catch (error) {
             console.error(error);
