@@ -67,7 +67,7 @@ const createTicketHandle = async (event) => {
 createTicketBtn.addEventListener('click', createTicketHandle)
 //end create ticket btn
 
-//open btn filter start
+
 const openBtn = document.querySelector('#open-btn');
 const openTicketHandle = async (event) => {
   event.preventDefault();
@@ -79,6 +79,48 @@ const openTicketHandle = async (event) => {
     document.location.replace('/Open')
   } else {
     alert('Get open ticked failed. Please try again')
+  }
+};
+
+const claimedBtn = document.querySelector('#claimed-btn');
+const claimedTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Claimed', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Claimed')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
+
+const pendingBtn = document.querySelector('#pending-btn');
+const pendingTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Pending', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Pending')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
+
+const resolvedBtn = document.querySelector('#resolved-btn');
+const resolvedTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Resolved', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Resolved')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
   }
 };
 
@@ -111,14 +153,11 @@ claimTicketBtns.forEach((button) => {
   });
 });
 
-// const getLoggedInTech = () => {
-//   // grab techs name, json.stringify into body
-//   const findTech = User.find((user) => user.role === 'tech');
-//   return findTech ? User.firstName : null;
-//   // return
-// };
 
 openBtn.addEventListener('click', openTicketHandle);
+claimedBtn.addEventListener('click', claimedTicketHandler);
+pendingBtn.addEventListener('click', pendingTicketHandler);
+resolvedBtn.addEventListener('click', resolvedTicketHandler);
 
 // start header animation
 const wrapper = document.querySelector('#tile-anime');
