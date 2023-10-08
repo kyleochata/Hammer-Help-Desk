@@ -137,6 +137,7 @@ const handlebarController = {
       res.render('home',
         {
           tickets: [...tickets.map(ticket => ({ ...ticket, isTech }))],
+          userid:req.session.user_id,
           isTech,
           loggedIn: true, // req.session.loggedIn
           title: 'Dashboard',
