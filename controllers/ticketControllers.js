@@ -50,7 +50,7 @@ const ticketController = {
             // If a techId was added, change status to Claimed
             if (req.body.techId) {
                 // line 48 is needed for Claim-btn techId
-                ticket.techId = req.session.user_id;
+                //ticket.techId = req.session.user_id; // this is not needed, tech should be able to reassign a ticket to another tech
                 ticket.status = 'Claimed';
             }
 
@@ -64,7 +64,7 @@ const ticketController = {
 
 
 
-            res.redirect(`/ticket/${id}`);
+            return res.status(200).json({ message: "Ticket updated successfully." });
 
         } catch (error) {
             console.error(error);

@@ -85,18 +85,20 @@ const openTicketHandle = async (event) => {
 // EDIT/PUT - Once refreshed current techName on the specific ticket 
 // Cannot use #claim-btn maybe DATA-ID of that button aka the TICKET ID
 // document.querySelector target data id then .get something
+
+const userId = document.getElementById('userData').getAttribute('data-user-id');
+
 const claimTicketBtns = document.querySelectorAll('#claim-btn');
 
 claimTicketBtns.forEach((button) => {
     button.addEventListener('click', async () => {
         const ticketId = button.getAttribute('data-id');
-        console.log(ticketId);
         try {
             // PUT request to claim the ticket
             const response = await fetch(`/api/ticket/${ticketId}`, {
                 method: 'PUT',
                 // So true makes the new techId: true NOT THE TECHS ID. trying to figure out
-                body: JSON.stringify({techId: true, status: 'Claimed'}), // techId is claiming the ticket in ticketControllers req.body
+                body: JSON.stringify({techId: userId, status: 'Claimed'}), // techId is claiming the ticket in ticketControllers req.body
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -111,6 +113,7 @@ claimTicketBtns.forEach((button) => {
                 // console.log(ticketId)
                 // document.location.replace(`/ticket/${ticketId}`)
                 console.log('redirecting');
+                window.location.reload();
             } else {
                 // if ticket claiming fails
                 console.error(`Error claiming ticket ${ticketId}:`, response.statusText);
