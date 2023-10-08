@@ -6,6 +6,7 @@ const withAuth = (req, res, next) => {
 };
 
 const determineAlignment = (log, currentUser) => {
+  console.log(this)
   if (log.type === 'Created' || log.type === 'Modified') {
     return 'center-align';
   } else if (currentUser === log.userId) {
@@ -100,4 +101,4 @@ const log = (value) => {
 };
 
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log };
+module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log, determineAlignment, determineShowHide };

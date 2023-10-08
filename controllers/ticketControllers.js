@@ -30,8 +30,6 @@ const ticketController = {
             const { id } = req.params;
             let ticket = await Ticket.findByPk(id);
 
-
-
             if (!ticket) {
                 return res.status(404).send("Ticket not found.");
             }
@@ -61,9 +59,6 @@ const ticketController = {
                 await ticket.logChange(req.session.user_id, originalData);
                 await ticket.save();
             }
-
-            res.status(200).json("ticket")
-
 
             return res.status(200).json({ message: "Ticket updated successfully." });
 
