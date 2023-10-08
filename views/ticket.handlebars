@@ -55,7 +55,7 @@
             </div>
             <!-- Is Archived input -->
             <div>
-                <label for="isArchived">Is Archived:</label>
+                <label for="isArchived">Archive Ticket:</label>
                 <input type="checkbox" name="isArchived" id="isArchived" value="true" {{#if
                     ticketData.isArchived}}checked{{/if}}>
             </div>
@@ -93,8 +93,36 @@
         </ul>
     </section>
     {{/if}}
-
-    <!-- Create a new log section -->
+    <button id="show-dialogue">Show Chat Logs</button>
+    <div id="chat-dialogue" class="hidden">
+        <button id="close-dialogue">Close</button>
+    <div class="dialogue-content">
+    {{#if ticketData.logs}}
+        <section>
+            <h2>Logs:</h2>
+            <ul>
+                {{#each ticketData.logs}}
+                <li>
+                    <strong>
+                        {{#ifCond this.userId '===' ../user}}
+                        Me
+                        {{else}}
+                        {{#ifCond this.userId '===' ../ticketData.client.id}}
+                        {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
+                        {{else ifCond this.userId '===' ../ticketData.tech.id}}
+                        {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
+                        {{else}}
+                        User {{this.userId}}
+                        {{/ifCond}}
+                        {{/ifCond}}:
+                    </strong>
+                    {{this.message}} at {{format_timeStamp this.createdAt}}
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+    </div>
     <section>
         <h2>Create a New Log for Ticket {{ticketData.id}}:</h2>
         <form action="/api/log/{{ticketData.id}}" method="POST">
@@ -126,10 +154,13 @@
             </div>
         </form>
     </section>
+    </div>
+    <!-- Create a new log section -->
+    
 </main>
 
 {{else}}
 <p>You must be logged in to view ticket details.</p>
 {{/if}}
 
-<script src="/assets/js/ticket.js"></script>
+<script  src='/assets/js/ticket.js'></script>

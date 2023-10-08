@@ -1,4 +1,5 @@
 <div class="home-container">
+  <div id="userData" data-user-id="{{userid}}"></div>
   <section class='top-main'>
   <h2>Welcome {{firstName}}</h2>
   <h3>Please click one of the buttons to filter your tickets by status</h3>
@@ -11,6 +12,9 @@
   </div>
 </section>
 
+
+
+
 <div class="mid-main-btn">
   <button class="create-new-modal-trigger" id="new-ticket-btn">+</button>
 </div>
@@ -18,16 +22,43 @@
 <section class='bottom-main'>
   <table>
     <tr class="table-head">
-      <th>
       {{#if isTech}}
-      Claim
-      {{/if}}
+      <th>
+        <div class='table-cell'>
+          Claim
+        </div>
       </th>
-      <th>Status</th>
-      <th>Urgency</th>
-      <th>Client</th>
-      <th>Technician</th>
-      <th>Created On</th>
+      {{/if}}
+      <th>
+        <div class='table-cell'>
+          Status
+        </div>
+      </th>
+      <th>
+        <div class='table-cell'>
+          Urgency
+        </div>
+        </th>
+      <th>
+        <div class='table-cell'>
+          Client
+        </div>
+      </th>
+      <th>
+        <div class='table-cell'>
+          Technician
+        </div>
+      </th>
+      <th>
+        <div class='table-cell'>
+          Created On
+        </div>
+      </th>
+      <th>
+        <div class='table-cell'>
+          View Ticket
+        </div>
+      </th>
     </tr>
 
       {{#each tickets}}
