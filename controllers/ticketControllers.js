@@ -62,8 +62,6 @@ const ticketController = {
                 await ticket.save();
             }
 
-            res.status(200).json("ticket")
-
 
             return res.status(200).json({ message: "Ticket updated successfully." });
 

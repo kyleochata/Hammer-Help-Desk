@@ -1,3 +1,4 @@
+
 //modal start
 const showNewTicketBtn = document.getElementById('new-ticket-btn');
 const newTicketModal = document.getElementById('new-ticket-modal');
@@ -47,7 +48,7 @@ const createTicketHandle = async (event) => {
     method: 'POST',
     body: JSON.stringify({ subject, description, urgency }),
     headers: { 'Content-Type': 'application/json' }
-  })
+  });
   console.log(response)
   if (response.ok) {
     console.log({ message: 'ticket has been created' })
@@ -55,8 +56,8 @@ const createTicketHandle = async (event) => {
       response.url.split('/').length - 1
     ];
     console.log(ticketId)
-    // document.location.replace(`/ticket/${ticketId}`)
-    window.location.reload();
+    document.location.replace(`/ticket/${ticketId}`)
+    // window.location.reload();
   } else {
     // console.error(err)
     alert('Request failed. Please try again')
@@ -131,24 +132,15 @@ claimTicketBtns.forEach((button) => {
   button.addEventListener('click', async () => {
     const ticketId = button.getAttribute('data-id');
     try {
-      // PUT request to claim the ticket
       const response = await fetch(`/api/ticket/${ticketId}`, {
         method: 'PUT',
-        // So true makes the new techId: true NOT THE TECHS ID. trying to figure out
-        body: JSON.stringify({ techId: userId, status: 'Claimed' }), // techId is claiming the ticket in ticketControllers req.body
+        body: JSON.stringify({ techId: userId, status: 'Claimed' }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
       if (response.ok) {
-        // if ticket claimed successfully
-        // console.log({ message: 'ticket has been created' })
-        // const ticketId = response.url.split('/')[
-        //   response.url.split('/').length - 1
-        // ];
-        // console.log(ticketId)
-        // document.location.replace(`/ticket/${ticketId}`)
         console.log('redirecting');
         window.location.reload();
       } else {
@@ -166,3 +158,66 @@ openBtn.addEventListener('click', openTicketHandle);
 claimedBtn.addEventListener('click', claimedTicketHandler);
 pendingBtn.addEventListener('click', pendingTicketHandler);
 resolvedBtn.addEventListener('click', resolvedTicketHandler);
+
+// start header animation
+const wrapper = document.querySelector('#tile-anime');
+let columns = 0,
+  rows = 0,
+  toggled = false;
+
+const toggle = () => {
+  toggled = !toggled;
+
+  document.querySelector('.animation-container').classList.toggle("toggled");
+  // document.querySelectorAll('.tile').classList.toggle('toggled')
+}
+
+const handleOnClick = index => {
+  toggle();
+
+  anime({
+    targets: ".tile",
+    opacity: toggled ? 0 : 1,
+    delay: anime.stagger(50, {
+      grid: [columns, rows],
+      from: index
+    })
+  });
+}
+
+const createTile = index => {
+  const tile = document.createElement("div");
+
+  tile.classList.add("tile");
+
+  tile.style.opacity = toggled ? 0 : 1;
+
+  tile.onclick = e => handleOnClick(index);
+
+  return tile;
+}
+
+const createTiles = quantity => {
+  Array.from(Array(quantity)).map((tile, index) => {
+    wrapper.appendChild(createTile(index));
+  });
+}
+
+const createGrid = () => {
+  wrapper.innerHTML = "";
+
+  const size = document.querySelector('.animation-container').clientWidth > 800 ? 100 : 50;
+
+  columns = Math.floor(document.querySelector('.animation-container').clientWidth / size);
+  rows = Math.floor(document.querySelector('.animation-container').clientHeight / 75);
+
+  wrapper.style.setProperty("--columns", columns);
+  wrapper.style.setProperty("--rows", rows);
+
+  createTiles(columns * rows);
+}
+
+createGrid();
+
+window.onresize = () => createGrid();
+//end header animation
