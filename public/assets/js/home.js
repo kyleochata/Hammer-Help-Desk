@@ -123,19 +123,7 @@ const resolvedTicketHandler = async (event) => {
   }
 };
 
-const allBtn = document.querySelector('#all-btn');
-const allTicketHandler = async (event) => {
-  event.preventDefault();
-  const response = await fetch('/All', {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
-  });
-  if (response.ok) {
-    document.location.replace('/All')
-  } else {
-    alert('Get claimed ticket failed. Please try again')
-  }
-};
+
 
 // Once claim btn is interacted with - need to refresh to same page
 // EDIT/PUT - Once refreshed current techName on the specific ticket 
