@@ -66,7 +66,7 @@ const createTicketHandle = async (event) => {
 createTicketBtn.addEventListener('click', createTicketHandle)
 //end create ticket btn
 
-//open btn filter start
+
 const openBtn = document.querySelector('#open-btn');
 const openTicketHandle = async (event) => {
   event.preventDefault();
@@ -123,13 +123,6 @@ const resolvedTicketHandler = async (event) => {
   }
 };
 
-
-
-// Once claim btn is interacted with - need to refresh to same page
-// EDIT/PUT - Once refreshed current techName on the specific ticket 
-// Cannot use #claim-btn maybe DATA-ID of that button aka the TICKET ID
-// document.querySelector target data id then .get something
-
 const userId = document.getElementById('userData').getAttribute('data-user-id');
 
 const claimTicketBtns = document.querySelectorAll('#claim-btn');
@@ -168,15 +161,8 @@ claimTicketBtns.forEach((button) => {
     });
 });
 
-// const getLoggedInTech = () => {
-//   // grab techs name, json.stringify into body
-//   const findTech = User.find((user) => user.role === 'tech');
-//   return findTech ? User.firstName : null;
-//   // return
-// };
 
 openBtn.addEventListener('click', openTicketHandle);
 claimedBtn.addEventListener('click', claimedTicketHandler);
 pendingBtn.addEventListener('click', pendingTicketHandler);
 resolvedBtn.addEventListener('click', resolvedTicketHandler);
-allBtn.addEventListener('click', allTicketHandler);
