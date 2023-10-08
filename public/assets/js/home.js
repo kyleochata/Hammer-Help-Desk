@@ -55,8 +55,8 @@ const createTicketHandle = async (event) => {
       response.url.split('/').length - 1
     ];
     console.log(ticketId)
-    document.location.replace(`/ticket/${ticketId}`)
-
+    // document.location.replace(`/ticket/${ticketId}`)
+    window.location.reload();
   } else {
     // console.error(err)
     alert('Request failed. Please try again')
@@ -128,37 +128,37 @@ const userId = document.getElementById('userData').getAttribute('data-user-id');
 const claimTicketBtns = document.querySelectorAll('#claim-btn');
 
 claimTicketBtns.forEach((button) => {
-    button.addEventListener('click', async () => {
-        const ticketId = button.getAttribute('data-id');
-        try {
-            // PUT request to claim the ticket
-            const response = await fetch(`/api/ticket/${ticketId}`, {
-                method: 'PUT',
-                // So true makes the new techId: true NOT THE TECHS ID. trying to figure out
-                body: JSON.stringify({techId: userId, status: 'Claimed'}), // techId is claiming the ticket in ticketControllers req.body
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+  button.addEventListener('click', async () => {
+    const ticketId = button.getAttribute('data-id');
+    try {
+      // PUT request to claim the ticket
+      const response = await fetch(`/api/ticket/${ticketId}`, {
+        method: 'PUT',
+        // So true makes the new techId: true NOT THE TECHS ID. trying to figure out
+        body: JSON.stringify({ techId: userId, status: 'Claimed' }), // techId is claiming the ticket in ticketControllers req.body
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-            if (response.ok) {
-                // if ticket claimed successfully
-                // console.log({ message: 'ticket has been created' })
-                // const ticketId = response.url.split('/')[
-                //   response.url.split('/').length - 1
-                // ];
-                // console.log(ticketId)
-                // document.location.replace(`/ticket/${ticketId}`)
-                console.log('redirecting');
-                window.location.reload();
-            } else {
-                // if ticket claiming fails
-                console.error(`Error claiming ticket ${ticketId}:`, response.statusText);
-            }
-        } catch (err) {
-            console.error('An error occurred:', err);
-        }
-    });
+      if (response.ok) {
+        // if ticket claimed successfully
+        // console.log({ message: 'ticket has been created' })
+        // const ticketId = response.url.split('/')[
+        //   response.url.split('/').length - 1
+        // ];
+        // console.log(ticketId)
+        // document.location.replace(`/ticket/${ticketId}`)
+        console.log('redirecting');
+        window.location.reload();
+      } else {
+        // if ticket claiming fails
+        console.error(`Error claiming ticket ${ticketId}:`, response.statusText);
+      }
+    } catch (err) {
+      console.error('An error occurred:', err);
+    }
+  });
 });
 
 

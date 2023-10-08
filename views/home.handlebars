@@ -1,25 +1,26 @@
 <div class="home-container">
   <div id="userData" data-user-id="{{userid}}"></div>
   <section class='top-main'>
-  <h2>Welcome {{firstName}}</h2>
-  <h3>Please click one of the buttons to filter your tickets by status</h3>
-  <div class='main-btn-container'>
-    <button id="open-btn">Open</button>
-    <button id="claimed-btn">Claimed</button>
-    <button id="pending-btn">Pending</button>
-    <button id="resolved-btn">Resolved</button>
-    <button id="all-btn">All</button>
-  </div>
+    <h2>Welcome {{firstName}}</h2>
+    <h3>Please click one of the buttons to filter your tickets by status</h3>
+    <div class='main-btn-container'>
+      <button id="open-btn">Open</button>
+      <button id="claim-btn">Claimed</button>
+      <button id="pending-btn">Pending</button>
+      <button id="resolved-btn">Resolved</button>
+      <a href='/'><button id="all-btn">All</button></a>
+    </div>
+    <div class="mid-main-btn">
+    <button class="create-new-modal-trigger" id="new-ticket-btn">+</button>
+    </div>
 </section>
 
 
 
 
-<div class="mid-main-btn">
-  <button class="create-new-modal-trigger" id="new-ticket-btn">+</button>
-</div>
 
 <section class='bottom-main'>
+  {{#if tickets}}
   <table>
     <tr class="table-head">
       {{#if isTech}}
@@ -66,6 +67,9 @@
       {{/each}}
 
   </table>
+{{else}}
+<p>All open tickets claimed. Please check back later</p>
+{{/if}}
 </section>
 
 <div class="modal-screen">
