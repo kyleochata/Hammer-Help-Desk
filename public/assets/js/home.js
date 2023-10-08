@@ -81,6 +81,62 @@ const openTicketHandle = async (event) => {
   }
 };
 
+const claimedBtn = document.querySelector('#claimed-btn');
+const claimedTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Claimed', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Claimed')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
+
+const pendingBtn = document.querySelector('#pending-btn');
+const pendingTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Pending', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Pending')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
+
+const resolvedBtn = document.querySelector('#resolved-btn');
+const resolvedTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Resolved', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Resolved')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
+
+const allBtn = document.querySelector('#all-btn');
+const allTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/All', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/All')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
+
 // Once claim btn is interacted with - need to refresh to same page
 // EDIT/PUT - Once refreshed current techName on the specific ticket 
 // Cannot use #claim-btn maybe DATA-ID of that button aka the TICKET ID
@@ -88,37 +144,37 @@ const openTicketHandle = async (event) => {
 const claimTicketBtns = document.querySelectorAll('#claim-btn');
 
 claimTicketBtns.forEach((button) => {
-    button.addEventListener('click', async () => {
-        const ticketId = button.getAttribute('data-id');
-        console.log(ticketId);
-        try {
-            // PUT request to claim the ticket
-            const response = await fetch(`/api/ticket/${ticketId}`, {
-                method: 'PUT',
-                // So true makes the new techId: true NOT THE TECHS ID. trying to figure out
-                body: JSON.stringify({techId: true, status: 'Claimed'}), // techId is claiming the ticket in ticketControllers req.body
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+  button.addEventListener('click', async () => {
+    const ticketId = button.getAttribute('data-id');
+    console.log(ticketId);
+    try {
+      // PUT request to claim the ticket
+      const response = await fetch(`/api/ticket/${ticketId}`, {
+        method: 'PUT',
+        // So true makes the new techId: true NOT THE TECHS ID. trying to figure out
+        body: JSON.stringify({ techId: true, status: 'Claimed' }), // techId is claiming the ticket in ticketControllers req.body
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-            if (response.ok) {
-                // if ticket claimed successfully
-                // console.log({ message: 'ticket has been created' })
-                // const ticketId = response.url.split('/')[
-                //   response.url.split('/').length - 1
-                // ];
-                // console.log(ticketId)
-                // document.location.replace(`/ticket/${ticketId}`)
-                console.log('redirecting');
-            } else {
-                // if ticket claiming fails
-                console.error(`Error claiming ticket ${ticketId}:`, response.statusText);
-            }
-        } catch (err) {
-            console.error('An error occurred:', err);
-        }
-    });
+      if (response.ok) {
+        // if ticket claimed successfully
+        // console.log({ message: 'ticket has been created' })
+        // const ticketId = response.url.split('/')[
+        //   response.url.split('/').length - 1
+        // ];
+        // console.log(ticketId)
+        // document.location.replace(`/ticket/${ticketId}`)
+        console.log('redirecting');
+      } else {
+        // if ticket claiming fails
+        console.error(`Error claiming ticket ${ticketId}:`, response.statusText);
+      }
+    } catch (err) {
+      console.error('An error occurred:', err);
+    }
+  });
 });
 
 // const getLoggedInTech = () => {
@@ -129,3 +185,7 @@ claimTicketBtns.forEach((button) => {
 // };
 
 openBtn.addEventListener('click', openTicketHandle);
+claimedBtn.addEventListener('click', claimedTicketHandler);
+pendingBtn.addEventListener('click', pendingTicketHandler);
+resolvedBtn.addEventListener('click', resolvedTicketHandler);
+allBtn.addEventListener('click', allTicketHandler);
