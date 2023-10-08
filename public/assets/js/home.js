@@ -66,7 +66,7 @@ const createTicketHandle = async (event) => {
 createTicketBtn.addEventListener('click', createTicketHandle)
 //end create ticket btn
 
-//open btn filter start
+
 const openBtn = document.querySelector('#open-btn');
 const openTicketHandle = async (event) => {
   event.preventDefault();
@@ -81,10 +81,47 @@ const openTicketHandle = async (event) => {
   }
 };
 
-// Once claim btn is interacted with - need to refresh to same page
-// EDIT/PUT - Once refreshed current techName on the specific ticket 
-// Cannot use #claim-btn maybe DATA-ID of that button aka the TICKET ID
-// document.querySelector target data id then .get something
+const claimedBtn = document.querySelector('#claimed-btn');
+const claimedTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Claimed', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Claimed')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
+
+const pendingBtn = document.querySelector('#pending-btn');
+const pendingTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Pending', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Pending')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
+
+const resolvedBtn = document.querySelector('#resolved-btn');
+const resolvedTicketHandler = async (event) => {
+  event.preventDefault();
+  const response = await fetch('/Resolved', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    document.location.replace('/Resolved')
+  } else {
+    alert('Get claimed ticket failed. Please try again')
+  }
+};
 
 const userId = document.getElementById('userData').getAttribute('data-user-id');
 
@@ -124,11 +161,8 @@ claimTicketBtns.forEach((button) => {
   });
 });
 
-// const getLoggedInTech = () => {
-//   // grab techs name, json.stringify into body
-//   const findTech = User.find((user) => user.role === 'tech');
-//   return findTech ? User.firstName : null;
-//   // return
-// };
 
 openBtn.addEventListener('click', openTicketHandle);
+claimedBtn.addEventListener('click', claimedTicketHandler);
+pendingBtn.addEventListener('click', pendingTicketHandler);
+resolvedBtn.addEventListener('click', resolvedTicketHandler);
