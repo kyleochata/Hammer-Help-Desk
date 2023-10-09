@@ -44,11 +44,11 @@
         <div class="bsBreak2"></div>
         <div class="bsContainerTitles">Subject</div>
         <div class="bsBreak"></div>
-        <input class="field" type="text" readonly="true" value="{{ticketData.subject}}" />    
+        <input class="field" type="text"  value="{{ticketData.subject}}" />    
         <div class="bsBreak2"></div>
         <div class="bsContainerTitles">Description</div>
         <div class="bsBreak"></div>
-        <div><input class="field" type="text" readonly="true" value="{{ticketData.description}}" /></div>
+        <div><input class="field" type="text"  value="{{ticketData.description}}" /></div>
         <div class="bsBreak2"></div>
         <div class="bsContainerTitles">Status</div>
         <div class="bsBreak"></div>
@@ -65,7 +65,7 @@
             <option value="High">High</option>
         </select>
         <div class="bsBreak2"></div>
-        <button id="bsEditButton">Edit</button>
+        <button id="bsEditButton">Save Changes</button>
         <div class="bsBreak2"></div>
 
     </section>
@@ -77,7 +77,7 @@
 
     <!-- Tech section for editing the ticket -->
     {{#ifCond role '===' 'tech'}}
-    <section>
+    <section >
         <h2>Edit Ticket {{ticketData.id}}:</h2>
         <form id="editTicketForm" data-id="{{ticketData.id}}">
             <!-- Status input -->
