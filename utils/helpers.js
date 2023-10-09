@@ -99,5 +99,13 @@ const log = (value) => {
   return undefined;
 };
 
+const modal_Class = (value) => {
+  if (value === true) {
+    return 'openDrawer'
+  } else {
+    return 'hidden'
+  }
+}
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log };
+
+module.exports = { withAuth, format_date, format_timeStamp, findDiff, ifCond, log, modal_Class };

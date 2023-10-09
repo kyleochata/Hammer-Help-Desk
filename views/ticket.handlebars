@@ -94,6 +94,7 @@
     </section>
     {{/if}}
     <button id="show-dialogue">Show Chat Logs</button>
+    <a href="/"><button>Back</button></a>
     <div id="chat-dialogue" class="hidden">
         <button id="close-dialogue">Close</button>
     <div class="dialogue-content">
@@ -125,7 +126,7 @@
     </div>
     <section>
         <h2>Create a New Log for Ticket {{ticketData.id}}:</h2>
-        <form action="/api/log/{{ticketData.id}}" method="POST">
+        <form action="/api/log/{{ticketData.id}}?drawer=true" method="POST">
             <div>
                 <label for="message">Message:</label>
                 <textarea name="message" id="message" required></textarea>
