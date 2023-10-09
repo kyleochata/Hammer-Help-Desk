@@ -13,9 +13,9 @@ body {
   padding: 0;
   overflow: hidden;
 }
-#chat-dialogue {
+/* #chat-dialogue {
   right: -300px;
-}
+} */
 
 #new-ticket-modal {
   right: -300px;
@@ -36,9 +36,13 @@ body {
 .dialogue-content {
   padding: 20px;
 }
+.openDrawer {
+  right: 0;
+}
 
 .hidden {
   width: 0;
+  right: -300px;
 }
 /* End modal styling */
 

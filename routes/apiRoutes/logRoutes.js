@@ -9,7 +9,7 @@ router.route('/:ticketId?')
 // PUT will call the editLog controller.
 // DELETE will call the deleteLog controller.
 // '/api/log/:ticketId/:logId?drawer=BOOLEAN??
-router.route('/:ticketId/:logId?drawer=BOOLEAN?')
+router.route('/:ticketId/:logId?drawer=BOOLEAN')
   .put(withAuth, logController.editLog)
   .delete(withAuth, logController.deleteLog);
 
