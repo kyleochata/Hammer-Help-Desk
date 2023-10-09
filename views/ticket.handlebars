@@ -186,7 +186,7 @@
         <!--
         <h2>Create a New Log for Ticket {{ticketData.id}}:</h2>
         -->
-        <form action="/api/log/{{ticketData.id}}" method="POST">
+        <form action="/api/log/{{ticketData.id}}?drawer=true" method="POST">
             <div class="wrapper">
                 <div>
                     <textarea name="message" id="message" required></textarea>
