@@ -7,19 +7,19 @@ const withAuth = (req, res, next) => {
 
 const determineAlignment = (log, user) => {
   if (log.type === 'Created' || log.type === 'Modified') {
-    return 'center-align';
+    return 'text-center';
   } else if (user === log.userId) {
-    return 'right-align';
+    return 'text-end';
   } else {
-    return 'left-align';
+    return 'text-start';
   }
 };
 
 const determineShowHide = (value) => {
   if (value === true) {
-    return 'hide';
+    return 'hide-me';
   } else {
-    return 'shown';
+    return 'show-me';
   }
 };
 

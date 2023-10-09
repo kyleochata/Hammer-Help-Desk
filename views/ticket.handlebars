@@ -161,7 +161,7 @@
             -->
             <ul>
                 {{#each ticketData.logs}}
-                <li class="bsChatMessages">
+                <li class="bsChatMessages {{determineAlignment this ../user}}">
                     <strong>
                         {{#ifCond this.userId '===' ../user}}
                         Me
@@ -176,6 +176,7 @@
                         {{/ifCond}}:
                     </strong>
                     {{this.message}} <div id="bsTimeStamp">{{format_timeStamp this.createdAt}}</div>
+                    {{!-- <button>Hide</button> --}}
                 </li>
                 {{/each}}
             </ul>
