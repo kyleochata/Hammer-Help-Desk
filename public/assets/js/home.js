@@ -1,4 +1,3 @@
-
 //modal start
 const showNewTicketBtn = document.getElementById('new-ticket-btn');
 const newTicketModal = document.getElementById('new-ticket-modal');
@@ -48,7 +47,7 @@ const createTicketHandle = async (event) => {
     method: 'POST',
     body: JSON.stringify({ subject, description, urgency }),
     headers: { 'Content-Type': 'application/json' }
-  });
+  })
   console.log(response)
   if (response.ok) {
     console.log({ message: 'ticket has been created' })
@@ -56,8 +55,8 @@ const createTicketHandle = async (event) => {
       response.url.split('/').length - 1
     ];
     console.log(ticketId)
-    document.location.replace(`/ticket/${ticketId}`)
-    // window.location.reload();
+    // document.location.replace(`/ticket/${ticketId}`)
+    window.location.reload();
   } else {
     // console.error(err)
     alert('Request failed. Please try again')
@@ -132,15 +131,24 @@ claimTicketBtns.forEach((button) => {
   button.addEventListener('click', async () => {
     const ticketId = button.getAttribute('data-id');
     try {
+      // PUT request to claim the ticket
       const response = await fetch(`/api/ticket/${ticketId}`, {
         method: 'PUT',
-        body: JSON.stringify({ techId: userId, status: 'Claimed' }),
+        // So true makes the new techId: true NOT THE TECHS ID. trying to figure out
+        body: JSON.stringify({ techId: userId, status: 'Claimed' }), // techId is claiming the ticket in ticketControllers req.body
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
       if (response.ok) {
+        // if ticket claimed successfully
+        // console.log({ message: 'ticket has been created' })
+        // const ticketId = response.url.split('/')[
+        //   response.url.split('/').length - 1
+        // ];
+        // console.log(ticketId)
+        // document.location.replace(`/ticket/${ticketId}`)
         console.log('redirecting');
         window.location.reload();
       } else {
@@ -221,3 +229,5 @@ createGrid();
 
 window.onresize = () => createGrid();
 //end header animation
+
+//

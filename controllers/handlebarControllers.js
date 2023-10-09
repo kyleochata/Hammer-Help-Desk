@@ -22,7 +22,7 @@ const handlebarController = {
           }
         ]
       });
-      const ticketData = getTicket.get({ plain: true});
+      const ticketData = getTicket.get({ plain: true });
       if (ticketData.isArchived) {
         res.redirect('/');
       }
@@ -37,7 +37,7 @@ const handlebarController = {
         layout: 'main', // TODO: this might need to be 'ticket' to direct to the ticket layout
         role: req.session.role,
         firstName: req.session.firstName,
-        lastName:req.session.lastName,
+        lastName: req.session.lastName,
         user: req.session.user_id,
         // current signed in user
       })
@@ -116,7 +116,7 @@ const handlebarController = {
       res.render('home',
         {
           tickets: [...tickets.map(ticket => ({ ...ticket, isTech }))],
-          userid:req.session.user_id,
+          userid: req.session.user_id,
           isTech,
           loggedIn: true, // req.session.loggedIn
           title: 'Dashboard',
@@ -129,7 +129,8 @@ const handlebarController = {
       console.error(err);
       res.status(400).json(err);
     }
-  }
+  },
+
 }
 
 
