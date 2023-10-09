@@ -501,8 +501,8 @@ body {
 
 .urgency-select {
   display: flex;
-  margin-bottom: 50px;
-  width: 33%;
+  margin-bottom: 51px;
+  width: 34%;
   font-size: 13px;
 }
 
@@ -957,6 +957,32 @@ body {
   overflow-y: auto;
 }
 
+.text-center {
+  text-align: center;
+  background-color: rgb(230, 230, 230);
+  border-radius: 10px 10px 10px 10px;
+}
+
+.text-start {
+  border-radius: 20px 12px 10px 0px;
+  align-items: start;
+  text-align: center;
+  right: 3%;
+  background-color: rgb(81, 89, 96);
+  color: white;
+}
+
+.text-end {
+  border-radius: 20px 20px 0px 20px;
+  text-align: center;
+  left: 10%;
+  background-color: rgb(41, 148, 248);
+  color: white;
+}
+.modal-ul {
+  padding: 0;
+}
+
 .dialogue-content {
   padding: 20px;
 }
@@ -964,10 +990,10 @@ body {
 .bsChatMessages {
   list-style: none;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.829);
+  /* background-color: rgba(255, 255, 255, 0.829); */
   margin-bottom: 10px;
-  border-radius: 5px;
   padding: 20px;
+  width: 75%;
 }
 
 .hidden {
