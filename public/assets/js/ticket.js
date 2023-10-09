@@ -4,13 +4,28 @@ const closeDialogueButton = document.getElementById('close-dialogue');
 const dialogueModal = document.getElementById('chat-dialogue');
 //open & close the chat log modal
 showDialogueButton.addEventListener('click', () => {
-    dialogueModal.style.right = '0px';
+    // dialogueModal.style.right = '0px';
     dialogueModal.classList.remove('hidden');
+    dialogueModal.classList.add('openDrawer');
 });
 closeDialogueButton.addEventListener('click', () => {
-    dialogueModal.style.right = '-300px'; // Slide the dialogue out to the right
+    // dialogueModal.style.right = '-300px'; // Slide the dialogue out to the right
+    dialogueModal.classList.remove('openDrawer')
     dialogueModal.classList.add('hidden');
 });
+
+//function to try and keep the modal open 
+const modalClass = () => {
+    const urlEnd = window.location.href.split('=')
+    console.log(urlEnd)
+    if (urlEnd[1] === 'true') {
+        dialogueModal.classList.remove('hidden');
+        dialogueModal.classList.add('openDrawer');
+    } else {
+        return;
+    }
+}
+modalClass()
 
 console.log("Script Loaded");
 
@@ -57,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             if (response.ok) {
                 console.log({ message: 'edited' });
-                window.location.reload();
+                window.location.replace(`/ticket/${ticketId}`);
             } else {
                 // console.error(err)
                 alert('request failed. Please try again')
@@ -67,3 +82,57 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const editButton = document.getElementById('bsEditButton');
+const input = document.querySelectorAll('.field');
+console.log(input);
+editButton.addEventListener('click', () => {
+    input.textContent = "Save";
+    for (const i of input) {
+        i.readOnly = false;
+    };
+});
+
+
+function countCharacters(string) {
+    return string.length;
+}
+/*
+const descriptionText = document.getElementById('#bsType');
+const charCount = countCharacters(descriptionText.value);
+document.documentElement.style.setProperty('--character-count', characterCount);
+
+*/
+
+function urgency() {
+
+    const urgency = document.getElementById('bsUrgency');
+    console.log(urgency);
+
+    if (urgency.textContent === 'Low') {
+        urgency.style.color = 'green';
+    }
+    else if (urgency.textContent === 'Medium') {
+        urgency.style.color = 'yellow';
+    }
+    else {
+        urgency.style.color = 'red';
+    }
+
+};
+
+urgency();

@@ -5,6 +5,8 @@
   --form-label-color: #8f8f8f;
   --header-g1: rgb(98, 0, 234);
   --header-g2: rgb(236, 64, 122);
+  --high-blue: rgb(128, 131, 147);
+  --character-count: 0;
 }
 
 /* modal styling */
@@ -13,8 +15,400 @@ body {
   padding: 0;
   overflow: hidden;
 }
-#chat-dialogue {
+/* #chat-dialogue {
   right: -300px;
+} */
+
+/* #new-ticket-modal {
+  right: -300px;
+}
+
+#chat-dialogue,
+#new-ticket-modal {
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.dialogue-content {
+  padding: 20px;
+}
+
+.hidden {
+  width: 0;
+} */
+/* End modal styling */
+
+/* Login styles */
+.login-main {
+  background-color: var(--primary-color);
+}
+
+.bsRight {
+  padding-left: 30px;
+}
+
+.bsLeft {
+  padding-right: 30px;
+}
+
+.bsTop {
+  background-color: rgb(134, 134, 179);
+}
+
+#bsUrgency {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bsBtnRight {
+  float: right;
+}
+
+.bsDivLeft {
+  float: left;
+}
+.bsDivRight {
+  float: right;
+}
+
+.bsBreak {
+  padding-top: 5px;
+}
+
+.bsBreak2 {
+  padding-top: 10px;
+}
+
+.bsBox {
+  width: 300px;
+  height: 300px;
+  border: 5px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.bsBoxTest {
+  width: 300px;
+  height: 300px;
+  border: 5px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+/*
+.bsLineAnimation {
+  width:2px;
+  height:400px;
+  background:white;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.bsLineAnimation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: draw 5s linear infinite;
+}
+
+@keyframes draw {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: 100%;
+  }
+}
+*/
+.bsDrawn {
+  width: 2px;
+  height: 400px;
+  background: #fff;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bsDrawn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  animation: animatedLine 1s linear forwards;
+}
+
+@keyframes animatedLine {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.form-container {
+  width: 700px;
+  margin: 100;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: var(--high-blue);
+}
+
+.form-container input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.background-gradient {
+  background: linear-gradient(to left, #9695ab, #71738e);
+}
+
+.bsTopText {
+  color: white;
+}
+
+.bsDropShadow {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.bsBoxTitles {
+  font-size: 20px;
+  color: white;
+}
+
+.bsSave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bsDescription {
+  height: 100px;
+}
+
+.bsTree {
+  border: 1px black;
+  padding: 10px;
+  margin: 100;
+  background-color: var(--high-blue);
+}
+
+.subject {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.description {
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+.bsTicketBody {
+  background-color: #39393e;
+}
+
+.bsTicketBodyLeft > h1 {
+  color: white;
+  font-size: 40px;
+}
+
+.bsTicketBody > p {
+  color: white;
+}
+
+.bsTicketBodyLeft {
+  position: relative;
+  width: fit-content;
+}
+
+.bsTicketBodyRight {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  margin-top: 40px;
+  margin-right: 20px;
+}
+
+#bsType {
+  position: relative;
+  width: fit-content;
+  color: white;
+}
+
+#bsType::before,
+#bsType::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#bsType::before {
+  background: #39393e;
+  animation: typewriter 1.5s steps(--character-count) forwards;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+.bsMainColor {
+  background-color: var(--primary-color);
+  position: relative;
+  height: 80%;
+}
+
+.bsContainerTitles {
+  color: white;
+  font-size: 15px;
+  text-shadow: 2px 2px black;
+}
+
+#bsTicketDetails {
+  margin-top: 10px;
+  color: white;
+  font-size: 25px;
+  text-shadow: 2px 2px black;
+}
+
+/*
+
+header#nav .container ul > li > ul.twist li {
+	transform: rotateY(90deg) ;
+}
+li:hover ul.twist.hov li {
+		animation-name: twist;
+}
+@keyframes twist {
+    0%   {opacity:0;	transform: rotateY(90deg);}
+    100% {opacity:1; transform:  rotateY(0);}
+}
+@-webkit-keyframes twist {
+    0%   {opacity:0;transform:  rotateY(90deg); }
+    100% {opacity:1; transform: rotateY(0);}
+}
+li:hover ul.twist.hov li:nth-child(1) {
+	animation-duration: 0.3s;
+	animation-delay: 0.3s;
+}
+li:hover ul.twist.hov li:nth-child(2) {
+	animation-duration: 0.4s;
+	animation-delay: 0.5s;
+}
+li:hover ul.twist.hov li:nth-child(3) {
+	animation-duration: 0.5s;
+	animation-delay: 1s;
+}
+li:hover ul.twist.hov li:nth-child(4) {
+	animation-duration:0.6s;
+	animation-delay: 1.5s;
+}
+li:hover ul.twist.hov li:nth-child(5) {
+	animation-duration:0.7s;
+	animation-delay: 2s;
+}
+
+.bsTicketContainer2 {
+  height:0px;
+  width: 0px;
+  overflow: hidden;
+  animation: drop-down 1s steps(10, end);
+}
+
+@keyframes drop-down {
+  0% {
+    height: 0px;
+    width: fit-content;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
+    transform: translateY(0px);
+  }
+}
+
+*/
+
+@keyframes ticketDrop {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  50% {
+    top: -50%;
+    opacity: 0.5;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.bsTicketContainer > input {
+  width: 300px;
+}
+
+#bsEditButton {
+  float: right;
+}
+
+#bsEditButton:hover {
+  background-color: rgb(186, 186, 186);
+}
+
+.cursor::before {
+  transition-property: opacity;
+  transition-duration: 2s;
+  transition-delay: 2s;
+  opacity: 0;
+}
+.cursor::after {
+  animation: blink 1s steps(2, end) infinite;
+  opacity: 1;
+  animation-delay: 1.5s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bsTicketBackground {
+  background-color: var(--primary-color);
+}
+
+/* modal styling */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  /* overflow: hidden; */
+}
+#chat-dialogue {
+  background-color: black;
 }
 
 #new-ticket-modal {
@@ -81,6 +475,442 @@ body {
 }
 
 .dialogue-content {
+  padding: 20px;
+}
+.openDrawer {
+  right: 0;
+}
+
+.hidden {
+  width: 0;
+  right: -300px;
+}
+/* End modal styling */
+
+/* Login styles */
+.login-main {
+  background-color: var(--primary-color);
+}
+
+.bsRight {
+  padding-left: 30px;
+}
+
+.bsLeft {
+  padding-right: 30px;
+}
+
+.bsTop {
+  background-color: rgb(134, 134, 179);
+}
+
+#bsUrgency {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#bsOpenedBy {
+  color: white;
+  position: absolute;
+  bottom: 10;
+  right: 10;
+}
+
+.bsBtnRight {
+  float: right;
+}
+
+.bsDivLeft {
+  float: left;
+}
+.bsDivRight {
+  float: right;
+}
+
+.bsBreak {
+  padding-top: 5px;
+}
+
+.bsBreak2 {
+  padding-top: 10px;
+}
+
+.bsBox {
+  width: 300px;
+  height: 300px;
+  border: 5px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.bsBoxTest {
+  width: 300px;
+  height: 300px;
+  border: 5px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.form-container {
+  width: 700px;
+  margin: 100;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: var(--high-blue);
+}
+
+.form-container input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.background-gradient {
+  background: linear-gradient(to left, #9695ab, #71738e);
+}
+
+.bsTopText {
+  color: white;
+}
+
+.bsDropShadow {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.bsBoxTitles {
+  font-size: 20px;
+  color: white;
+}
+
+.bsSave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bsDescription {
+  height: 100px;
+}
+
+.bsTree {
+  border: 1px black;
+  padding: 10px;
+  margin: 100;
+  background-color: var(--high-blue);
+}
+
+.subject {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.description {
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+.bsTicketBody {
+  background-color: #39393e;
+  display: flex;
+  justify-content: space-between;
+  z-index: 6;
+}
+
+.bsTicketBodyLeft > h1 {
+  color: white;
+  font-size: 40px;
+}
+
+.bsTicketBody > p {
+  color: white;
+}
+
+.bsTicketBodyLeft {
+  position: relative;
+  width: fit-content;
+  float: left;
+}
+
+.bsTicketBodyRight {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  float: right;
+  justify-content: center;
+}
+
+#bsType {
+  position: relative;
+  width: fit-content;
+  color: white;
+}
+
+#bsType::before,
+#bsType::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#bsType::before {
+  background: #39393e;
+  animation: typewriter 1.5s steps(24) forwards;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+.bsMainColor {
+  background-color: var(--primary-color);
+  position: relative;
+  height: 80%;
+}
+
+.bsContainerTitles {
+  color: white;
+  font-size: 15px;
+  text-shadow: 2px 2px black;
+}
+
+#bsTicketDetails {
+  margin-top: 10px;
+  color: white;
+  font-size: 25px;
+  text-shadow: 2px 2px black;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.wrapper textarea {
+  box-sizing: border-box;
+  background-color: rgb(230, 230, 230);
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  width: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.wrapper textarea:hover {
+  animation: color-change 0.3s forwards;
+}
+
+.wrapper textarea:focus {
+  background-color: white;
+}
+
+.wrapper button {
+  color: white;
+  background-color: rgb(41, 148, 248);
+  aspect-ratio: 1;
+  position: absolute;
+  height: 60%;
+  right: 0;
+  width: 15%;
+  top: 1%;
+  border-radius: 5px;
+  border: none;
+}
+
+@keyframes color-change {
+  0% {
+    background-color: rgb(230, 230, 230);
+  }
+  100% {
+    background-color: white;
+  }
+}
+
+.bsChatMessages #bsTimeStamp {
+  font-size: 10px;
+  position: absolute;
+  right: 5;
+  bottom: 0;
+}
+
+/*
+@keyframes color-change2 {
+  0% {
+    background-color: rgb(187, 196, 203); 
+  }
+  100% {
+    background-color: rgb(41, 148, 248); 
+  }
+}
+
+*/
+
+/*
+
+header#nav .container ul > li > ul.twist li {
+	transform: rotateY(90deg) ;
+}
+li:hover ul.twist.hov li {
+		animation-name: twist;
+}
+@keyframes twist {
+    0%   {opacity:0;	transform: rotateY(90deg);}
+    100% {opacity:1; transform:  rotateY(0);}
+}
+@-webkit-keyframes twist {
+    0%   {opacity:0;transform:  rotateY(90deg); }
+    100% {opacity:1; transform: rotateY(0);}
+}
+li:hover ul.twist.hov li:nth-child(1) {
+	animation-duration: 0.3s;
+	animation-delay: 0.3s;
+}
+li:hover ul.twist.hov li:nth-child(2) {
+	animation-duration: 0.4s;
+	animation-delay: 0.5s;
+}
+li:hover ul.twist.hov li:nth-child(3) {
+	animation-duration: 0.5s;
+	animation-delay: 1s;
+}
+li:hover ul.twist.hov li:nth-child(4) {
+	animation-duration:0.6s;
+	animation-delay: 1.5s;
+}
+li:hover ul.twist.hov li:nth-child(5) {
+	animation-duration:0.7s;
+	animation-delay: 2s;
+}
+
+.bsTicketContainer2 {
+  height:0px;
+  width: 0px;
+  overflow: hidden;
+  animation: drop-down 1s steps(10, end);
+}
+
+@keyframes drop-down {
+  0% {
+    height: 0px;
+    width: fit-content;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
+    transform: translateY(0px);
+  }
+}
+
+*/
+
+#bsUrgency {
+  font-size: 30px;
+  margin-right: 70px;
+}
+
+.bsTicketContainer {
+  border: 10px white;
+  width: 400px;
+  margin-left: 20px;
+  background-color: #39393e;
+  position: absolute;
+  animation: ticketDrop 0.3s linear forwards;
+  z-index: 0;
+}
+
+@keyframes ticketDrop {
+  0% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0);
+  }
+}
+
+.bsTicketContainer > input {
+  width: 300px;
+}
+
+#bsEditButton {
+  float: right;
+}
+
+#bsEditButton:hover {
+  background-color: rgb(186, 186, 186);
+}
+/*  */
+.cursor::before {
+  transition-property: opacity;
+  transition-duration: 2s;
+  transition-delay: 2s;
+  opacity: 0;
+}
+.cursor::after {
+  animation: blink 1s steps(2, end) infinite;
+  opacity: 1;
+  animation-delay: 1.5s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bsTicketBackground {
+  background-color: var(--primary-color);
+}
+
+:root {
+  --primary-color: #1d1e22;
+  --secondary-color: #ffffff;
+  --accent-color: #6f7fc1;
+  --form-label-color: #8f8f8f;
+}
+
+/* modal styling */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  /* overflow: hidden; */
+}
+#new-ticket-modal {
+  right: -300px;
+}
+
+#chat-dialogue,
+#new-ticket-modal {
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #afafaf;
+  background: linear-gradient(to bottom, #afafaf, #717171);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  z-index: 50;
+  overflow-y: auto;
+}
+
+.dialogue-content {
+  padding: 20px;
+}
+
+.bsChatMessages {
+  list-style: none;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.829);
+  margin-bottom: 10px;
+  border-radius: 5px;
   padding: 20px;
 }
 
@@ -154,6 +984,14 @@ span:nth-child(4) {
   100% {
     left: 200%;
   }
+}
+
+#close-dialogue {
+  margin-top: 3px;
+  margin-left: 3px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .login-form {
@@ -251,9 +1089,8 @@ span:nth-child(4) {
   padding: 9px 25px;
   background: var(--secondary-color);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   border-radius: 4px;
-  font-weight: bold;
 }
 
 @media (max-width: 1329px) {
@@ -290,7 +1127,7 @@ span:nth-child(4) {
 .top-main {
   overflow-y: auto;
   width: 50%;
-  height: 50%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -301,24 +1138,47 @@ span:nth-child(4) {
   font-size: clamp(1.5rem, 2rem, 2.5rem);
   /* z-index: 3; */
 }
-.mid-main-btn {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-}
 #main-btn-container > button,
-#main-btn-container > a > button {
-  font-size: clamp(1.5rem, 2rem, 2.5rem);
+#main-btn-container > a > button,
+#logout-btn,
+#back-btn {
+  font-size: clamp(1.1rem, 1.5rem, 2rem);
+  border-radius: 8px;
+  transform: scale(1);
+}
+
+#main-btn-container > button:hover,
+#main-btn-container > a > button:hover {
+  transform: scale(1.2);
+}
+
+#main-btn-container > button:hover ~ button:not(:hover),
+#main-btn-container > button:hover + a > button:not(:hover) {
+  transform: scale(0.5);
+}
+
+/* #main-btn-container > button:hover + button:not(:hover),
+#main-btn-container > button:hover + a > button:not(:hover) {
+  transform: scale(0.5);
+  transition: all 0.25s;
+} */
+
+#back-btn > a {
+  text-decoration: none;
 }
 .bottom-main {
   width: 100%;
   height: 50%;
-  margin: 20px 0;
+  margin: 10px 0 20px 0;
   overflow-y: auto;
   display: flex;
   justify-content: center;
+  contain: strict;
 }
+.bottom-main::-webkit-scrollbar {
+  display: none;
+}
+
 table {
   width: 80%;
   border: solid var(--accent-color);
@@ -327,20 +1187,13 @@ table {
 tbody {
   width: 100%;
   text-align: center;
+  padding: 10px 0;
 }
-.table-head {
+/* .table-head {
   max-height: 2.5rem;
 }
 .table-head > th {
   max-height: 2.5rem;
-}
-
-/* tr:first {
-  border-top: solid var(--accent-color);
-}
-
-tr {
-  border-bottom: solid var(--accent-color);
 } */
 
 th,
@@ -353,23 +1206,25 @@ td {
   content: contain;
 }
 th {
-  font-size: clamp(1.5rem, 2rem, 2.5rem);
+  font-size: clamp(1.25rem, 1.75rem, 2rem);
   border-bottom: solid var(--accent-color);
+  text-shadow: 0px 0px 1rem var(--header-g2);
 }
 
 .table-btn {
-  font-size: clamp(1.5rem, 1.75rem, 2.25rem);
+  font-size: clamp(1.05rem, 1.5rem, 2rem);
   padding: 10px;
   border-radius: 8px;
 }
 
 td > div {
-  font-size: clamp(1.25rem, 1.75rem, 2rem);
+  font-size: clamp(1.25rem, 1.5rem, 1.75rem);
   display: flex;
   justify-content: center;
 }
 
 .created-on {
+  font-size: clamp(1rem, 1.5rem, 1.75rem);
   padding: 10px;
 }
 
@@ -399,9 +1254,9 @@ td > div {
   }
 }
 
-.table-btn {
+/* .table-btn {
   font-size: clamp(1.05rem, 1.5rem, 2rem);
-}
+} */
 
 footer {
   background-color: var(--primary-color);
@@ -409,6 +1264,7 @@ footer {
   display: flex;
   width: 100%;
   justify-content: center;
+  gap: 10px;
 }
 /* Main header animation */
 #tile-anime {
@@ -454,22 +1310,25 @@ footer {
   transition: opacity 1200ms ease;
   width: 50vw;
   z-index: 10;
+  text-align: center;
 }
 .header-text {
   left: 50%;
   position: absolute;
-  top: 50%;
+  top: 46%;
   transform: translate(-50%, -50%);
 }
 #info-head {
-  font-size: clamp(2rem, 3rem, 4rem);
-  top: 75%;
+  font-size: clamp(1.5rem, 2rem, 3rem);
+  top: 80%;
+  left: 85%;
   color: var(--accent-color);
+  text-align: center;
 }
 
-.animation-container.toggled {
+/* .animation-container.toggled {
   animation: none;
-}
+} */
 .animation-container.toggled > .welcome {
   opacity: 0;
 }
@@ -485,6 +1344,9 @@ footer {
   opacity: 0.1 !important;
 }
 
+#main-btn-container {
+  z-index: 0;
+}
 .tile {
   cursor: pointer;
   position: relative;

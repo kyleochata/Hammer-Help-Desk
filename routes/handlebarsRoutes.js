@@ -10,12 +10,14 @@ const { withAuth } = require('../utils/helpers');
 router.route('/login')
   .get(handlebarController.renderLogin);
 
+router.route('/ticket/:id?drawer=BOOLEAN')
+  .get(withAuth, handlebarController.renderTicket)
+
 router.route('/ticket/:id')
-  .get(handlebarController.renderTicket);
+  .get(withAuth, handlebarController.renderTicket);
 
 router.route('/:status?')
   .get(withAuth, handlebarController.renderDashboard);
-
 
 // The route will match '/ticket/:id' to handle GET calls.
 // This should run the renderTicket handlebars controller.
