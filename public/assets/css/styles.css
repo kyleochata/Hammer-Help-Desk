@@ -14,6 +14,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color:#1d1e22;
 }
 /* #chat-dialogue {
   right: -300px;
@@ -275,6 +276,9 @@ body {
   background-color: var(--primary-color);
   position: relative;
   height: 80%;
+  display:flex;
+  /* gap: 100px; */
+  justify-content: space-between;
 }
 
 .bsContainerTitles {
@@ -283,13 +287,55 @@ body {
   text-shadow: 2px 2px black;
 }
 
-#bsTicketDetails {
+.bsContainerTitles2 {
+  color: yellow;
+  font-size: 15px;
+  text-shadow: 2px 2px black;
+}
+
+.bsContainerTitles3 {
+  color: white;
+  font-size: 20px;
+}
+
+.bsContainerTitles4 {
+  color: greenyellow;
+  font-size: 15px;
+}
+
+.bsContainerTitles5 {
+  color: lightblue;
+  font-size: 15px;
+  text-shadow: 2px 2px black;
+}
+
+.bsTicketDetails {
   margin-top: 10px;
   color: white;
   font-size: 25px;
   text-shadow: 2px 2px black;
 }
 
+.leftMain {
+  display:flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width:50%;
+}
+
+.rightMain{
+  width:45%;
+  padding-right:40px;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+#show-dialogue{
+  width:20%;
+}
 /*
 
 header#nav .container ul > li > ul.twist li {
@@ -508,6 +554,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  text-shadow: 2px 2px black;
 }
 
 #bsOpenedBy {
@@ -816,7 +863,16 @@ li:hover ul.twist.hov li:nth-child(5) {
   width: 400px;
   margin-left: 20px;
   background-color: #39393e;
-  position: absolute;
+  /* position: absolute; */
+  animation: ticketDrop 0.3s linear forwards;
+  z-index: 0;
+}
+
+.bsLogContainer {
+  border: 10px white;
+  margin-left: 20px;
+  background-color: #39393e;
+  /* position: absolute; */
   animation: ticketDrop 0.3s linear forwards;
   z-index: 0;
 }
