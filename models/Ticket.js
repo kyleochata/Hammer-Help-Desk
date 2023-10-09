@@ -3,9 +3,10 @@ const sequelize = require('../utils/connection');
 const helper = require('../utils/helpers');
 const Log = require('./Log');
 
+
 class Ticket extends Model { }
 
-Ticket.prototype.logChange = async function (userId,originalticket) {
+Ticket.prototype.logChange = async function (userId, originalticket) {
   //console.log(helper.findDiff({id:123},{id:456}));
   const changes = helper.findDiff(this.dataValues, originalticket);
   if (!changes.length) return;  // Return early if no changes
@@ -13,7 +14,8 @@ Ticket.prototype.logChange = async function (userId,originalticket) {
   const logValues = {
     type: 'Modified',
     //talk to adrian about targeting we have ways
-    message: `${changes.length} changes were made on ${new Date().toISOString()} by user. ${changes.join(' ')}`,
+    // message: `${changes.length} changes were made on ${new Date().toISOString()} by user. ${changes.join(' ')}`,
+    message: `${changes.length} changes were made on ${helper.format_date(new Date())}. ${changes.join(' ')}`,
     userId: userId,
     ticketId: this.id
   };

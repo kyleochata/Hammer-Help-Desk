@@ -206,10 +206,10 @@ const createTiles = quantity => {
 const createGrid = () => {
   wrapper.innerHTML = "";
 
-  const size = document.querySelector('.animation-container').clientWidth > 800 ? 100 : 50;
+  const size = document.querySelector('.animation-container').clientWidth > 800 ? 75 : 50;
 
   columns = Math.floor(document.querySelector('.animation-container').clientWidth / size);
-  rows = Math.floor(document.querySelector('.animation-container').clientHeight / 75);
+  rows = Math.floor(document.querySelector('.animation-container').clientHeight / size);
 
   wrapper.style.setProperty("--columns", columns);
   wrapper.style.setProperty("--rows", rows);
