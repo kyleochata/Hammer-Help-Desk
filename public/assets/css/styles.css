@@ -6,6 +6,7 @@
   --header-g1: rgb(98, 0, 234);
   --header-g2: rgb(236, 64, 122);
   --high-blue: rgb(128, 131, 147);
+  --character-count: 0;
 }
 
 /* modal styling */
@@ -100,6 +101,67 @@ body {
   margin: 10px;
 }
 
+/*
+.bsLineAnimation {
+  width:2px;
+  height:400px;
+  background:white;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.bsLineAnimation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: draw 5s linear infinite;
+}
+
+@keyframes draw {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: 100%;
+  }
+}
+*/
+.bsDrawn { 
+  width: 2px; 
+  height: 400px; 
+  background: #fff; 
+  position: absolute; 
+  top: 35%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+} 
+
+.bsDrawn::before { 
+  content: ""; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: var(--primary-color);
+  animation: animatedLine 1.0s linear forwards; 
+} 
+
+@keyframes animatedLine { 
+  0% { 
+    transform: translateY(0%);
+} 
+  100% {
+    transform: translateY(100%);
+  }
+} 
+
 .form-container {
   width: 700px;
   margin: 100;
@@ -178,6 +240,9 @@ body {
   position: relative;
   width: 200px;
   height: 100px;
+  margin-top: 40px;
+  margin-right: 20px;
+  
 }
 
 #bsType {
@@ -198,7 +263,7 @@ body {
 
 #bsType::before {
   background: #39393e;
-  animation: typewriter 1.5s steps(24) forwards;
+  animation: typewriter 1.5s steps(--character-count) forwards;
 }
 
 @keyframes typewriter {
@@ -284,15 +349,6 @@ li:hover ul.twist.hov li:nth-child(5) {
 
 */
 
-.bsTicketContainer {
-  border: 10px white;
-  width: 400px;
-  margin-left: 20px;
-  background-color:#39393e;
-  position: absolute;
-  animation: ticketDrop 1s linear forwards;
-}
-
 @keyframes ticketDrop {
   0% {
     top: -100%;
@@ -363,6 +419,7 @@ body {
 }
 #chat-dialogue {
   right: -300px;
+  background-color: black;
 }
 
 #new-ticket-modal {
@@ -411,6 +468,13 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+#bsOpenedBy {
+  color: white;
+  position: absolute;
+  bottom: 10;
+  right: 10;
 }
 
 .bsBtnRight {
@@ -505,7 +569,10 @@ body {
 }
 
 .bsTicketBody {
-  background-color:#39393e
+  background-color:#39393e;
+  display: flex;
+  justify-content: space-between;
+  z-index: 6;
 }
 
 .bsTicketBodyLeft > h1 {
@@ -520,12 +587,15 @@ body {
 .bsTicketBodyLeft {
   position: relative;
   width: fit-content;
+  float: left;
 }
 
 .bsTicketBodyRight {
   position: relative;
   width: 200px;
   height: 100px;
+  float: right;
+  justify-content:center;
 }
 
 #bsType {
@@ -573,6 +643,72 @@ body {
   font-size: 25px;
   text-shadow: 2px 2px black;
 }
+
+.wrapper {
+  position: relative;
+}
+
+.wrapper textarea {
+  box-sizing: border-box;
+  background-color: rgb(230, 230, 230);
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  width: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.wrapper textarea:hover {
+  animation: color-change 0.3s forwards;
+}
+
+.wrapper textarea:focus {
+  background-color: white;
+}
+
+.wrapper button {
+  color: white;
+  background-color: rgb(41, 148, 248);
+  aspect-ratio: 1;
+  position: absolute;
+  height: 60%;
+  right: 0;
+  width: 15%;
+  top: 1%;
+  border-radius: 5px;
+  border: none;
+}
+
+@keyframes color-change {
+  0% {
+    background-color: rgb(230, 230, 230);
+  }
+  100% {
+    background-color: white;
+  }
+}
+
+.bsChatMessages #bsTimeStamp {
+  font-size: 10px;
+  position:absolute;
+  right:5;
+  bottom:0;
+
+  
+}
+
+/*
+@keyframes color-change2 {
+  0% {
+    background-color: rgb(187, 196, 203); 
+  }
+  100% {
+    background-color: rgb(41, 148, 248); 
+  }
+}
+
+*/
 
 /*
 
@@ -632,28 +768,24 @@ li:hover ul.twist.hov li:nth-child(5) {
 
 */
 
+#bsUrgency {
+  font-size: 30px;
+  margin-right: 70px;
+}
+
 .bsTicketContainer {
   border: 10px white;
   width: 400px;
   margin-left: 20px;
   background-color:#39393e;
   position: absolute;
-  animation: ticketDrop 1s linear forwards;
+  animation: ticketDrop 0.3s linear forwards;
+  z-index: 0;
 }
 
 @keyframes ticketDrop {
-  0% {
-    top: -100%;
-    opacity: 0;
-  }
-  50% {
-    top: -50%;
-    opacity: 0.5;
-  }
-  100% {
-    top: 0;
-    opacity: 1;
-  }
+  0%   {opacity:0;	transform: rotateY(90deg);}
+    100% {opacity:1; transform:  rotateY(0);}
   
 }
 
@@ -723,13 +855,23 @@ body {
   top: 0;
   width: 300px;
   height: 100%;
-  background-color: #fff;
+  background-color: #afafaf;
+  background: linear-gradient(to bottom, #afafaf, #717171);
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
   z-index: 50;
 }
 
 .dialogue-content {
+  padding: 20px;
+}
+
+.bsChatMessages {
+  list-style: none;
+  position:relative;
+  background-color: rgba(255, 255, 255, 0.829);
+  margin-bottom: 10px;
+  border-radius: 5px;
   padding: 20px;
 }
 
@@ -803,6 +945,14 @@ span:nth-child(4) {
   100% {
     left: 200%;
   }
+}
+
+#close-dialogue {
+  margin-top: 3px;
+  margin-left: 3px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer; 
 }
 
 .login-form {
