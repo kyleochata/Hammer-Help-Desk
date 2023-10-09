@@ -1,21 +1,25 @@
 <div class="home-container">
-  <section class='top-main'>
-  <h2>Welcome {{firstName}}</h2>
-  <h3>Please click one of the buttons to filter your tickets by status</h3>
-  <div class='main-btn-container'>
-    <button id="open-btn">Open</button>
-    <button id="claim-btn">Claimed</button>
-    <button id="pending-btn">Pending</button>
-    <button id="resolved-btn">Resolved</button>
-    <button id="all-btn">All</button>
+  <div id="userData" data-user-id="{{userid}}"></div>
+  <div class="animation-container">
+    <div id="tile-anime"></div>
+      <h2 id="welcome" class="header-text welcome">Welcome {{firstName}}</h2>
+      <p class="header-text welcome" id="info-head">Click here to filter tickets</p>
+    <section class='top-main header-text' id="button-container-home">
+      <h3>Please click one of the buttons to filter your tickets by status</h3>
+      <div id='main-btn-container'>
+        <button id="open-btn">Open</button>
+        <button id="claimed-btn">Claimed</button>
+        <button id="pending-btn">Pending</button>
+        <button id="resolved-btn">Resolved</button>
+        <a href='/'><button id="all-btn">All</button></a>
+        <button class="create-new-modal-trigger" id="new-ticket-btn">+</button>
+      </div>
+  </section>
   </div>
-</section>
 
-<div class="mid-main-btn">
-  <button class="create-new-modal-trigger" id="new-ticket-btn">+</button>
-</div>
 
 <section class='bottom-main'>
+  {{#if tickets}}
   <table>
     <tr class="table-head">
       {{#if isTech}}
@@ -62,6 +66,9 @@
       {{/each}}
 
   </table>
+{{else}}
+<p>All open tickets claimed. Please check back later</p>
+{{/if}}
 </section>
 
 <div class="modal-screen">
@@ -117,4 +124,5 @@
     </footer>
 </div>
 
-<script src='./assets/js/home.js' defer></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs"></script>
+<script src='./assets/js/home.js' type="module"></script>

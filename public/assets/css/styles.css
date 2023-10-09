@@ -3,6 +3,8 @@
   --secondary-color: #ffffff;
   --accent-color: #6f7fc1;
   --form-label-color: #8f8f8f;
+  --header-g1: rgb(98, 0, 234);
+  --header-g2: rgb(236, 64, 122);
   --high-blue: rgb(128, 131, 147);
 }
 
@@ -376,6 +378,355 @@ body {
   background-color: #fff;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
+  z-index: 50;
+}
+
+.dialogue-content {
+  padding: 20px;
+}
+
+.hidden {
+  width: 0;
+}
+/* End modal styling */
+
+/* Login styles */
+.login-main {
+  background-color: var(--primary-color);
+}
+
+.bsRight {
+  padding-left: 30px;
+}
+
+.bsLeft {
+  padding-right: 30px;
+}
+
+.bsTop {
+  background-color:rgb(134, 134, 179)
+}
+
+#bsUrgency {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bsBtnRight {
+  float: right;
+}
+
+.bsDivLeft {
+  float: left;
+}
+.bsDivRight {
+  float: right;
+}
+
+.bsBreak {
+  padding-top:5px;
+}
+
+.bsBreak2 {
+  padding-top: 10px;
+}
+
+.bsBox {
+  width: 300px;
+  height: 300px;
+  border: 5px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.bsBoxTest{
+  width: 300px;
+  height: 300px;
+  border: 5px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.form-container {
+  width: 700px;
+  margin: 100;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: var(--high-blue);
+}
+
+.form-container input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.background-gradient {
+  background: linear-gradient(to left, #9695ab, #71738e);
+}
+
+.bsTopText {
+  color: white;
+}
+
+.bsDropShadow {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.bsBoxTitles {
+  font-size: 20px;
+  color:white;
+}
+
+.bsSave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bsDescription {
+  height: 100px;
+}
+
+.bsTree {
+  border: 1px black;
+  padding: 10px;
+    margin: 100;
+    background-color: var(--high-blue);
+  }
+
+.subject {
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.description {
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+.bsTicketBody {
+  background-color:#39393e
+}
+
+.bsTicketBodyLeft > h1 {
+  color: white;
+  font-size: 40px;
+}
+
+.bsTicketBody > p {
+  color: white;
+}
+
+.bsTicketBodyLeft {
+  position: relative;
+  width: fit-content;
+}
+
+.bsTicketBodyRight {
+  position: relative;
+  width: 200px;
+  height: 100px;
+}
+
+#bsType {
+  position: relative;
+  width: fit-content;
+  color: white;
+}
+
+#bsType::before,
+#bsType::after {
+  content:'';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#bsType::before {
+  background: #39393e;
+  animation: typewriter 1.5s steps(24) forwards;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+.bsMainColor {
+  background-color: var(--primary-color);
+  position: relative;
+  height: 80%;
+}
+
+.bsContainerTitles {
+  color: white;
+  font-size: 15px;
+  text-shadow: 2px 2px black;
+}
+
+#bsTicketDetails {
+  margin-top: 10px;
+  color: white;
+  font-size: 25px;
+  text-shadow: 2px 2px black;
+}
+
+/*
+
+header#nav .container ul > li > ul.twist li {
+	transform: rotateY(90deg) ;
+}
+li:hover ul.twist.hov li {
+		animation-name: twist;
+}
+@keyframes twist {
+    0%   {opacity:0;	transform: rotateY(90deg);}
+    100% {opacity:1; transform:  rotateY(0);}
+}
+@-webkit-keyframes twist {
+    0%   {opacity:0;transform:  rotateY(90deg); }
+    100% {opacity:1; transform: rotateY(0);}
+}
+li:hover ul.twist.hov li:nth-child(1) {
+	animation-duration: 0.3s;
+	animation-delay: 0.3s;
+}
+li:hover ul.twist.hov li:nth-child(2) {
+	animation-duration: 0.4s;
+	animation-delay: 0.5s;
+}
+li:hover ul.twist.hov li:nth-child(3) {
+	animation-duration: 0.5s;
+	animation-delay: 1s;
+}
+li:hover ul.twist.hov li:nth-child(4) {
+	animation-duration:0.6s;
+	animation-delay: 1.5s;
+}
+li:hover ul.twist.hov li:nth-child(5) {
+	animation-duration:0.7s;
+	animation-delay: 2s;
+}
+
+.bsTicketContainer2 {
+  height:0px;
+  width: 0px;
+  overflow: hidden;
+  animation: drop-down 1s steps(10, end);
+}
+
+@keyframes drop-down {
+  0% {
+    height: 0px;
+    width: fit-content;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
+    transform: translateY(0px);
+  }
+}
+
+*/
+
+.bsTicketContainer {
+  border: 10px white;
+  width: 400px;
+  margin-left: 20px;
+  background-color:#39393e;
+  position: absolute;
+  animation: ticketDrop 1s linear forwards;
+}
+
+@keyframes ticketDrop {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  50% {
+    top: -50%;
+    opacity: 0.5;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+  
+}
+
+.bsTicketContainer > input {
+  width: 300px;
+}
+
+#bsEditButton {
+ float: right;
+}
+
+#bsEditButton:hover{
+  background-color: rgb(186, 186, 186);
+}
+
+
+.cursor::before {
+  transition-property: opacity;
+  transition-duration: 2s;
+  transition-delay: 2s;
+  opacity: 0;
+}
+.cursor::after {
+  animation: blink 1s steps(2, end) infinite;
+  opacity: 1;
+  animation-delay: 1.5s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bsTicketBackground {
+  background-color: var(--primary-color);
+}
+
+:root {
+  --primary-color: #1d1e22;
+  --secondary-color: #ffffff;
+  --accent-color: #6f7fc1;
+  --form-label-color: #8f8f8f;
+}
+
+/* modal styling */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-Y: auto;
+  /* overflow: hidden; */
+}
+#chat-dialogue {
+  right: -300px;
+}
+
+#new-ticket-modal {
+  right: -300px;
+}
+
+#chat-dialogue,
+#new-ticket-modal {
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  z-index: 50;
 }
 
 .dialogue-content {
@@ -585,12 +936,18 @@ span:nth-child(4) {
   contain: strict;
 }
 .top-main {
-  width: 100%;
-  height: 30%;
+  overflow-y: auto;
+  width: 50%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 1200ms ease;
+  /* background-color: var(--primary-color); */
+  font-size: clamp(1.5rem, 2rem, 2.5rem);
+  /* z-index: 3; */
 }
 .mid-main-btn {
   width: 100%;
@@ -598,9 +955,14 @@ span:nth-child(4) {
   justify-content: center;
   padding: 10px 0;
 }
+#main-btn-container > button,
+#main-btn-container > a > button {
+  font-size: clamp(1.5rem, 2rem, 2.5rem);
+}
 .bottom-main {
   width: 100%;
   height: 50%;
+  margin: 20px 0;
   overflow-y: auto;
   display: flex;
   justify-content: center;
@@ -695,4 +1057,93 @@ footer {
   display: flex;
   width: 100%;
   justify-content: center;
+}
+/* Main header animation */
+#tile-anime {
+  height: 100%;
+  width: calc(100vw - 1px);
+  position: relative;
+  z-index: 0;
+  display: grid;
+  /* --columns & rows coming in from JS on resize window function; determines how many "tiles" we want in our div */
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+.animation-container {
+  animation: background-pan 10s linear infinite;
+  background: linear-gradient(
+    to right,
+    var(--header-g1),
+    var(--header-g2),
+    var(--header-g1)
+  );
+  background-size: 200%;
+  height: 30vh;
+  overflow: hidden;
+  margin: 0px;
+  position: relative;
+}
+
+.welcome {
+  color: white;
+  font-size: 6vw;
+  margin: 0px;
+  pointer-events: none;
+  transition: opacity 1200ms ease;
+  width: 50vw;
+  z-index: 10;
+}
+.header-text {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#info-head {
+  font-size: clamp(2rem, 3rem, 4rem);
+  top: 75%;
+  color: var(--accent-color);
+}
+
+.animation-container.toggled {
+  animation: none;
+}
+.animation-container.toggled > .welcome {
+  opacity: 0;
+}
+
+.animation-container.toggled > .top-main {
+  opacity: 1;
+  z-index: 1;
+}
+.animation-container.toggled > .top-main > #main-btn-container {
+  z-index: 5;
+}
+.animation-container.toggled > #tile-anime > .tile:hover {
+  opacity: 0.1 !important;
+}
+
+.tile {
+  cursor: pointer;
+  position: relative;
+}
+
+.tile:hover:before {
+  background-color: var(--primary-color);
+}
+.tile:before {
+  background-color: var(--primary-color);
+  content: '';
+  inset: 0.5px;
+  position: absolute;
 }

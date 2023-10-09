@@ -56,7 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify(payload)
             });
             if (response.ok) {
-                console.log({ message: 'edited' })
+                console.log({ message: 'edited' });
+                window.location.reload();
             } else {
                 // console.error(err)
                 alert('request failed. Please try again')
