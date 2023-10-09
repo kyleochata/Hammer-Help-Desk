@@ -138,7 +138,45 @@ document.getElementById('bsEditButton').addEventListener('click', async function
     }
 });
 
+async function toggleVisibility(element,logid,message,type) {
+    const ticketId = editTicketForm.getAttribute('data-id');
+    let state = 0;
+    if (element.classList.contains('Dshown')) {
+        element.classList.remove('Dshown');
+        element.classList.add('Dhidden');
+        state = 1;
+        // You might want to update the server about the hidden status here.
+    } else {
+        element.classList.remove('Dhidden');
+        element.classList.add('Dshown');
+        state = 0;
+        // You might want to update the server about the shown status here.
+    }
 
+    let data = {
+        message:message,
+        type:type,
+        isHidden: state
+    };
+
+    console.log("\n\n\n" + 123);
+
+    const response = await fetch(`../api/log/${logid}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    // if (response.ok) {
+    //     console.log({ message: 'edited' });
+    //     //window.location.replace(`/ticket/${ticketId}/`);
+    //     //window.location.reload();
+    // } else {
+    //     // console.error(err)
+    //     alert('request failed. Please try again')
+    // }
+}
 
 
 function countCharacters(string) {

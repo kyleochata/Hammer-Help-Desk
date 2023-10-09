@@ -99,5 +99,16 @@ const log = (value) => {
   return undefined;
 };
 
+const eq = (arg1, arg2) => {
+  return arg1 === arg2;
+};
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log };
+const and = (arg1, arg2) => {
+  return arg1 && arg2;
+};
+
+const or = (arg1, arg2) => {
+  return arg1 || arg2;
+};
+
+module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log ,eq,and,or};

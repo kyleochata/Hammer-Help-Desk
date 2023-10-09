@@ -131,7 +131,7 @@
                 <!-- Status input -->
                 <div>
                     <label class="bsContainerTitles" for="status">Status:</label>
-                    <select  name="status" id="status">
+                    <select name="status" id="status">
                         <option value="Open" {{#ifCond ticketData.status '===' 'Open' }}selected{{/ifCond}}>Open
                         </option>
                         <option value="Pending" {{#ifCond ticketData.status '===' 'Pending' }}selected{{/ifCond}}>
@@ -191,11 +191,13 @@
         <div class="bsLogContainer bsRight bsLeft">
             {{#if ticketData.logs}}
             <section>
-                <h2 class="bsTicketDetails" >Logs:</h2>
+                <h2 class="bsTicketDetails">Logs:</h2>
                 <ul>
                     {{#each ticketData.logs}}
+                    {{#unless (and (eq this.isHidden true) (eq ../role 'client'))}}
                     <li>
-                        <strong class="{{#ifCond this.userId '===' ../user}}bsContainerTitles5{{else}}bsContainerTitles2{{/ifCond}}">
+                        <strong
+                            class="{{#ifCond this.userId '===' ../user}}bsContainerTitles5{{else}}bsContainerTitles2{{/ifCond}}">
                             {{#ifCond this.userId '===' ../user}}
                             Me
                             {{else}}
@@ -208,10 +210,12 @@
                             {{/ifCond}}
                             {{/ifCond}}:
                         </strong>
-                        {{!-- {{this.message}} at {{this.createdAt}} --}}
-                        <span class="bsContainerTitles3">{{this.message}}</span> <span class="bsContainerTitles4"><br>({{this.createdAt}})</span>
+                        <span class="bsContainerTitles3">{{this.message}}</span> <span
+                            class="bsContainerTitles4"><br>({{this.createdAt}})</span>
                     </li>
+                    {{/unless}}
                     {{/each}}
+
                 </ul>
             </section>
             {{/if}}
@@ -229,6 +233,7 @@
             -->
                 <ul>
                     {{#each ticketData.logs}}
+                    {{#unless (or (and (eq this.isHidden true) (eq ../role 'client')) (eq this.type 'Modified'))}}
                     <li class="bsChatMessages">
                         <strong>
                             {{#ifCond this.userId '===' ../user}}
@@ -244,8 +249,16 @@
                             {{/ifCond}}:
                         </strong>
                         {{this.message}} <div id="bsTimeStamp">{{format_timeStamp this.createdAt}}</div>
+
+                        {{#ifCond ../role '===' 'tech'}}
+                        <div class="interactableSquare {{#if this.isHidden}}Dhidden{{else}}Dshown{{/if}}"
+                            onclick="toggleVisibility(this, '{{this.id}}','{{this.message}}','{{this.type}}')"></div>
+                        {{/ifCond}}
+
                     </li>
+                    {{/unless}}
                     {{/each}}
+
                 </ul>
             </section>
             {{/if}}

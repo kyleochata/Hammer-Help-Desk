@@ -1370,3 +1370,18 @@ footer {
   inset: 0.5px;
   position: absolute;
 }
+
+.interactableSquare {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  display: inline-block;  /* To keep it in line with text */
+}
+
+.interactableSquare.Dshown {
+  background-color: green;  /* Color when the log is shown */
+}
+
+.interactableSquare.Dhidden {
+  background-color: red;  /* Color when the log is hidden */
+}
