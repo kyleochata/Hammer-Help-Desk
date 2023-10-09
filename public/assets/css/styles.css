@@ -1098,11 +1098,32 @@ span:nth-child(4) {
   font-size: clamp(1.1rem, 1.5rem, 2rem);
   border-radius: 8px;
   transform: scale(1);
+  transition: all 0.25s;
 }
 
 #main-btn-container > button:hover,
-#main-btn-container > a > button:hover {
+#main-btn-container > a > button:hover,
+#logout-btn:hover,
+#back-btn:hover {
   transform: scale(1.2);
+}
+
+#logout-btn:hover,
+#back-btn:hover {
+  color: var(--accent-color);
+  font-weight: bold;
+  background-color: var(--primary-color);
+}
+
+footer > #back-btn:hover + #logout-btn {
+  transform: scale(0.5);
+}
+#back-btn > a:visited {
+  color: var(--primary-color);
+}
+
+#back-btn > a:visited:hover {
+  color: var(--accent-color);
 }
 
 #main-btn-container > button:hover ~ button:not(:hover),
@@ -1313,4 +1334,17 @@ footer {
   content: '';
   inset: 0.5px;
   position: absolute;
+}
+
+.no-ticket-container {
+  position: relative;
+}
+.no-ticket-msg {
+  font-size: clamp(2rem, 3rem, 4rem);
+  transform-origin: center;
+  animation: scaler 1s linear forwards;
+}
+@keyframes scaler {
+  0% {
+  }
 }

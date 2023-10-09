@@ -17,8 +17,11 @@
   </section>
   </div>
 
-
+  {{#if tickets}}
+<div class="no-ticket-container">
   <h2 class="table-title">Your Tickets</h2>
+</div>
+  {{/if}}
 <section class='bottom-main'>
   {{#if tickets}}
   <table>
@@ -68,7 +71,7 @@
 
   </table>
 {{else}}
-<p>All open tickets claimed. Please check back later</p>
+<p class="no-ticket-msg">No tickets here. Please check back later</p>
 {{/if}}
 </section>
 
@@ -114,15 +117,11 @@
   </div>
 
     <footer>
-      <div>
-          <a href='/'>
-          <button class='footer-btn' id='back-btn'>Back</button>
-          </a>
 
-      </div>
-      <div>
-        <button id='logout-btn' class='footer-btn'>Logout</button>
-      </div>
+      <button class='footer-btn' id='back-btn'><a href='/'>Back</a></button>
+      
+      <button id='logout-btn' class='footer-btn'>Logout</button>
+
     </footer>
 </div>
 
