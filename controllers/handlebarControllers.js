@@ -23,13 +23,14 @@ const handlebarController = {
         ]
       });
       const ticketData = getTicket.get({ plain: true});
-      if (ticketData.isArchived) {
-        res.redirect('/');
-      }
+      // if (ticketData.isArchived) {
+      //   res.redirect('/');
+      // }
       if (req.session.role === 'client' && ticketData.clientId !== req.session.user_id) {
         res.redirect('/');
         return;
       }
+      console.log(ticketData);
       res.render('ticket', {
         loggedIn: req.session.loggedIn,
         ticketData,

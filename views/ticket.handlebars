@@ -19,7 +19,6 @@
         <p>Status: {{ticketData.status}}</p>
         <p>Urgency: {{ticketData.urgency}}</p>
     </section>
-
     <!-- Tech section for editing the ticket -->
     {{#ifCond role '===' 'tech'}}
     <section>
@@ -102,7 +101,7 @@
             <h2>Logs:</h2>
             <ul>
                 {{#each ticketData.logs}}
-                <li>
+                <li class="{{determineShowHide isHidden}} {{determineAlignment this ../user}} log-list">
                     <strong>
                         {{#ifCond this.userId '===' ../user}}
                         Me
@@ -117,6 +116,9 @@
                         {{/ifCond}}:
                     </strong>
                     {{this.message}} at {{format_timeStamp this.createdAt}}
+                    <button> 
+                        HIDE
+                    </button>
                 </li>
                 {{/each}}
             </ul>
@@ -141,7 +143,8 @@
             </div>
             <div>
                 <label for="isHidden">Hidden:</label>
-                <input type="checkbox" name="isHidden" id="isHidden" value="true">
+    {{!-- create class in hbs style in css --}}
+                <input class="{{determineShowHide isHidden}} determinehide" type="checkbox" name="isHidden" id="isHidden" value="true">
             </div>
             {{else}}
             <input type="hidden" name="type" value="Message">
@@ -156,7 +159,6 @@
     </section>
     </div>
     <!-- Create a new log section -->
-    
 </main>
 
 {{else}}

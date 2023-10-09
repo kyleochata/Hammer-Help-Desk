@@ -5,11 +5,10 @@ const withAuth = (req, res, next) => {
   else { next(); }
 };
 
-const determineAlignment = (log, currentUser) => {
-  console.log(this)
+const determineAlignment = (log, user) => {
   if (log.type === 'Created' || log.type === 'Modified') {
     return 'center-align';
-  } else if (currentUser === log.userId) {
+  } else if (user === log.userId) {
     return 'right-align';
   } else {
     return 'left-align';
@@ -18,16 +17,11 @@ const determineAlignment = (log, currentUser) => {
 
 const determineShowHide = (value) => {
   if (value === true) {
-    return 'hidden';
+    return 'hide';
   } else {
     return 'shown';
   }
 };
-
-// const messageIconClass = determineShowHide('hidden');
-// const messageBubbleClass = determineAlignment('left-align');
-// console.log('Message Icon Class:', messageIconClass);
-// console.log('Message Bubble Class:', messageBubbleClass);
 
 const format_date = (date) => {
   //month is index 0-11. must add 1 to get correct month

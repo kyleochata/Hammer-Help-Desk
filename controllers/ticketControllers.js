@@ -47,8 +47,6 @@ const ticketController = {
 
             // If a techId was added, change status to Claimed
             if (req.session.role === 'tech') {
-                // line 48 is needed for Claim-btn techId
-                //ticket.techId = req.session.user_id; // this is not needed, tech should be able to reassign a ticket to another tech
                 ticket.status = 'Claimed';
             }
 
