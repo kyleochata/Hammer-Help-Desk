@@ -10,219 +10,288 @@
             <p>User Name: {{firstName}} {{lastName}}</p>
             <p>Role: {{role}}</p>
             -->
-            <style>.spacer{height: 20px}</style>
-            <style>.spacer2{height: 3px}</style>
+            <style>
+                .spacer {
+                    height: 20px
+                }
+            </style>
+            <style>
+                .spacer2 {
+                    height: 3px
+                }
+            </style>
             <div class="spacer"></div>
         </div>
         <div class="bsTicketBodyRight">
             <div id="bsUrgency">{{ticketData.urgency}}</div>
-            <div id="bsOpenedBy">Opened by {{ticketData.client}} on {{ticketData.date}}</div>
+            <div id="bsOpenedBy">Opened by {{ticketData.client.firstName}} on {{ticketData.createdAt}}</div>
         </div>
-        
-        
+
+
     </div>
 </header>
 
 <main class="bsMainColor">
-    <!-- Ticket information -->
-    <div class="spacer"></div>
-    <section class="bsTicketContainer bsRight bsDropShadow">
-        <div class="bsBreak2"></div>
-        <div id="bsTicketDetails">Ticket Details</p>
-        <div class="bsBreak"></div>
-        <div class="bsContainerTitles">Client</div>
-        <div class="bsBreak"></div>
-        <input class="field" type="text" readonly="true" value="{{ticketData.client.firstName}}" />
-        <!--
+    <div class="leftMain">
+        <div class="spacer"></div>
+        {{!-- <section class="bsTicketContainer bsRight bsDropShadow">
+            <div class="bsBreak2"></div>
+            <div id="bsTicketDetails">Ticket Details</p>
+                <div class="bsBreak"></div>
+                <div class="bsContainerTitles">Client</div>
+                <div class="bsBreak"></div>
+                <input class="field" type="text" readonly="true" value="{{ticketData.client.firstName}}" />
+                <!--
         <p>Tech: {{ticketData.tech.firstName}} {{ticketData.tech.lastName}} (ID: {{ticketData.tech.id}}, Role:
             {{ticketData.tech.role}})</p>
             -->
-        <div class="bsBreak2"></div>
-        <div class="bsContainerTitles">Technician</div>
-        <div class="bsBreak"></div>
-        <input class="field" type="text" readonly="true" value="{{ticketData.tech.firstName}} {{ticketData.tech.lastName}}" />
-        <div class="bsBreak2"></div>
-        <div class="bsContainerTitles">Subject</div>
-        <div class="bsBreak"></div>
-        <input class="field" type="text"  value="{{ticketData.subject}}" />    
-        <div class="bsBreak2"></div>
-        <div class="bsContainerTitles">Description</div>
-        <div class="bsBreak"></div>
-        <div><input class="field" type="text"  value="{{ticketData.description}}" /></div>
-        <div class="bsBreak2"></div>
-        <div class="bsContainerTitles">Status</div>
-        <div class="bsBreak"></div>
-        <select value="{{ticketData.status}}">
-            <option value="Open">Open</option>
-            <option value="Resolved">Resolved</option>
-        </select>
-        <div class="bsBreak2"></div>
-        <div class="bsContainerTitles">Urgency:</div>
-        <div class="bsBreak"></div>
-        <select value="{{ticketData.urgency}}">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-        </select>
-        <div class="bsBreak2"></div>
-        <button id="bsEditButton">Save Changes</button>
-        <div class="bsBreak2"></div>
-
-    </section>
-    <div>
-        <div class="bsDrawn"></div>
-        <div></div>
-    </div>
-    </div>
-
-    <!-- Tech section for editing the ticket -->
-    {{#ifCond role '===' 'tech'}}
-    <section >
-        <h2>Edit Ticket {{ticketData.id}}:</h2>
-        <form id="editTicketForm" data-id="{{ticketData.id}}">
-            <!-- Status input -->
-            <div>
-                <label for="status">Status:</label>
-                <select name="status" id="status">
-                    <option value="Open" {{#ifCond ticketData.status '===' 'Open' }}selected{{/ifCond}}>Open</option>
-                    <option value="Pending" {{#ifCond ticketData.status '===' 'Pending' }}selected{{/ifCond}}>Pending
-                    </option>
-                    <option value="Resolved" {{#ifCond ticketData.status '===' 'Resolved' }}selected{{/ifCond}}>Resolved
-                    </option>
-                    <option value="Claimed" {{#ifCond ticketData.status '===' 'Claimed' }}selected{{/ifCond}}>Claimed
-                    </option>
+                <div class="bsBreak2"></div>
+                <div class="bsContainerTitles">Technician</div>
+                <div class="bsBreak"></div>
+                <input class="field" type="text" readonly="true"
+                    value="{{ticketData.tech.firstName}} {{ticketData.tech.lastName}}" />
+                <div class="bsBreak2"></div>
+                <div class="bsContainerTitles">Subject</div>
+                <div class="bsBreak"></div>
+                <input class="field" type="text" value="{{ticketData.subject}}" />
+                <div class="bsBreak2"></div>
+                <div class="bsContainerTitles">Description</div>
+                <div class="bsBreak"></div>
+                <div><input class="field" type="text" value="{{ticketData.description}}" /></div>
+                <div class="bsBreak2"></div>
+                <div class="bsContainerTitles">Status</div>
+                <div class="bsBreak"></div>
+                <select value="{{ticketData.status}}">
+                    <option value="Open">Open</option>
+                    <option value="Resolved">Resolved</option>
                 </select>
-            </div>
-            <!-- Tech ID input -->
-            <div>
-                <label for="techId">Tech ID:</label>
-                <input type="text" name="techId" id="techId" value="{{ticketData.tech.id}}">
-            </div>
-            <!-- Urgency input -->
-            <div>
-                <label for="urgency">Urgency:</label>
-                <select name="urgency" id="urgency">
-                    <option value="Low" {{#ifCond ticketData.urgency '===' 'Low' }}selected{{/ifCond}}>Low</option>
-                    <option value="Medium" {{#ifCond ticketData.urgency '===' 'Medium' }}selected{{/ifCond}}>Medium
-                    </option>
-                    <option value="High" {{#ifCond ticketData.urgency '===' 'High' }}selected{{/ifCond}}>High</option>
+                <div class="bsBreak2"></div>
+                <div class="bsContainerTitles">Urgency:</div>
+                <div class="bsBreak"></div>
+                <select value="{{ticketData.urgency}}">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
                 </select>
-            </div>
-            <!-- Is Archived input -->
-            <div>
-                <label for="isArchived">Archive Ticket:</label>
-                <input type="checkbox" name="isArchived" id="isArchived" value="true" {{#if
-                    ticketData.isArchived}}checked{{/if}}>
-            </div>
-            <!-- Submit button -->
-            <div>
-                <button type="submit">Edit Ticket</button>
-            </div>
-        </form>
-    </section>
+                <div class="bsBreak2"></div>
+                <button id="bsEditButton">Save Changes</button>
+                <div class="bsBreak2"></div>
 
-    {{/ifCond}}
+        </section> --}}
 
-    <!-- Logs related to this ticket -->
-    {{#if ticketData.logs}}
-    <section>
-        <h2>Logs:</h2>
-        <ul>
-            {{#each ticketData.logs}}
-            <li>
-                <strong>
-                    {{#ifCond this.userId '===' ../user}}
-                    Me
-                    {{else}}
-                    {{#ifCond this.userId '===' ../ticketData.client.id}}
-                    {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
-                    {{else ifCond this.userId '===' ../ticketData.tech.id}}
-                    {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
-                    {{else}}
-                    User {{this.userId}}
-                    {{/ifCond}}
-                    {{/ifCond}}:
-                </strong>
-                {{this.message}} at {{this.createdAt}}
-            </li>
-            {{/each}}
-        </ul>
-    </section>
-    {{/if}}
-    <button id="show-dialogue">Show Chat Logs</button>
-    <a href="/"><button>Back</button></a>
-    <div id="chat-dialogue" class="hidden">
-        <button id="close-dialogue">X</button>
-    <div class="dialogue-content">
-    {{#if ticketData.logs}}
-        <section>
-            <!--
-            <h2>Logs:</h2>
-            -->
-            <ul>
-                {{#each ticketData.logs}}
-                <li class="bsChatMessages">
-                    <strong>
-                        {{#ifCond this.userId '===' ../user}}
-                        Me
-                        {{else}}
-                        {{#ifCond this.userId '===' ../ticketData.client.id}}
-                        {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
-                        {{else ifCond this.userId '===' ../ticketData.tech.id}}
-                        {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
-                        {{else}}
-                        User {{this.userId}}
-                        {{/ifCond}}
-                        {{/ifCond}}:
-                    </strong>
-                    {{this.message}} <div id="bsTimeStamp">{{format_timeStamp this.createdAt}}</div>
-                </li>
-                {{/each}}
-            </ul>
+        <section class="bsTicketContainer bsRight bsDropShadow">
+            <div class="bsBreak2"></div>
+            <h2 class="bsTicketDetails">Ticket Details</h2>
+            <div class="bsBreak"></div>
+            <div class="bsContainerTitles">Client</div>
+            <div class="bsBreak"></div>
+            <input class="field" type="text" readonly="true" value="{{ticketData.client.firstName}}" />
+            <div class="bsBreak2"></div>
+            <div class="bsContainerTitles">Technician</div>
+            <div class="bsBreak"></div>
+            <input class="field" type="text" readonly="true"
+                value="{{ticketData.tech.firstName}} {{ticketData.tech.lastName}}" />
+            <div class="bsBreak2"></div>
+            <div class="bsContainerTitles">Subject</div>
+            <div class="bsBreak"></div>
+            <input id="subjectInput" class="field" type="text" value="{{ticketData.subject}}" />
+            <div class="bsBreak2"></div>
+            <div class="bsContainerTitles">Description</div>
+            <div class="bsBreak"></div>
+            <input id="descriptionInput" class="field" type="text" value="{{ticketData.description}}" />
+            <div class="bsBreak2"></div>
+            <div class="bsContainerTitles">Status</div>
+            <div class="bsBreak"></div>
+            <select id="statusSelect" value="{{ticketData.status}}">
+                <option value="Open">Open</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+            <div class="bsBreak2"></div>
+            <div class="bsContainerTitles">Urgency:</div>
+            <div class="bsBreak"></div>
+            <select id="urgencySelect" value="{{ticketData.urgency}}">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <div class="bsBreak2"></div>
+            <button id="bsEditButton">Save Changes</button>
+            <div class="bsBreak2"></div>
         </section>
-    {{/if}}
-    </div>
-    <section>
-        <!--
-        <h2>Create a New Log for Ticket {{ticketData.id}}:</h2>
-        -->
-        <form action="/api/log/{{ticketData.id}}?drawer=true" method="POST">
-            <div class="wrapper">
-                <div>
-                    <textarea name="message" id="message" required></textarea>
-                </div>
 
-                {{#ifCond role '===' 'tech'}}
+
+        <div>
+            <div class="bsDrawn"></div>
+            <div></div>
+        </div>
+        {{#ifCond role '===' 'tech'}}
+        <section class="bsTicketContainer bsRight bsDropShadow">
+            <h2 class="bsTicketDetails">Edit Ticket {{ticketData.id}}:</h2>
+            <form id="editTicketForm" data-id="{{ticketData.id}}">
+                <!-- Status input -->
                 <div>
-                    <label for="type">Type:</label>
-                    <select name="type" id="type">
-                        <option value="Modified">Modify</option>
-                        <option value="Message">Message</option>
+                    <label class="bsContainerTitles" for="status">Status:</label>
+                    <select  name="status" id="status">
+                        <option value="Open" {{#ifCond ticketData.status '===' 'Open' }}selected{{/ifCond}}>Open
+                        </option>
+                        <option value="Pending" {{#ifCond ticketData.status '===' 'Pending' }}selected{{/ifCond}}>
+                            Pending
+                        </option>
+                        <option value="Resolved" {{#ifCond ticketData.status '===' 'Resolved' }}selected{{/ifCond}}>
+                            Resolved
+                        </option>
+                        <option value="Claimed" {{#ifCond ticketData.status '===' 'Claimed' }}selected{{/ifCond}}>
+                            Claimed
+                        </option>
                     </select>
                 </div>
+                <!-- Tech ID input -->
                 <div>
-                    <label for="isHidden">Hidden:</label>
-                    <input type="checkbox" name="isHidden" id="isHidden" value="true">
+                    <label class="bsContainerTitles" for="techId">Tech ID:</label>
+                    <input type="text" name="techId" id="techId" value="{{ticketData.tech.id}}">
                 </div>
-                {{else}}
-                <input type="hidden" name="type" value="Message">
-                <!-- If client, always ensure the message is visible -->
-                <input type="hidden" name="isHidden" value="false">
-                {{/ifCond}}
+                <!-- Urgency input -->
+                <div>
+                    <label class="bsContainerTitles" for="urgency">Urgency:</label>
+                    <select name="urgency" id="urgency">
+                        <option value="Low" {{#ifCond ticketData.urgency '===' 'Low' }}selected{{/ifCond}}>Low</option>
+                        <option value="Medium" {{#ifCond ticketData.urgency '===' 'Medium' }}selected{{/ifCond}}>Medium
+                        </option>
+                        <option value="High" {{#ifCond ticketData.urgency '===' 'High' }}selected{{/ifCond}}>High
+                        </option>
+                    </select>
+                </div>
+                <!-- Is Archived input -->
+                <div>
+                    <label class="bsContainerTitles" for="isArchived">Archive Ticket:</label>
+                    <input type="checkbox" name="isArchived" id="isArchived" value="true" {{#if
+                        ticketData.isArchived}}checked{{/if}}>
+                </div>
+                <!-- Submit button -->
+                <div>
+                    <button type="submit">Edit Ticket</button>
+                </div>
+            </form>
+        </section>
 
-                <div>
-                    <button type="submit"><strong>&gt;</strong></button>
+        {{/ifCond}}
+
+    </div>
+
+
+    {{!-- </div> --}}
+    <!-- Ticket information -->
+
+
+    <!-- Tech section for editing the ticket -->
+
+    <!-- Logs related to this ticket -->
+    <div class="rightMain">
+        <div class="spacer"></div>
+        <div class="bsLogContainer bsRight bsLeft">
+            {{#if ticketData.logs}}
+            <section>
+                <h2 class="bsTicketDetails" >Logs:</h2>
+                <ul>
+                    {{#each ticketData.logs}}
+                    <li>
+                        <strong class="{{#ifCond this.userId '===' ../user}}bsContainerTitles5{{else}}bsContainerTitles2{{/ifCond}}">
+                            {{#ifCond this.userId '===' ../user}}
+                            Me
+                            {{else}}
+                            {{#ifCond this.userId '===' ../ticketData.client.id}}
+                            {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
+                            {{else ifCond this.userId '===' ../ticketData.tech.id}}
+                            {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
+                            {{else}}
+                            User {{this.userId}}
+                            {{/ifCond}}
+                            {{/ifCond}}:
+                        </strong>
+                        {{!-- {{this.message}} at {{this.createdAt}} --}}
+                        <span class="bsContainerTitles3">{{this.message}}</span> <span class="bsContainerTitles4"><br>({{this.createdAt}})</span>
+                    </li>
+                    {{/each}}
+                </ul>
+            </section>
+            {{/if}}
+            <button id="show-dialogue">Show Chat Logs</button>
+            <a href="/"><button>Back</button></a>
+        </div>
+    </div>
+    <div id="chat-dialogue" class="hidden">
+        <button id="close-dialogue">X</button>
+        <div class="dialogue-content">
+            {{#if ticketData.logs}}
+            <section>
+                <!--
+            <h2>Logs:</h2>
+            -->
+                <ul>
+                    {{#each ticketData.logs}}
+                    <li class="bsChatMessages">
+                        <strong>
+                            {{#ifCond this.userId '===' ../user}}
+                            Me
+                            {{else}}
+                            {{#ifCond this.userId '===' ../ticketData.client.id}}
+                            {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
+                            {{else ifCond this.userId '===' ../ticketData.tech.id}}
+                            {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
+                            {{else}}
+                            User {{this.userId}}
+                            {{/ifCond}}
+                            {{/ifCond}}:
+                        </strong>
+                        {{this.message}} <div id="bsTimeStamp">{{format_timeStamp this.createdAt}}</div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </section>
+            {{/if}}
+        </div>
+        <section>
+
+            <!--
+        <h2>Create a New Log for Ticket {{ticketData.id}}:</h2>
+        -->
+            <form action="/api/log/{{ticketData.id}}?drawer=true" method="POST">
+                <div class="wrapper">
+                    <div>
+                        <textarea name="message" id="message" required></textarea>
+                    </div>
+
+                    {{#ifCond role '===' 'tech'}}
+                    <div>
+                        <label for="type">Type:</label>
+                        <select name="type" id="type">
+                            {{!-- <option value="Modified">Modify</option> --}}
+                            <option value="Message">Message</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="isHidden">Hidden:</label>
+                        <input type="checkbox" name="isHidden" id="isHidden" value="true">
+                    </div>
+                    {{else}}
+                    <input type="hidden" name="type" value="Message">
+                    <!-- If client, always ensure the message is visible -->
+                    <input type="hidden" name="isHidden" value="false">
+                    {{/ifCond}}
+
+                    <div>
+                        <button type="submit"><strong>&gt;</strong></button>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </section>
+            </form>
+        </section>
     </div>
     <!-- Create a new log section -->
-    
+
 </main>
 
 {{else}}
 <p>You must be logged in to view ticket details.</p>
 {{/if}}
 
-<script  src='/assets/js/ticket.js'></script>
+<script src='/assets/js/ticket.js'></script>
