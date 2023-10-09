@@ -796,7 +796,7 @@ li:hover ul.twist.hov li:nth-child(5) {
 #bsEditButton:hover {
   background-color: rgb(186, 186, 186);
 }
-
+/*  */
 .cursor::before {
   transition-property: opacity;
   transition-duration: 2s;
