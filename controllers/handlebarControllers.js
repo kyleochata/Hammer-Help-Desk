@@ -30,6 +30,7 @@ const handlebarController = {
         res.redirect('/');
         return;
       }
+      console.log(ticketData);
       res.render('ticket', {
         loggedIn: req.session.loggedIn,
         ticketData,
