@@ -14,35 +14,8 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color:#1d1e22;
+  background-color: #1d1e22;
 }
-/* #chat-dialogue {
-  right: -300px;
-} */
-
-/* #new-ticket-modal {
-  right: -300px;
-}
-
-#chat-dialogue,
-#new-ticket-modal {
-  position: fixed;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background-color: #fff;
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-}
-
-.dialogue-content {
-  padding: 20px;
-}
-
-.hidden {
-  width: 0;
-} */
-/* End modal styling */
 
 /* Login styles */
 .login-main {
@@ -276,7 +249,7 @@ body {
   background-color: var(--primary-color);
   position: relative;
   height: 80%;
-  display:flex;
+  display: flex;
   /* gap: 100px; */
   justify-content: space-between;
 }
@@ -317,24 +290,24 @@ body {
 }
 
 .leftMain {
-  display:flex;
+  display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  width:50%;
+  width: 50%;
 }
 
-.rightMain{
-  width:45%;
-  padding-right:40px;
-  display:flex;
-  flex-wrap:wrap;
+.rightMain {
+  width: 45%;
+  padding-right: 40px;
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   overflow-y: auto;
 }
 
-#show-dialogue{
-  width:20%;
+#show-dialogue {
+  width: 20%;
 }
 /*
 
@@ -1162,14 +1135,26 @@ span:nth-child(4) {
 #logout-btn:hover,
 #back-btn:hover {
   transform: scale(1.2);
-}
-
-#logout-btn:hover,
-#back-btn:hover {
   color: var(--accent-color);
   font-weight: bold;
   background-color: var(--primary-color);
 }
+#main-btn-container > button > a:visited {
+  color: var(--primary-color);
+}
+#main-btn-container > button > a:hover {
+  color: var(--accent-color);
+}
+#main-btn-container > button > a {
+  text-decoration: var(--primary-color);
+}
+
+/* #logout-btn:hover,
+#back-btn:hover {
+  color: var(--accent-color);
+  font-weight: bold;
+  background-color: var(--primary-color);
+} */
 
 footer > #back-btn:hover + #logout-btn {
   transform: scale(0.5);
@@ -1205,7 +1190,8 @@ footer > #back-btn:hover + #logout-btn {
   justify-content: center;
   contain: strict;
 }
-.bottom-main::-webkit-scrollbar {
+.bottom-main::-webkit-scrollbar,
+.top-main::-webkit-scrollbar {
   display: none;
 }
 
