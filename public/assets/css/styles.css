@@ -15,11 +15,11 @@ body {
   padding: 0;
   overflow: hidden;
 }
-#chat-dialogue {
+/* #chat-dialogue {
   right: -300px;
-}
+} */
 
-#new-ticket-modal {
+/* #new-ticket-modal {
   right: -300px;
 }
 
@@ -40,7 +40,7 @@ body {
 
 .hidden {
   width: 0;
-}
+} */
 /* End modal styling */
 
 /* Login styles */
@@ -57,7 +57,7 @@ body {
 }
 
 .bsTop {
-  background-color:rgb(134, 134, 179)
+  background-color: rgb(134, 134, 179);
 }
 
 #bsUrgency {
@@ -78,7 +78,7 @@ body {
 }
 
 .bsBreak {
-  padding-top:5px;
+  padding-top: 5px;
 }
 
 .bsBreak2 {
@@ -93,7 +93,7 @@ body {
   margin: 10px;
 }
 
-.bsBoxTest{
+.bsBoxTest {
   width: 300px;
   height: 300px;
   border: 5px black;
@@ -132,35 +132,35 @@ body {
   }
 }
 */
-.bsDrawn { 
-  width: 2px; 
-  height: 400px; 
-  background: #fff; 
-  position: absolute; 
-  top: 35%; 
-  left: 50%; 
+.bsDrawn {
+  width: 2px;
+  height: 400px;
+  background: #fff;
+  position: absolute;
+  top: 35%;
+  left: 50%;
   transform: translate(-50%, -50%);
-} 
+}
 
-.bsDrawn::before { 
-  content: ""; 
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100%; 
+.bsDrawn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: var(--primary-color);
-  animation: animatedLine 1.0s linear forwards; 
-} 
+  animation: animatedLine 1s linear forwards;
+}
 
-@keyframes animatedLine { 
-  0% { 
+@keyframes animatedLine {
+  0% {
     transform: translateY(0%);
-} 
+  }
   100% {
     transform: translateY(100%);
   }
-} 
+}
 
 .form-container {
   width: 700px;
@@ -189,7 +189,7 @@ body {
 
 .bsBoxTitles {
   font-size: 20px;
-  color:white;
+  color: white;
 }
 
 .bsSave {
@@ -205,9 +205,9 @@ body {
 .bsTree {
   border: 1px black;
   padding: 10px;
-    margin: 100;
-    background-color: var(--high-blue);
-  }
+  margin: 100;
+  background-color: var(--high-blue);
+}
 
 .subject {
   filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
@@ -219,7 +219,7 @@ body {
 }
 
 .bsTicketBody {
-  background-color:#39393e
+  background-color: #39393e;
 }
 
 .bsTicketBodyLeft > h1 {
@@ -242,7 +242,6 @@ body {
   height: 100px;
   margin-top: 40px;
   margin-right: 20px;
-  
 }
 
 #bsType {
@@ -253,7 +252,7 @@ body {
 
 #bsType::before,
 #bsType::after {
-  content:'';
+  content: '';
   position: absolute;
   top: 0;
   right: 0;
@@ -362,7 +361,6 @@ li:hover ul.twist.hov li:nth-child(5) {
     top: 0;
     opacity: 1;
   }
-  
 }
 
 .bsTicketContainer > input {
@@ -370,13 +368,12 @@ li:hover ul.twist.hov li:nth-child(5) {
 }
 
 #bsEditButton {
- float: right;
+  float: right;
 }
 
-#bsEditButton:hover{
+#bsEditButton:hover {
   background-color: rgb(186, 186, 186);
 }
-
 
 .cursor::before {
   transition-property: opacity;
@@ -403,22 +400,14 @@ li:hover ul.twist.hov li:nth-child(5) {
   background-color: var(--primary-color);
 }
 
-:root {
-  --primary-color: #1d1e22;
-  --secondary-color: #ffffff;
-  --accent-color: #6f7fc1;
-  --form-label-color: #8f8f8f;
-}
-
 /* modal styling */
 body {
   margin: 0;
   padding: 0;
-  overflow-Y: auto;
+  overflow-y: auto;
   /* overflow: hidden; */
 }
 #chat-dialogue {
-  right: -300px;
   background-color: black;
 }
 
@@ -441,9 +430,13 @@ body {
 .dialogue-content {
   padding: 20px;
 }
+.openDrawer {
+  right: 0;
+}
 
 .hidden {
   width: 0;
+  right: -300px;
 }
 /* End modal styling */
 
@@ -461,7 +454,7 @@ body {
 }
 
 .bsTop {
-  background-color:rgb(134, 134, 179)
+  background-color: rgb(134, 134, 179);
 }
 
 #bsUrgency {
@@ -489,7 +482,7 @@ body {
 }
 
 .bsBreak {
-  padding-top:5px;
+  padding-top: 5px;
 }
 
 .bsBreak2 {
@@ -504,7 +497,7 @@ body {
   margin: 10px;
 }
 
-.bsBoxTest{
+.bsBoxTest {
   width: 300px;
   height: 300px;
   border: 5px black;
@@ -539,7 +532,7 @@ body {
 
 .bsBoxTitles {
   font-size: 20px;
-  color:white;
+  color: white;
 }
 
 .bsSave {
@@ -555,9 +548,9 @@ body {
 .bsTree {
   border: 1px black;
   padding: 10px;
-    margin: 100;
-    background-color: var(--high-blue);
-  }
+  margin: 100;
+  background-color: var(--high-blue);
+}
 
 .subject {
   filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
@@ -569,7 +562,7 @@ body {
 }
 
 .bsTicketBody {
-  background-color:#39393e;
+  background-color: #39393e;
   display: flex;
   justify-content: space-between;
   z-index: 6;
@@ -595,7 +588,7 @@ body {
   width: 200px;
   height: 100px;
   float: right;
-  justify-content:center;
+  justify-content: center;
 }
 
 #bsType {
@@ -606,7 +599,7 @@ body {
 
 #bsType::before,
 #bsType::after {
-  content:'';
+  content: '';
   position: absolute;
   top: 0;
   right: 0;
@@ -691,11 +684,9 @@ body {
 
 .bsChatMessages #bsTimeStamp {
   font-size: 10px;
-  position:absolute;
-  right:5;
-  bottom:0;
-
-  
+  position: absolute;
+  right: 5;
+  bottom: 0;
 }
 
 /*
@@ -777,16 +768,21 @@ li:hover ul.twist.hov li:nth-child(5) {
   border: 10px white;
   width: 400px;
   margin-left: 20px;
-  background-color:#39393e;
+  background-color: #39393e;
   position: absolute;
   animation: ticketDrop 0.3s linear forwards;
   z-index: 0;
 }
 
 @keyframes ticketDrop {
-  0%   {opacity:0;	transform: rotateY(90deg);}
-    100% {opacity:1; transform:  rotateY(0);}
-  
+  0% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0);
+  }
 }
 
 .bsTicketContainer > input {
@@ -794,14 +790,13 @@ li:hover ul.twist.hov li:nth-child(5) {
 }
 
 #bsEditButton {
- float: right;
+  float: right;
 }
 
-#bsEditButton:hover{
+#bsEditButton:hover {
   background-color: rgb(186, 186, 186);
 }
-
-
+/*  */
 .cursor::before {
   transition-property: opacity;
   transition-duration: 2s;
@@ -838,13 +833,9 @@ li:hover ul.twist.hov li:nth-child(5) {
 body {
   margin: 0;
   padding: 0;
-  overflow-Y: auto;
+  overflow-y: auto;
   /* overflow: hidden; */
 }
-#chat-dialogue {
-  right: -300px;
-}
-
 #new-ticket-modal {
   right: -300px;
 }
@@ -860,6 +851,7 @@ body {
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
   z-index: 50;
+  overflow-y: auto;
 }
 
 .dialogue-content {
@@ -868,7 +860,7 @@ body {
 
 .bsChatMessages {
   list-style: none;
-  position:relative;
+  position: relative;
   background-color: rgba(255, 255, 255, 0.829);
   margin-bottom: 10px;
   border-radius: 5px;
@@ -952,7 +944,7 @@ span:nth-child(4) {
   margin-left: 3px;
   background-color: transparent;
   border: none;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .login-form {
@@ -1088,7 +1080,7 @@ span:nth-child(4) {
 .top-main {
   overflow-y: auto;
   width: 50%;
-  height: 50%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1099,24 +1091,47 @@ span:nth-child(4) {
   font-size: clamp(1.5rem, 2rem, 2.5rem);
   /* z-index: 3; */
 }
-.mid-main-btn {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-}
 #main-btn-container > button,
-#main-btn-container > a > button {
-  font-size: clamp(1.5rem, 2rem, 2.5rem);
+#main-btn-container > a > button,
+#logout-btn,
+#back-btn {
+  font-size: clamp(1.1rem, 1.5rem, 2rem);
+  border-radius: 8px;
+  transform: scale(1);
+}
+
+#main-btn-container > button:hover,
+#main-btn-container > a > button:hover {
+  transform: scale(1.2);
+}
+
+#main-btn-container > button:hover ~ button:not(:hover),
+#main-btn-container > button:hover + a > button:not(:hover) {
+  transform: scale(0.5);
+}
+
+/* #main-btn-container > button:hover + button:not(:hover),
+#main-btn-container > button:hover + a > button:not(:hover) {
+  transform: scale(0.5);
+  transition: all 0.25s;
+} */
+
+#back-btn > a {
+  text-decoration: none;
 }
 .bottom-main {
   width: 100%;
   height: 50%;
-  margin: 20px 0;
+  margin: 10px 0 20px 0;
   overflow-y: auto;
   display: flex;
   justify-content: center;
+  contain: strict;
 }
+.bottom-main::-webkit-scrollbar {
+  display: none;
+}
+
 table {
   width: 80%;
   border: solid var(--accent-color);
@@ -1125,20 +1140,13 @@ table {
 tbody {
   width: 100%;
   text-align: center;
+  padding: 10px 0;
 }
-.table-head {
+/* .table-head {
   max-height: 2.5rem;
 }
 .table-head > th {
   max-height: 2.5rem;
-}
-
-/* tr:first {
-  border-top: solid var(--accent-color);
-}
-
-tr {
-  border-bottom: solid var(--accent-color);
 } */
 
 th,
@@ -1151,23 +1159,25 @@ td {
   content: contain;
 }
 th {
-  font-size: clamp(1.5rem, 2rem, 2.5rem);
+  font-size: clamp(1.25rem, 1.75rem, 2rem);
   border-bottom: solid var(--accent-color);
+  text-shadow: 0px 0px 1rem var(--header-g2);
 }
 
 .table-btn {
-  font-size: clamp(1.5rem, 1.75rem, 2.25rem);
+  font-size: clamp(1.05rem, 1.5rem, 2rem);
   padding: 10px;
   border-radius: 8px;
 }
 
 td > div {
-  font-size: clamp(1.25rem, 1.75rem, 2rem);
+  font-size: clamp(1.25rem, 1.5rem, 1.75rem);
   display: flex;
   justify-content: center;
 }
 
 .created-on {
+  font-size: clamp(1rem, 1.5rem, 1.75rem);
   padding: 10px;
 }
 
@@ -1197,9 +1207,9 @@ td > div {
   }
 }
 
-.table-btn {
+/* .table-btn {
   font-size: clamp(1.05rem, 1.5rem, 2rem);
-}
+} */
 
 footer {
   background-color: var(--primary-color);
@@ -1207,6 +1217,7 @@ footer {
   display: flex;
   width: 100%;
   justify-content: center;
+  gap: 10px;
 }
 /* Main header animation */
 #tile-anime {
@@ -1252,22 +1263,25 @@ footer {
   transition: opacity 1200ms ease;
   width: 50vw;
   z-index: 10;
+  text-align: center;
 }
 .header-text {
   left: 50%;
   position: absolute;
-  top: 50%;
+  top: 46%;
   transform: translate(-50%, -50%);
 }
 #info-head {
-  font-size: clamp(2rem, 3rem, 4rem);
-  top: 75%;
+  font-size: clamp(1.5rem, 2rem, 3rem);
+  top: 80%;
+  left: 85%;
   color: var(--accent-color);
+  text-align: center;
 }
 
-.animation-container.toggled {
+/* .animation-container.toggled {
   animation: none;
-}
+} */
 .animation-container.toggled > .welcome {
   opacity: 0;
 }
@@ -1283,6 +1297,9 @@ footer {
   opacity: 0.1 !important;
 }
 
+#main-btn-container {
+  z-index: 0;
+}
 .tile {
   cursor: pointer;
   position: relative;
