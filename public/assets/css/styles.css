@@ -259,9 +259,32 @@ span:nth-child(4) {
   /* z-index: 3; */
 }
 #main-btn-container > button,
-#main-btn-container > a > button {
-  font-size: clamp(1.25rem, 1.75rem, 2.25rem);
+#main-btn-container > a > button,
+#logout-btn,
+#back-btn {
+  font-size: clamp(1.1rem, 1.5rem, 2rem);
   border-radius: 8px;
+  transform: scale(1);
+}
+
+#main-btn-container > button:hover,
+#main-btn-container > a > button:hover {
+  transform: scale(1.2);
+}
+
+#main-btn-container > button:hover ~ button:not(:hover),
+#main-btn-container > button:hover + a > button:not(:hover) {
+  transform: scale(0.5);
+}
+
+/* #main-btn-container > button:hover + button:not(:hover),
+#main-btn-container > button:hover + a > button:not(:hover) {
+  transform: scale(0.5);
+  transition: all 0.25s;
+} */
+
+#back-btn > a {
+  text-decoration: none;
 }
 .bottom-main {
   width: 100%;
@@ -271,6 +294,9 @@ span:nth-child(4) {
   display: flex;
   justify-content: center;
   contain: strict;
+}
+.bottom-main::-webkit-scrollbar {
+  display: none;
 }
 
 table {
@@ -358,6 +384,7 @@ footer {
   display: flex;
   width: 100%;
   justify-content: center;
+  gap: 10px;
 }
 /* Main header animation */
 #tile-anime {
@@ -419,9 +446,9 @@ footer {
   text-align: center;
 }
 
-.animation-container.toggled {
+/* .animation-container.toggled {
   animation: none;
-}
+} */
 .animation-container.toggled > .welcome {
   opacity: 0;
 }

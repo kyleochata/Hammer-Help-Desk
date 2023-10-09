@@ -14,6 +14,7 @@ closeDialogueButton.addEventListener('click', () => {
     dialogueModal.classList.add('hidden');
 });
 
+//function to try and keep the modal open 
 const modalClass = () => {
     const urlEnd = window.location.href.split('=')
     console.log(urlEnd)
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             if (response.ok) {
                 console.log({ message: 'edited' });
-                window.location.reload();
+                window.location.replace(`/ticket/${ticketId}`);
             } else {
                 // console.error(err)
                 alert('request failed. Please try again')
