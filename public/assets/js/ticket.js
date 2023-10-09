@@ -80,3 +80,59 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const editButton = document.getElementById('bsEditButton');
+const input = document.querySelectorAll('.field');
+console.log(input);
+editButton.addEventListener('click', () => {
+    input.textContent = "Save";
+    for (const i of input) {
+        i.readOnly = false;
+    };
+});
+
+
+function countCharacters(string) {
+    return string.length;
+}
+/*
+const descriptionText = document.getElementById('#bsType');
+const charCount = countCharacters(descriptionText.value);
+document.documentElement.style.setProperty('--character-count', characterCount);
+
+*/
+
+function urgency() {
+
+    const urgency = document.getElementById('bsUrgency');
+    console.log(urgency);
+
+    if (urgency.textContent === 'Low') {
+        urgency.style.color = 'green';
+    }
+    else if (urgency.textContent === 'Medium') {
+        urgency.style.color = 'yellow';
+    }
+    else {
+        urgency.style.color = 'red';
+    }
+
+};
+
+urgency();
