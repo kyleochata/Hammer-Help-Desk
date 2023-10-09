@@ -1,26 +1,4 @@
-{{#if loggedIn}}
-<header>
-    <div class="bsTicketBody">
-    <h1>{{title}}</h1>
-    <p>User ID: {{user}}</p>
-    <p>User Name: {{firstName}} {{lastName}}</p>
-    <p>Role: {{role}}</p>
-    </div>
-</header>
-
-<main>
-    <!-- Ticket information -->
-    <section>
-        <h2>Ticket Details:</h2>
-        <p>Client: {{ticketData.client.firstName}} {{ticketData.client.lastName}} (ID: {{ticketData.client.id}},
-            Role: {{ticketData.client.role}})</p>
-        <p>Tech: {{ticketData.tech.firstName}} {{ticketData.tech.lastName}} (ID: {{ticketData.tech.id}}, Role:
-            {{ticketData.tech.role}})</p>
-        <p>Subject: {{ticketData.subject}}</p>
-        <p>Description: {{ticketData.description}}</p>
-        <p>Status: {{ticketData.status}}</p>
-        <p>Urgency: {{ticketData.urgency}}</p>
-    </section>
+{{#if loggedIn}} <header>     <h1>{{title}}</h1>     <p>User ID: {{user}}</p>     <p>User Name: {{firstName}} {{lastName}}</p>     <p>Role: {{role}}</p> </header>  <main>     <!-- Ticket information -->     <section>         <h2>Ticket Details:</h2>         <p>Client: {{ticketData.client.firstName}} {{ticketData.client.lastName}} (ID: {{ticketData.client.id}},             Role: {{ticketData.client.role}})</p>         <p>Tech: {{ticketData.tech.firstName}} {{ticketData.tech.lastName}} (ID: {{ticketData.tech.id}}, Role:             {{ticketData.tech.role}})</p>         <p>Subject: {{ticketData.subject}}</p>         <p>Description: {{ticketData.description}}</p>         <p>Status: {{ticketData.status}}</p>         <p>Urgency: {{ticketData.urgency}}</p>     </section>
 
     <!-- Tech section for editing the ticket -->
     {{#ifCond role '===' 'tech'}}
@@ -67,6 +45,7 @@
             </div>
         </form>
     </section>
+
     {{/ifCond}}
 
     <!-- Logs related to this ticket -->
