@@ -80,19 +80,19 @@
         <button id="close-ticket-modal">X</button>
         <div class="ticket-form">
           <header>
-            <h3>New Ticket</h3>
+            <h3 class="ticket-title">New Ticket</h3>
           </header>
           <div>
-            <label for="subject">
-              <h4>Subject</h4>
+            <label class="new-subject" for="subject">
+              <h5>Subject</h5>
             </label>
           </div>
           <div>
-            <input type="text" id="subject" />
+            <input class="new-subject-input" type="text" id="subject" />
           </div>
           <div>
-            <label for="description">
-              <h4>Description</h4>
+            <label class="new-description" for="description">
+              <h5>Description</h5>
             </label>
           </div>
           <div>
@@ -103,10 +103,10 @@
           </div>
           <div>
             <label for="urgency">
-              <h4>Urgency</h4>
+              <h5 class="new-urgency">Urgency</h5>
             </label>
           </div>
-          <select name="urgency" id="urgency">
+          <select name="urgency" id="urgency" class="urgency-select">
             <option value="Low" selected>Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>

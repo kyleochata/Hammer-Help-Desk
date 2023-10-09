@@ -5,28 +5,23 @@ const withAuth = (req, res, next) => {
   else { next(); }
 };
 
-const determineAlignment = (log, currentUser) => {
+const determineAlignment = (log, user) => {
   if (log.type === 'Created' || log.type === 'Modified') {
-    return 'center-align';
-  } else if (currentUser === log.userId) {
-    return 'right-align';
+    return 'text-center';
+  } else if (user === log.userId) {
+    return 'text-end';
   } else {
-    return 'left-align';
+    return 'text-start';
   }
 };
 
 const determineShowHide = (value) => {
   if (value === true) {
-    return 'hidden';
+    return 'hide-me';
   } else {
-    return 'shown';
+    return 'show-me';
   }
 };
-
-// const messageIconClass = determineShowHide('hidden');
-// const messageBubbleClass = determineAlignment('left-align');
-// console.log('Message Icon Class:', messageIconClass);
-// console.log('Message Bubble Class:', messageBubbleClass);
 
 const format_date = (date) => {
   //month is index 0-11. must add 1 to get correct month
@@ -100,4 +95,4 @@ const log = (value) => {
 };
 
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log };
+module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log, determineAlignment, determineShowHide };
