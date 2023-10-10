@@ -4,21 +4,24 @@
 
 ## Description
 
-A link to the deployed site can be found [here]()
+As technology becomes an integral part of everyday life it becomes important for a person or business to have people well versed in making sure it works properly. The ease that technology makes everyday life, it also comes with challenges when the tech we are relying on doesn't perform as intended. In the case of businesses, if a piece of their technology isn't performing as intended it can lead to loss of productivity at best and the loss of profit / death of the company if the issue isn't resolved in a timely manner. This project aims to create an internal help desk to allow for a group or business to handle tickets from employees to send to their IT department to seek help and resolution of their technical problems. This project includes building a database, safely storing user passwords, and incorporating data from the database onto the front-end of the user.
+
+The technologies used were: Express, Sequelize, Handlebars, MySQL, HTML, CSS, Javascript, Anime.js. The main challenge faced in this project were centered around pulling relevant data from the database at the correct time and getting it onto our handlebars file. In future development, we aim to use React.js rather than Handlebars due to the limitations of Handlebars having to reload the screen or fire off a document location redirect in order to display newly changed information from the database.
+
+A link to the deployed site can be found [here](https://afternoon-ravine-50223-4c951dfeba48.herokuapp.com/)
 
 Screenshots of deployed application:
 
 Homepage:
-![homepage]()
+![homepage](./public/assets/screenshots/dashboard1.png)
+
+![hompage alt view](./public/assets/screenshots/dashboard2.png)
 
 Login:
-![login]()
+![login](./public/assets/screenshots/login.png)
 
 View Ticket:
-![view ticket]()
-
-Chat Modal:
-![chat modal]()
+![view ticket](./public/assets/screenshots/ticket1.png)
 
 ## Table of Contents
 
@@ -65,17 +68,23 @@ This repository is allowed for use in a learning environment to evaluate and ana
 - Express for their [modules](https://expressjs.com/)
 - nodemon for their [modules](https://www.npmjs.com/package/nodemon)
 - Hyperplexed for their tutorials on [CSS animations](https://www.youtube.com/c/Hyperplexed)
+- Anime.js for their [library](https://animejs.com/)
 - UCI BootCamp for the acceptance criteria.
-- AskBCS for their assistance in troubleshooting.
 
 ## Questions
 
-If you have further questions about this project, please send an email or checkout us out on GitHub.
+Emails:
+Kyle Etrata - kyleochata@gmail.com
+Bliss Oros - kyleblissoros@gmail.com
+James Brainard - james.brainard202@gmail.com
+Adrian Cheung - ac983042820@gmail.com
 
-Email: kyleochata@gmail.com
-
-GitHub Link: https://github.com/kyleochata
+GitHub Profiles ::
+Kyle Etrata - https://github.com/kyleochata
+Bliss Oros - https://github.com/kybliss
+James Brainard - https://github.com/James-Brainard
+Adrian Cheung - https://github.com/GSwordGCil
 
 ## Credit
 
-This project was created by Kyle Etrata
+This project was created by Kyle Etrata, Adrien Cheung, James Brainard, Kyle Oros.
