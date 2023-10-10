@@ -44,9 +44,9 @@ const ticketController = {
                 console.log(key);
                 ticket[key] = req.body[key];
             }
-
+            
             // If a techId was added, change status to Claimed
-            if (req.session.role === 'tech') {
+            if (req.session.role === 'tech' && !(req.body.status != "Pending" || req.body.status != "Resolved")) {
                 ticket.status = 'Claimed';
             }
 
@@ -83,6 +83,9 @@ const ticketController = {
                 return res.status(404).send("Ticket not found or not Resolved.");
             }
 
+
+
+            console.log("\n\n\n\n archive Ticket Reached");
             ticket.isArchived = true;
             await ticket.save();
 

@@ -55,6 +55,8 @@ const logController = {
             const { logId } = req.params;
             const { message, type, isHidden } = req.body;
 
+            
+
             const log = await Log.findByPk(logId);
             if (!log) {
                 return res.status(404).send("Log not found.");
@@ -66,11 +68,13 @@ const logController = {
 
             await log.save();
 
-            const redirectTo = req.query.drawer === "true"
-                ? `/ticket/${log.ticketId}?drawer=true`
-                : `/ticket/${log.ticketId}`;
+            // console.log(ticketId);
 
-            return res.redirect(redirectTo);
+            // const redirectTo = req.query.drawer === "true"
+            //     ? `/ticket/${log.ticketId}?drawer=true`
+            //     : `/ticket/${log.ticketId}`;
+
+            // return res.status(200).json({ message: "Log updated successfully." });
 
         } catch (error) {
             console.error(error);
