@@ -14,35 +14,8 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color:#1d1e22;
+  background-color: #1d1e22;
 }
-/* #chat-dialogue {
-  right: -300px;
-} */
-
-/* #new-ticket-modal {
-  right: -300px;
-}
-
-#chat-dialogue,
-#new-ticket-modal {
-  position: fixed;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background-color: #fff;
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-}
-
-.dialogue-content {
-  padding: 20px;
-}
-
-.hidden {
-  width: 0;
-} */
-/* End modal styling */
 
 /* Login styles */
 .login-main {
@@ -276,7 +249,7 @@ body {
   background-color: var(--primary-color);
   position: relative;
   height: 80%;
-  display:flex;
+  display: flex;
   /* gap: 100px; */
   justify-content: space-between;
 }
@@ -317,24 +290,24 @@ body {
 }
 
 .leftMain {
-  display:flex;
+  display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  width:50%;
+  width: 50%;
 }
 
-.rightMain{
-  width:45%;
-  padding-right:40px;
-  display:flex;
-  flex-wrap:wrap;
+.rightMain {
+  width: 45%;
+  padding-right: 40px;
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   overflow-y: auto;
 }
 
-#show-dialogue{
-  width:20%;
+#show-dialogue {
+  width: 20%;
 }
 /*
 
@@ -457,9 +430,9 @@ body {
   background-color: black;
 }
 
-#new-ticket-modal {
+/* #new-ticket-modal {
   right: -300px;
-}
+} */
 
 /* #chat-dialogue,
 #new-ticket-modal {
@@ -474,40 +447,49 @@ body {
 } */
 
 .ticket-title {
-  font-size: clamp(1.3rem, 2rem, 2.5rem);
+  font-size: clamp(2rem, 2.5rem, 3rem);
+  margin-left: 5%;
 }
 
-.new-subject {
-  font-size: clamp(1.3rem, 2rem, 2.5rem);
+.new-subject,
+.new-description,
+.urgency {
+  font-size: clamp(1.75rem, 2.25rem, 2.75rem) !important;
+  margin-left: 5%;
 }
 
 .new-subject-input {
-  height: 3%;
+  height: fit-content;
   border: solid 2px var(--accent-color);
   border-radius: 5px;
-  width: 100%;
+  width: 90%;
+  font-size: clamp(1.5rem, 2rem, 2.2rem);
+  margin-left: 5%;
 }
 
-.new-description {
+/* .new-description {
   font-size: clamp(1.3rem, 2rem, 2.5rem);
-}
+} */
 
 #description {
-  height: 5%;
+  height: 30%;
   border: solid 3px var(--accent-color);
   border-radius: 5px;
-  width: 100%;
+  width: 90%;
+  font-size: clamp(1.1rem, 1.75rem, 2rem);
+  margin-left: 5%;
+  border-radius: 5px;
 }
 
 .urgency-select {
   display: flex;
   margin-bottom: 51px;
   width: 34%;
-  font-size: 13px;
+  font-size: clamp(1.1rem, 1.5rem, 2rem);
+  margin-left: 5%;
 }
 
-.new-urgency {
-  font-size: clamp(0.95rem, 1.65rem, 2.15rem);
+.urgency {
   margin-bottom: 25px;
 }
 
@@ -518,6 +500,15 @@ body {
 #submit-ticket {
   padding: 10px;
   border-radius: 8px;
+  margin-left: 5%;
+  font-size: clamp(1.25rem, 1.75rem, 2rem);
+  transition: all 0.25s;
+}
+
+#submit-ticket:hover {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  transform: scale(1.2);
 }
 
 .dialogue-content {
@@ -525,7 +516,7 @@ body {
 }
 .openDrawer {
   right: 0;
-  width:33vw;
+  width: 33vw;
 }
 
 .hidden {
@@ -738,7 +729,7 @@ body {
 
 .wrapper textarea {
   box-sizing: border-box;
-  position:relative;
+  position: relative;
   background-color: rgb(230, 230, 230);
   border: 2px solid white;
   border-radius: 5px;
@@ -941,9 +932,6 @@ body {
   overflow-y: auto;
   /* overflow: hidden; */
 }
-#new-ticket-modal {
-  right: -300px;
-}
 
 #chat-dialogue,
 #new-ticket-modal {
@@ -966,7 +954,7 @@ body {
 }
 
 .text-start {
-  font-size:150%;
+  font-size: 150%;
   border-radius: 20px 12px 10px 0px;
   align-items: start;
   text-align: left;
@@ -974,41 +962,39 @@ body {
   background-color: rgb(81, 89, 96);
   color: white;
   width: fit-content;
-  align-self:flex-start;
+  align-self: flex-start;
 }
 
 .text-end {
-  font-size:150%;
+  font-size: 150%;
   border-radius: 20px 20px 0px 20px;
   text-align: right;
   right: 1;
   background-color: rgb(41, 148, 248);
   color: white;
   width: fit-content;
-  align-self:flex-end;
+  align-self: flex-end;
 }
 
-.text-start >.log-modifier{
-  display:flex;
-  justify-content:start;
-  flex-wrap:wrap;
-  word-wrap:break-word;
+.text-start > .log-modifier {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  word-wrap: break-word;
 }
 
-.text-end >.log-modifier{
-  display:flex;
-  justify-content:end;
-  flex-wrap:wrap;
-  word-wrap:break-word;
+.text-end > .log-modifier {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  word-wrap: break-word;
 }
 .modal-ul {
   padding: 0;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-
-
 
 .dialogue-content {
   padding: 20px;
@@ -1119,7 +1105,7 @@ span:nth-child(4) {
 .login-form > h1 {
   color: var(--secondary-color);
   text-shadow: 0 0 0.5rem var(--secondary-color);
-  font-size: clamp(1.5rem, 2rem, 3rem);
+  font-size: clamp(3rem, 4rem, 5rem);
   letter-spacing: 0.1rem;
 }
 .login-content-box {
@@ -1130,6 +1116,17 @@ span:nth-child(4) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+#close-ticket-modal {
+  font-size: 4rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: all 0.25s;
+}
+#close-ticket-modal:hover {
+  transform: scale(1.2);
+  background-color: red;
+  color: var(--primary-color);
 }
 .login-input {
   position: relative;
@@ -1254,11 +1251,44 @@ span:nth-child(4) {
   font-size: clamp(1.1rem, 1.5rem, 2rem);
   border-radius: 8px;
   transform: scale(1);
+  transition: all 0.25s;
 }
 
 #main-btn-container > button:hover,
-#main-btn-container > a > button:hover {
+#main-btn-container > a > button:hover,
+#logout-btn:hover,
+#back-btn:hover {
   transform: scale(1.2);
+  color: var(--accent-color);
+  font-weight: bold;
+  background-color: var(--primary-color);
+}
+#main-btn-container > button > a:visited {
+  color: var(--primary-color);
+}
+#main-btn-container > button > a:hover {
+  color: var(--accent-color);
+}
+#main-btn-container > button > a {
+  text-decoration: var(--primary-color);
+}
+
+/* #logout-btn:hover,
+#back-btn:hover {
+  color: var(--accent-color);
+  font-weight: bold;
+  background-color: var(--primary-color);
+} */
+
+footer > #back-btn:hover + #logout-btn {
+  transform: scale(0.5);
+}
+#back-btn > a:visited {
+  color: var(--primary-color);
+}
+
+#back-btn > a:visited:hover {
+  color: var(--accent-color);
 }
 
 #main-btn-container > button:hover ~ button:not(:hover),
@@ -1284,7 +1314,8 @@ span:nth-child(4) {
   justify-content: center;
   contain: strict;
 }
-.bottom-main::-webkit-scrollbar {
+.bottom-main::-webkit-scrollbar,
+.top-main::-webkit-scrollbar {
   display: none;
 }
 
@@ -1475,15 +1506,15 @@ footer {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  display: inline-block;  /* To keep it in line with text */
+  display: inline-block; /* To keep it in line with text */
 }
 
 .interactableSquare.Dshown {
-  background-color: green;  /* Color when the log is shown */
+  background-color: green; /* Color when the log is shown */
 }
 
 .interactableSquare.Dhidden {
-  background-color: red;  /* Color when the log is hidden */
+  background-color: red; /* Color when the log is hidden */
 }
 
 /* #message{

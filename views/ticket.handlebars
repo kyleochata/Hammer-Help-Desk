@@ -116,10 +116,14 @@
                 <option value="High">High</option>
             </select>
             <div class="bsBreak2"></div>
-            {{#ifCond role '===' 'client'}}
-            {{#ifCond ticketData.isArchived '===' false}}
+            {{#ifCond role '===' 'tech'}}
             <button id="bsEditButton">Save Changes</button>
-            {{/ifCond}}
+            {{else}}
+            {{#ifCond ticketData.isArchived '===' false}}
+            {{!-- {{#ifCond role '===' 'tech'}} --}}
+                <button id="bsEditButton">Save Changes</button>
+
+                {{/ifCond}}
             {{/ifCond}}
             <div class="bsBreak2"></div>
         </section>
