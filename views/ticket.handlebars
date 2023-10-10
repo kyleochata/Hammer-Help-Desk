@@ -1,5 +1,6 @@
 {{#if loggedIn}}
 <header>
+    <div id="ticketid" data-id="{{ticketData.id}}"></div>
     <div class="bsTicketBody bsRight bsDropShadow">
         <div class="bsTicketBodyLeft">
             <div class="spacer2"></div>
@@ -99,13 +100,13 @@
             <div class="bsContainerTitles">Description</div>
             <div class="bsBreak"></div>
             <input id="descriptionInput" class="field" type="text" value="{{ticketData.description}}" />
-            <div class="bsBreak2"></div>
+            {{!-- <div class="bsBreak2"></div>
             <div class="bsContainerTitles">Status</div>
             <div class="bsBreak"></div>
             <select id="statusSelect" value="{{ticketData.status}}">
                 <option value="Open">Open</option>
                 <option value="Resolved">Resolved</option>
-            </select>
+            </select> --}}
             <div class="bsBreak2"></div>
             <div class="bsContainerTitles">Urgency:</div>
             <div class="bsBreak"></div>
@@ -115,7 +116,11 @@
                 <option value="High">High</option>
             </select>
             <div class="bsBreak2"></div>
+            {{#ifCond role '===' 'client'}}
+            {{#ifCond ticketData.isArchived '===' false}}
             <button id="bsEditButton">Save Changes</button>
+            {{/ifCond}}
+            {{/ifCond}}
             <div class="bsBreak2"></div>
         </section>
 
@@ -131,7 +136,7 @@
                 <!-- Status input -->
                 <div>
                     <label class="bsContainerTitles" for="status">Status:</label>
-                    <select  name="status" id="status">
+                    <select name="status" id="status">
                         <option value="Open" {{#ifCond ticketData.status '===' 'Open' }}selected{{/ifCond}}>Open
                         </option>
                         <option value="Pending" {{#ifCond ticketData.status '===' 'Pending' }}selected{{/ifCond}}>
@@ -190,12 +195,14 @@
         <div class="spacer"></div>
         <div class="bsLogContainer bsRight bsLeft">
             {{#if ticketData.logs}}
-            <section>
-                <h2 class="bsTicketDetails" >Logs:</h2>
+            <section >
+                <h2 class="bsTicketDetails">Logs:</h2>
                 <ul>
                     {{#each ticketData.logs}}
+                    {{#unless (and (eq this.isHidden true) (eq ../role 'client'))}}
                     <li>
-                        <strong class="{{#ifCond this.userId '===' ../user}}bsContainerTitles5{{else}}bsContainerTitles2{{/ifCond}}">
+                        <strong
+                            class="{{#ifCond this.userId '===' ../user}}bsContainerTitles5{{else}}bsContainerTitles2{{/ifCond}}">
                             {{#ifCond this.userId '===' ../user}}
                             Me
                             {{else}}
@@ -208,14 +215,19 @@
                             {{/ifCond}}
                             {{/ifCond}}:
                         </strong>
-                        {{!-- {{this.message}} at {{this.createdAt}} --}}
-                        <span class="bsContainerTitles3">{{this.message}}</span> <span class="bsContainerTitles4"><br>({{this.createdAt}})</span>
+                        <span class="bsContainerTitles3">{{this.message}}</span> <span
+                            class="bsContainerTitles4"><br>({{this.createdAt}})</span>
                     </li>
+                    {{/unless}}
                     {{/each}}
+
                 </ul>
             </section>
             {{/if}}
+            {{#ifCond ticketData.isArchived '===' false}}
             <button id="show-dialogue">Show Chat Logs</button>
+            {{/ifCond}}
+            
             <a href="/"><button>Back</button></a>
         </div>
     </div>
@@ -223,31 +235,40 @@
         <button id="close-dialogue">X</button>
         <div class="dialogue-content">
             {{#if ticketData.logs}}
-            <section>
+            <section class="chatlog_container">
                 <!--
             <h2>Logs:</h2>
             -->
                 <ul class="modal-ul">
                     {{#each ticketData.logs}}
+                    {{#unless (or (and (eq this.isHidden true) (eq ../role 'client')) (eq this.type 'Modified'))}}
                     <li class="bsChatMessages {{determineAlignment this ../user}}">
-                    <div>
-                        <strong>
-                            {{#ifCond this.userId '===' ../user}}
-                            Me
-                            {{else}}
-                            {{#ifCond this.userId '===' ../ticketData.client.id}}
-                            {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
-                            {{else ifCond this.userId '===' ../ticketData.tech.id}}
-                            {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
-                            {{else}}
-                            User {{this.userId}}
+                        {{!-- <div> --}}
+                            <strong class="log-modifier">
+                                {{!-- {{#ifCond this.userId '===' ../user}}
+                                Me
+                                {{else}}
+                                {{#ifCond this.userId '===' ../ticketData.client.id}}
+                                {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
+                                {{else ifCond this.userId '===' ../ticketData.tech.id}}
+                                {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
+                                {{else}}
+                                User {{this.userId}}
+                                {{/ifCond}}
+                                {{/ifCond}}: --}}
+                            
+                            {{this.message}} <div id="bsTimeStamp">{{format_timeStamp this.createdAt}}</div>
+                            </strong>
+                            {{#ifCond ../role '===' 'tech'}}
+                            <div class="interactableSquare {{#if this.isHidden}}Dhidden{{else}}Dshown{{/if}}"
+                                onclick="toggleVisibility(this, '{{this.id}}','{{this.message}}','{{this.type}}')">
+                            </div>
                             {{/ifCond}}
-                            {{/ifCond}}:
-                        </strong>
-                        {{this.message}} <div id="bsTimeStamp">{{format_timeStamp this.createdAt}}</div>
-                    </div>
+                        {{!-- </div> --}}
                     </li>
+                    {{/unless}}
                     {{/each}}
+
                 </ul>
             </section>
             {{/if}}
@@ -282,7 +303,9 @@
                     {{/ifCond}}
 
                     <div>
+                        {{#ifCond ticketData.isArchived '===' false}}
                         <button type="submit"><strong>&gt;</strong></button>
+                        {{/ifCond}}
                     </div>
                 </div>
             </form>

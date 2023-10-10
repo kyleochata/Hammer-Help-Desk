@@ -18,6 +18,8 @@ router.route('/')
 // The routes will also match '/api/ticket/:id' to handle PUT, and DELETE requests.
 router.route('/:id')
   .put( withAuth, ticketController.editTicket)
+
+router.route('/:id')
   .delete(withAuth, ticketController.archiveTicket)
 
 
