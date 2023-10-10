@@ -21,7 +21,14 @@ const logData = [
         message: "Closed ticket.",
         type: 'Message',
         isHidden: false,
-    }
+    },
+    {
+        userId: 1,
+        ticketId: 4,
+        message: "Ticket created.",
+        type: 'Message',
+        isHidden: false,
+    },
 ]
 
 const seedLog = () => Log.bulkCreate(logData)

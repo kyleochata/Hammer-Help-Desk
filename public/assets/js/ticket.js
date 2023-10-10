@@ -3,7 +3,7 @@ const showDialogueButton = document.getElementById('show-dialogue');
 const closeDialogueButton = document.getElementById('close-dialogue');
 const dialogueModal = document.getElementById('chat-dialogue');
 //open & close the chat log modal
-if (showDialogueButton){
+if (showDialogueButton) {
     showDialogueButton.addEventListener('click', () => {
         // dialogueModal.style.right = '0px';
         dialogueModal.classList.remove('hidden');
@@ -11,8 +11,7 @@ if (showDialogueButton){
     });
 }
 
-if (closeDialogueButton)
-{
+if (closeDialogueButton) {
     closeDialogueButton.addEventListener('click', () => {
         // const ticketId = editTicketForm.getAttribute('data-id');
         // dialogueModal.style.right = '-300px'; // Slide the dialogue out to the right
@@ -110,9 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
 const editButton = document.getElementById('bsEditButton');
 const input = document.querySelectorAll('.field');
 console.log(input);
-if (editButton)
-{
-    editButton.addEventListener('click', async function() {
+if (editButton) {
+    editButton.addEventListener('click', async function () {
         console.log("\n\n\n\nhi the save change button was clicked");
         // Get values from inputs and selects
         const ticketId = document.getElementById('ticketid').getAttribute('data-id');
@@ -121,14 +119,14 @@ if (editButton)
         let description = document.getElementById('descriptionInput').value;
         // let status = document.getElementById('statusSelect').value;
         let urgency = document.getElementById('urgencySelect').value;
-    
+
         // Data to be sent
         let data = {
             subject: subject,
             description: description,
             urgency: urgency
         };
-    
+
         // Send PUT request
         const response = await fetch(`../api/ticket/${ticketId}`, {
             method: 'PUT',
@@ -149,7 +147,7 @@ if (editButton)
 }
 
 
-async function toggleVisibility(element,logid,message,type) {
+async function toggleVisibility(element, logid, message, type) {
     const ticketId = editTicketForm.getAttribute('data-id');
     let state = 0;
     if (element.classList.contains('Dshown')) {
@@ -165,8 +163,8 @@ async function toggleVisibility(element,logid,message,type) {
     }
 
     let data = {
-        message:message,
-        type:type,
+        message: message,
+        type: type,
         isHidden: state
     };
 
@@ -206,7 +204,7 @@ function urgency() {
     console.log(urgency);
 
     if (urgency.textContent === 'Low') {
-        urgency.style.color = 'green';
+        urgency.style.color = '#32CD32';
     }
     else if (urgency.textContent === 'Medium') {
         urgency.style.color = 'yellow';

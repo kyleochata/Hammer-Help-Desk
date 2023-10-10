@@ -19,7 +19,7 @@ const ticketData = [
     },
     {
         clientId: 7,
-        techId: 4,
+        techId: 1,
         subject: "Hardware Help",
         description: "I don't know if my computer parts are compatible.",
         status: 'Resolved',
@@ -30,7 +30,7 @@ const ticketData = [
         techId: 1,
         subject: 'Access issue',
         description: 'Issue with infinite redirects',
-        status: 'Pending',
+        status: 'Open',
         isArchived: false
     },
     {

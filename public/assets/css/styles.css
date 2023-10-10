@@ -34,12 +34,6 @@ body {
   background-color: rgb(134, 134, 179);
 }
 
-#bsUrgency {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .bsBtnRight {
   float: right;
 }
@@ -216,6 +210,7 @@ body {
   height: 100px;
   margin-top: 40px;
   margin-right: 20px;
+  font-size: clamp(1rem, 1.5rem, 2rem);
 }
 
 #bsType {
@@ -254,11 +249,11 @@ body {
   justify-content: space-between;
 }
 
-.bsContainerTitles {
+/* .bsContainerTitles {
   color: white;
   font-size: 15px;
   text-shadow: 2px 2px black;
-}
+} */
 
 .bsContainerTitles2 {
   color: yellow;
@@ -278,14 +273,14 @@ body {
 
 .bsContainerTitles5 {
   color: lightblue;
-  font-size: 15px;
+  font-size: clamp(1.25rem, 1.5rem, 2rem);
   text-shadow: 2px 2px black;
 }
 
 .bsTicketDetails {
   margin-top: 10px;
   color: white;
-  font-size: 25px;
+  font-size: 3rem;
   text-shadow: 2px 2px black;
 }
 
@@ -306,8 +301,10 @@ body {
   overflow-y: auto;
 }
 
-#show-dialogue {
-  width: 20%;
+#show-dialogue,
+#btn-back {
+  width: fit-content;
+  font-size: clamp(1rem, 1.25rem, 2rem);
 }
 /*
 
@@ -382,9 +379,9 @@ li:hover ul.twist.hov li:nth-child(5) {
   }
 }
 
-.bsTicketContainer > input {
+/* .bsTicketContainer > input {
   width: 300px;
-}
+} */
 
 #bsEditButton {
   float: right;
@@ -480,6 +477,9 @@ body {
   margin-left: 5%;
   border-radius: 5px;
 }
+#urgencySelect {
+  font-size: clamp(1.25rem, 1.5rem, 2rem);
+}
 
 .urgency-select {
   display: flex;
@@ -547,6 +547,9 @@ body {
   justify-content: flex-end;
   align-items: center;
   text-shadow: 2px 2px black;
+  font-weight: bold;
+  font-size: clamp(1.5rem, 2rem, 2.2rem);
+  margin-right: 70px;
 }
 
 #bsOpenedBy {
@@ -554,6 +557,7 @@ body {
   position: absolute;
   bottom: 10;
   right: 10;
+  font-size: clamp(1rem, 1.25rem, 1.5rem);
 }
 
 .bsBtnRight {
@@ -712,10 +716,15 @@ body {
 
 .bsContainerTitles {
   color: white;
-  font-size: 15px;
+  font-size: clamp(1.75rem, 2.25rem, 2rem);
   text-shadow: 2px 2px black;
 }
 
+#status,
+#techId,
+#urgency {
+  font-size: clamp(1rem, 1.25rem, 1.5rem);
+}
 #bsTicketDetails {
   margin-top: 10px;
   color: white;
@@ -774,6 +783,9 @@ body {
   position: absolute;
   right: 5;
   bottom: 0;
+}
+#isArchived {
+  transform: scale(1.5);
 }
 
 /*
@@ -846,11 +858,6 @@ li:hover ul.twist.hov li:nth-child(5) {
 
 */
 
-#bsUrgency {
-  font-size: 30px;
-  margin-right: 70px;
-}
-
 .bsTicketContainer {
   border: 10px white;
   width: 400px;
@@ -882,11 +889,14 @@ li:hover ul.twist.hov li:nth-child(5) {
 }
 
 .bsTicketContainer > input {
-  width: 300px;
+  width: 80%;
+  font-size: clamp(1.25rem, 1.5rem, 2rem);
 }
 
-#bsEditButton {
+#bsEditButton,
+#edit-ticket-btn {
   float: right;
+  font-size: clamp(1rem, 1.25rem, 2rem);
 }
 
 #bsEditButton:hover {
@@ -999,7 +1009,9 @@ body {
 .dialogue-content {
   padding: 20px;
 }
-
+.no-ticket-msg {
+  font-size: clamp(2rem, 3rem, 4rem);
+}
 .bsChatMessages {
   list-style: none;
   position: relative;
@@ -1087,6 +1099,13 @@ span:nth-child(4) {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  font-size: clamp(2rem, 2.5rem, 3rem);
+  transition: all 0.25s;
+}
+
+#close-dialogue:hover {
+  color: red;
+  transform: scale(1.2);
 }
 
 .login-form {

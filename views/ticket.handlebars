@@ -25,7 +25,7 @@
         </div>
         <div class="bsTicketBodyRight">
             <div id="bsUrgency">{{ticketData.urgency}}</div>
-            <div id="bsOpenedBy">Opened by {{ticketData.client.firstName}} on {{ticketData.createdAt}}</div>
+            <div id="bsOpenedBy">Opened by {{ticketData.client.firstName}} on {{format_date ticketData.createdAt}}</div>
         </div>
 
 
@@ -178,7 +178,7 @@
                 </div>
                 <!-- Submit button -->
                 <div>
-                    <button type="submit">Edit Ticket</button>
+                    <button type="submit" id="edit-ticket-btn">Edit Ticket</button>
                 </div>
             </form>
         </section>
@@ -220,7 +220,7 @@
                             {{/ifCond}}:
                         </strong>
                         <span class="bsContainerTitles3">{{this.message}}</span> <span
-                            class="bsContainerTitles4"><br>({{this.createdAt}})</span>
+                            class="bsContainerTitles4"><br>({{format_date this.createdAt}})</span>
                     </li>
                     {{/unless}}
                     {{/each}}
@@ -232,7 +232,7 @@
             <button id="show-dialogue">Show Chat Logs</button>
             {{/ifCond}}
             
-            <a href="/"><button>Back</button></a>
+            <a href="/"><button id="btn-back">Back</button></a>
         </div>
     </div>
     <div id="chat-dialogue" class="hidden">
