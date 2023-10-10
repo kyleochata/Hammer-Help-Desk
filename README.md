@@ -48,7 +48,7 @@ Before launching the application, a mySQL server must be up and running. From th
 
 Once the mySQL server is up and running please create a .env file at the level of server.js. Within that .env file be sure it looks like the following framework with your information filled in for the DB_user & DB_password:
 
-![.env screenshot]()
+![.env screenshot](./public/assets/screenshots/envfile.png)
 
 When that .env file is completed navigate to the server.js level and open up a terminal and type in "npm run seed". From there type in "npm run start", "npm start", or "node server.js". Once the server is up, you should see a listening message in the terminal signaling it is on. Navigate over to a browser of your choice and go to http://localhost:3001 to interact with this application.
 
@@ -74,16 +74,18 @@ This repository is allowed for use in a learning environment to evaluate and ana
 ## Questions
 
 Emails:
-Kyle Etrata - kyleochata@gmail.com
-Bliss Oros - kyleblissoros@gmail.com
-James Brainard - james.brainard202@gmail.com
-Adrian Cheung - ac983042820@gmail.com
 
-GitHub Profiles ::
-Kyle Etrata - https://github.com/kyleochata
-Bliss Oros - https://github.com/kybliss
-James Brainard - https://github.com/James-Brainard
-Adrian Cheung - https://github.com/GSwordGCil
+- Kyle Etrata - kyleochata@gmail.com
+- Bliss Oros - kyleblissoros@gmail.com
+- James Brainard - james.brainard202@gmail.com
+- Adrian Cheung - ac983042820@gmail.com
+
+GitHub Profiles:
+
+- Kyle Etrata - https://github.com/kyleochata
+- Bliss Oros - https://github.com/kybliss
+- James Brainard - https://github.com/James-Brainard
+- Adrian Cheung - https://github.com/GSwordGCil
 
 ## Credit
 
