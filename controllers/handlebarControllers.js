@@ -23,9 +23,9 @@ const handlebarController = {
         ]
       });
       const ticketData = getTicket.get({ plain: true });
-      if (ticketData.isArchived) {
-        res.redirect('/');
-      }
+      // if (ticketData.isArchived) {
+      //   res.redirect('/');
+      // }
       if (req.session.role === 'client' && ticketData.clientId !== req.session.user_id) {
         res.redirect('/');
         return;
@@ -64,6 +64,11 @@ const handlebarController = {
       if (status) {
         where.status = status;
       };
+
+      if (status != "Resolved")
+      {
+        where.isArchived = false;
+      }
       if (req.session.role === 'client') {
         where.clientId = req.session.user_id
       } else {
@@ -74,7 +79,7 @@ const handlebarController = {
           where[Op.or] = [
             { techId: req.session.user_id },
             { techId: null }
-          ]
+          ];
         }
       }
       // IF for req.session.role === tech

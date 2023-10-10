@@ -94,7 +94,7 @@ Ticket.init(
       afterUpdate: async (ticket, options) => {
         const previousStatus = ticket._previousDataValues.status;
         // Check if the status has been changed to 'Resolved'
-        if (previousStatus !== 'Resolved' && ticket.status === 'Resolved') {
+        if (previousStatus !== 'Resolved' && ticket.status === 'Resolved' && ticket.isArchived == false) {
           try {
             // Update the isArchived property to true
             await ticket.update({ isArchived: true }, { transaction: options.transaction });

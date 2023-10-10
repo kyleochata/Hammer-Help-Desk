@@ -3,18 +3,25 @@ const showDialogueButton = document.getElementById('show-dialogue');
 const closeDialogueButton = document.getElementById('close-dialogue');
 const dialogueModal = document.getElementById('chat-dialogue');
 //open & close the chat log modal
-showDialogueButton.addEventListener('click', () => {
-    // dialogueModal.style.right = '0px';
-    dialogueModal.classList.remove('hidden');
-    dialogueModal.classList.add('openDrawer');
-});
-closeDialogueButton.addEventListener('click', () => {
-    const ticketId = editTicketForm.getAttribute('data-id');
-    // dialogueModal.style.right = '-300px'; // Slide the dialogue out to the right
-    dialogueModal.classList.remove('openDrawer')
-    dialogueModal.classList.add('hidden');
-    // window.location.replace(`/ticket/${ticketId}`);
-});
+if (showDialogueButton){
+    showDialogueButton.addEventListener('click', () => {
+        // dialogueModal.style.right = '0px';
+        dialogueModal.classList.remove('hidden');
+        dialogueModal.classList.add('openDrawer');
+    });
+}
+
+if (closeDialogueButton)
+{
+    closeDialogueButton.addEventListener('click', () => {
+        // const ticketId = editTicketForm.getAttribute('data-id');
+        // dialogueModal.style.right = '-300px'; // Slide the dialogue out to the right
+        dialogueModal.classList.remove('openDrawer')
+        dialogueModal.classList.add('hidden');
+        // window.location.replace(`/ticket/${ticketId}`);
+    });
+}
+
 
 //function to try and keep the modal open 
 const modalClass = () => {
@@ -103,40 +110,44 @@ document.addEventListener("DOMContentLoaded", function () {
 const editButton = document.getElementById('bsEditButton');
 const input = document.querySelectorAll('.field');
 console.log(input);
-document.getElementById('bsEditButton').addEventListener('click', async function() {
-    console.log("\n\n\n\nhi the save change button was clicked");
-    // Get values from inputs and selects
-    const ticketId = editTicketForm.getAttribute('data-id');
-    let subject = document.getElementById('subjectInput').value;
-    let description = document.getElementById('descriptionInput').value;
-    let status = document.getElementById('statusSelect').value;
-    let urgency = document.getElementById('urgencySelect').value;
-
-    // Data to be sent
-    let data = {
-        subject: subject,
-        description: description,
-        status: status,
-        urgency: urgency
-    };
-
-    // Send PUT request
-    const response = await fetch(`../api/ticket/${ticketId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+if (editButton)
+{
+    editButton.addEventListener('click', async function() {
+        console.log("\n\n\n\nhi the save change button was clicked");
+        // Get values from inputs and selects
+        const ticketId = document.getElementById('ticketid').getAttribute('data-id');
+        console.log(ticketId);
+        let subject = document.getElementById('subjectInput').value;
+        let description = document.getElementById('descriptionInput').value;
+        // let status = document.getElementById('statusSelect').value;
+        let urgency = document.getElementById('urgencySelect').value;
+    
+        // Data to be sent
+        let data = {
+            subject: subject,
+            description: description,
+            urgency: urgency
+        };
+    
+        // Send PUT request
+        const response = await fetch(`../api/ticket/${ticketId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        if (response.ok) {
+            console.log({ message: 'edited' });
+            window.location.replace(`/ticket/${ticketId}`);
+            //window.location.reload();
+        } else {
+            // console.error(err)
+            alert('request failed. Please try again')
+        }
     });
-    if (response.ok) {
-        console.log({ message: 'edited' });
-        window.location.replace(`/ticket/${ticketId}`);
-        //window.location.reload();
-    } else {
-        // console.error(err)
-        alert('request failed. Please try again')
-    }
-});
+}
+
 
 async function toggleVisibility(element,logid,message,type) {
     const ticketId = editTicketForm.getAttribute('data-id');

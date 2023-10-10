@@ -89,6 +89,8 @@ const ifCond = function (v1, operator, v2, options) {
   }
 }
 
+
+
 const log = (value) => {
   console.log(value);
   return undefined;
@@ -106,4 +108,4 @@ const or = (arg1, arg2) => {
   return arg1 || arg2;
 };
 
-module.exports = { withAuth, format_date, format_timeStamp, findDiff,ifCond,log ,eq,and,or};
+module.exports = { withAuth, determineAlignment,format_date, format_timeStamp, findDiff,ifCond,log ,eq,and,or};

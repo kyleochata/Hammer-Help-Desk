@@ -461,7 +461,7 @@ body {
   right: -300px;
 }
 
-#chat-dialogue,
+/* #chat-dialogue,
 #new-ticket-modal {
   position: fixed;
   top: 0;
@@ -471,7 +471,7 @@ body {
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
   z-index: 50;
-}
+} */
 
 .ticket-title {
   font-size: clamp(1.3rem, 2rem, 2.5rem);
@@ -525,6 +525,7 @@ body {
 }
 .openDrawer {
   right: 0;
+  width:33vw;
 }
 
 .hidden {
@@ -737,13 +738,14 @@ body {
 
 .wrapper textarea {
   box-sizing: border-box;
+  position:relative;
   background-color: rgb(230, 230, 230);
   border: 2px solid white;
   border-radius: 5px;
   padding: 1rem 2rem;
-  width: 100%;
-  margin-left: 5px;
-  margin-right: 5px;
+  width: 80%;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .wrapper textarea:hover {
@@ -759,8 +761,8 @@ body {
   background-color: rgb(41, 148, 248);
   aspect-ratio: 1;
   position: absolute;
-  height: 60%;
-  right: 0;
+  height: 100%;
+  right: 2%;
   width: 15%;
   top: 1%;
   border-radius: 5px;
@@ -947,7 +949,7 @@ body {
 #new-ticket-modal {
   position: fixed;
   top: 0;
-  width: 300px;
+  /* width: 300px; */
   height: 100%;
   background-color: #afafaf;
   background: linear-gradient(to bottom, #afafaf, #717171);
@@ -964,24 +966,49 @@ body {
 }
 
 .text-start {
+  font-size:150%;
   border-radius: 20px 12px 10px 0px;
   align-items: start;
-  text-align: center;
-  right: 3%;
+  text-align: left;
+  left: 0;
   background-color: rgb(81, 89, 96);
   color: white;
+  width: fit-content;
+  align-self:flex-start;
 }
 
 .text-end {
+  font-size:150%;
   border-radius: 20px 20px 0px 20px;
-  text-align: center;
-  left: 10%;
+  text-align: right;
+  right: 1;
   background-color: rgb(41, 148, 248);
   color: white;
+  width: fit-content;
+  align-self:flex-end;
+}
+
+.text-start >.log-modifier{
+  display:flex;
+  justify-content:start;
+  flex-wrap:wrap;
+  word-wrap:break-word;
+}
+
+.text-end >.log-modifier{
+  display:flex;
+  justify-content:end;
+  flex-wrap:wrap;
+  word-wrap:break-word;
 }
 .modal-ul {
   padding: 0;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
+
+
 
 .dialogue-content {
   padding: 20px;
@@ -993,7 +1020,7 @@ body {
   /* background-color: rgba(255, 255, 255, 0.829); */
   margin-bottom: 10px;
   padding: 20px;
-  width: 75%;
+  max-width: 80%;
 }
 
 .hidden {
@@ -1458,3 +1485,7 @@ footer {
 .interactableSquare.Dhidden {
   background-color: red;  /* Color when the log is hidden */
 }
+
+/* #message{
+  width:50%;
+} */
