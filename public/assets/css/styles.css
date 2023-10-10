@@ -1105,7 +1105,7 @@ span:nth-child(4) {
 .login-form > h1 {
   color: var(--secondary-color);
   text-shadow: 0 0 0.5rem var(--secondary-color);
-  font-size: clamp(1.5rem, 2rem, 3rem);
+  font-size: clamp(3rem, 4rem, 5rem);
   letter-spacing: 0.1rem;
 }
 .login-content-box {
