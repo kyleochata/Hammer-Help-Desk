@@ -6,11 +6,6 @@
             <div class="spacer2"></div>
             <h1 id="title"><strong>{{title}}</strong></h1>
             <h2 id="bsType">{{ticketData.description}}<span class="cursor"> |</span></h2>
-            <!--
-            <p>User ID: {{user}}</p>
-            <p>User Name: {{firstName}} {{lastName}}</p>
-            <p>Role: {{role}}</p>
-            -->
             <style>
                 .spacer {
                     height: 20px
@@ -35,50 +30,6 @@
 <main class="bsMainColor">
     <div class="leftMain">
         <div class="spacer"></div>
-        {{!-- <section class="bsTicketContainer bsRight bsDropShadow">
-            <div class="bsBreak2"></div>
-            <div id="bsTicketDetails">Ticket Details</p>
-                <div class="bsBreak"></div>
-                <div class="bsContainerTitles">Client</div>
-                <div class="bsBreak"></div>
-                <input class="field" type="text" readonly="true" value="{{ticketData.client.firstName}}" />
-                <!--
-        <p>Tech: {{ticketData.tech.firstName}} {{ticketData.tech.lastName}} (ID: {{ticketData.tech.id}}, Role:
-            {{ticketData.tech.role}})</p>
-            -->
-                <div class="bsBreak2"></div>
-                <div class="bsContainerTitles">Technician</div>
-                <div class="bsBreak"></div>
-                <input class="field" type="text" readonly="true"
-                    value="{{ticketData.tech.firstName}} {{ticketData.tech.lastName}}" />
-                <div class="bsBreak2"></div>
-                <div class="bsContainerTitles">Subject</div>
-                <div class="bsBreak"></div>
-                <input class="field" type="text" value="{{ticketData.subject}}" />
-                <div class="bsBreak2"></div>
-                <div class="bsContainerTitles">Description</div>
-                <div class="bsBreak"></div>
-                <div><input class="field" type="text" value="{{ticketData.description}}" /></div>
-                <div class="bsBreak2"></div>
-                <div class="bsContainerTitles">Status</div>
-                <div class="bsBreak"></div>
-                <select value="{{ticketData.status}}">
-                    <option value="Open">Open</option>
-                    <option value="Resolved">Resolved</option>
-                </select>
-                <div class="bsBreak2"></div>
-                <div class="bsContainerTitles">Urgency:</div>
-                <div class="bsBreak"></div>
-                <select value="{{ticketData.urgency}}">
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-                <div class="bsBreak2"></div>
-                <button id="bsEditButton">Save Changes</button>
-                <div class="bsBreak2"></div>
-
-        </section> --}}
 
         <section class="bsTicketContainer bsRight bsDropShadow">
             <div class="bsBreak2"></div>
@@ -100,13 +51,6 @@
             <div class="bsContainerTitles">Description</div>
             <div class="bsBreak"></div>
             <input id="descriptionInput" class="field" type="text" value="{{ticketData.description}}" />
-            {{!-- <div class="bsBreak2"></div>
-            <div class="bsContainerTitles">Status</div>
-            <div class="bsBreak"></div>
-            <select id="statusSelect" value="{{ticketData.status}}">
-                <option value="Open">Open</option>
-                <option value="Resolved">Resolved</option>
-            </select> --}}
             <div class="bsBreak2"></div>
             <div class="bsContainerTitles">Urgency:</div>
             <div class="bsBreak"></div>
@@ -120,7 +64,6 @@
             <button id="bsEditButton">Save Changes</button>
             {{else}}
             {{#ifCond ticketData.isArchived '===' false}}
-            {{!-- {{#ifCond role '===' 'tech'}} --}}
                 <button id="bsEditButton">Save Changes</button>
 
                 {{/ifCond}}
@@ -188,10 +131,6 @@
     </div>
 
 
-    {{!-- </div> --}}
-    <!-- Ticket information -->
-
-
     <!-- Tech section for editing the ticket -->
 
     <!-- Logs related to this ticket -->
@@ -249,17 +188,6 @@
                     <li class="bsChatMessages {{determineAlignment this ../user}}">
                         {{!-- <div> --}}
                             <strong class="log-modifier">
-                                {{!-- {{#ifCond this.userId '===' ../user}}
-                                Me
-                                {{else}}
-                                {{#ifCond this.userId '===' ../ticketData.client.id}}
-                                {{../ticketData.client.firstName}} {{../ticketData.client.lastName}}
-                                {{else ifCond this.userId '===' ../ticketData.tech.id}}
-                                {{../ticketData.tech.firstName}} {{../ticketData.tech.lastName}}
-                                {{else}}
-                                User {{this.userId}}
-                                {{/ifCond}}
-                                {{/ifCond}}: --}}
                             
                             {{this.message}} <div id="bsTimeStamp">{{format_timeStamp this.createdAt}}</div>
                             </strong>
