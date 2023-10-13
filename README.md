@@ -8,7 +8,7 @@ As technology becomes an integral part of everyday life it becomes important for
 
 The technologies used were: Express, Sequelize, Handlebars, MySQL, HTML, CSS, Javascript, Anime.js. The main challenge faced in this project were centered around pulling relevant data from the database at the correct time and getting it onto our handlebars file. In future development, we aim to use React.js rather than Handlebars due to the limitations of Handlebars having to reload the screen or fire off a document location redirect in order to display newly changed information from the database.
 
-A link to the deployed site can be found [here](https://afternoon-ravine-50223-4c951dfeba48.herokuapp.com/)
+A link to the deployed site can be found [here](https://radiant-wave-47724-d875b64f42d0.herokuapp.com/)
 
 Screenshots of deployed application:
 
